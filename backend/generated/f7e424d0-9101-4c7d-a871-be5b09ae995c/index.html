@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éclat Estates - Curating Unrivaled Luxury Real Estate Experiences</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1A1A1A; /* Deep Charcoal */
+            --color-accent: #C8AA6E; /* Champagne Gold */
+            --color-background: #F9F7F5; /* Soft Off-White */
+            --color-text-light: #6B7280; /* Muted Grey */
+            --color-white: #FFFFFF;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --transition-speed: 0.3s ease-in-out;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-primary);
+            line-height: 1.6;
+            background-color: var(--color-background);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            line-height: 1.2;
+            margin-bottom: 0.8em;
+        }
+
+        h1 { font-size: 3.5em; }
+        h2 { font-size: 2.8em; }
+        h3 { font-size: 2.2em; }
+        h4 { font-size: 1.8em; }
+
+        p {
+            margin-bottom: 1em;
+            font-size: 1.1em;
+            color: var(--color-text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+            transition: var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .text-center { text-align: center; }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9em 2.2em;
+            border: 2px solid var(--color-accent);
+            background-color: transparent;
+            color: var(--color-accent);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            border-radius: 3px;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            box-shadow: 0 5px 20px rgba(200, 170, 110, 0.4);
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border: 2px solid var(--color-accent);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: var(--color-accent);
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .section-heading {
+            margin-bottom: 4rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-accent);
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            padding: 1.5rem 0;
+            z-index: 1000;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .header.sticky {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-subtle);
+            padding: 1rem 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--color-white);
+            letter-spacing: 1px;
+        }
+
+        .header.sticky .logo {
+            color: var(--color-primary);
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 2.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 1.05em;
+            position: relative;
+            color: var(--color-white);
+        }
+
+        .header.sticky .nav-link {
+            color: var(--color-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width var(--transition-speed);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            justify-content: space-between;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-white);
+            transition: all 0.3s ease;
+        }
+
+        .header.sticky .menu-toggle span {
+            background-color: var(--color-primary);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Mobile Nav Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 26, 26, 0.98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            z-index: 999;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-item {
+            margin-bottom: 2rem;
+        }
+
+        .mobile-nav-link {
+            font-family: var(--font-heading);
+            font-size: 2.5em;
+            color: var(--color-white);
+            display: block;
+            position: relative;
+            padding: 0.5em 0;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1560518883-ff51792956c3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            filter: brightness(0.7);
+            z-index: -1;
+            transform: scale(1.05); /* Initial scale for subtle animation */
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInScale 1.5s ease-out forwards;
+            opacity: 0; /* Hidden initially */
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 0.3em;
+            color: var(--color-white);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 2.5em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            line-height: 1.5;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Featured Listings */
+        .featured-listings {
+            background-color: var(--color-white);
+        }
+
+        .listing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .listing-card {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            transition: transform var(--transition-speed);
+            opacity: 0; /* For scroll reveal */
+            transform: translateY(50px); /* For scroll reveal */
+        }
+
+        .listing-card.animate {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+        }
+
+        .listing-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .listing-card-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .listing-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .listing-card:hover .listing-card-image img {
+            transform: scale(1.05);
+        }
+
+        .listing-card-content {
+            padding: 1.8rem;
+        }
+
+        .listing-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 0.5em;
+            color: var(--color-primary);
+        }
+
+        .listing-card p {
+            font-size: 1em;
+            color: var(--color-text-light);
+            margin-bottom: 1.2em;
+        }
+
+        .listing-card .price {
+            font-family: var(--font-heading);
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-top: 1em;
+            display: block;
+        }
+
+        /* About Section */
+        .about-us {
+            background-color: var(--color-background);
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-image {
+            flex: 1;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1582268153406-cd3c812d45c6?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            border-radius: 8px;
+            box-shadow: var(--shadow-subtle);
+            opacity: 0; /* For scroll reveal */
+            transform: translateX(-50px); /* For scroll reveal */
+        }
+
+        .about-image.animate {
+            animation: fadeInFromLeft 0.8s ease-out forwards;
+        }
+
+        .about-content {
+            flex: 1.2;
+            padding-right: 2rem;
+            opacity: 0; /* For scroll reveal */
+            transform: translateX(50px); /* For scroll reveal */
+        }
+
+        .about-content.animate {
+            animation: fadeInFromRight 0.8s ease-out forwards;
+        }
+
+        .about-content h2 {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .about-content h2::after {
+            left: 0;
+            transform: none;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--color-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: var(--color-background);
+            border-radius: 8px;
+            box-shadow: var(--shadow-subtle);
+            transition: transform var(--transition-speed), background-color var(--transition-speed);
+            opacity: 0; /* For scroll reveal */
+            transform: translateY(50px); /* For scroll reveal */
+        }
+
+        .service-card.animate {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background-color: var(--color-white);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card svg {
+            color: var(--color-accent);
+            font-size: 3.5em;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.7em;
+            margin-bottom: 0.8em;
+        }
+
+        .service-card p {
+            font-size: 1em;
+        }
+
+        /* Property Search */
+        .property-search {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .property-search h2 {
+            color: var(--color-white);
+            margin-bottom: 2rem;
+        }
+
+        .search-form {
+            background-color: var(--color-white);
+            padding: 3rem;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            opacity: 0; /* For scroll reveal */
+            transform: translateY(50px); /* For scroll reveal */
+        }
+
+        .search-form.animate {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+        }
+
+        .search-group {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-group label {
+            display: block;
+            text-align: left;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+            font-size: 0.95em;
+        }
+
+        .search-group input,
+        .search-group select {
+            width: 100%;
+            padding: 0.8em 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1em;
+            color: var(--color-primary);
+            background-color: var(--color-background);
+            transition: border-color var(--transition-speed);
+        }
+
+        .search-group input:focus,
+        .search-group select:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .search-group .search-button {
+            width: 100%;
+            height: 100%;
+            padding: 1em 2em;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        /* Team Section */
+        .our-team {
+            background-color: var(--color-background);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .agent-card {
+            text-align: center;
+            background-color: var(--color-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-subtle);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            opacity: 0; /* For scroll reveal */
+            transform: translateY(50px); /* For scroll reveal */
+        }
+
+        .agent-card.animate {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .agent-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--color-accent);
+            padding: 3px;
+        }
+
+        .agent-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-card p.title {
+            font-weight: 500;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            font-size: 0.95em;
+        }
+
+        .agent-card p {
+            font-size: 0.95em;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .agent-card .social-links a {
+            color: var(--color-primary);
+            font-size: 1.3em;
+            margin: 0 0.8rem;
+        }
+
+        .agent-card .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--color-white);
+            overflow: hidden; /* For carousel */
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: hidden;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 2rem;
+        }
+
+        .testimonial-item {
+            flex: 0 0 100%;
+            min-width: 100%;
+            scroll-snap-align: start;
+            text-align: center;
+            padding: 3rem;
+            background-color: var(--color-background);
+            border-radius: 8px;
+            box-shadow: var(--shadow-subtle);
+            margin: 0 1rem; /* Adjust for spacing in carousel */
+            opacity: 0; /* For scroll reveal */
+            transform: translateY(50px); /* For scroll reveal */
+        }
+
+        .testimonial-item.animate {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+        }
+
+
+        .testimonial-item p {
+            font-style: italic;
+            font-size: 1.25em;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+            line-height: 1.8;
+        }
+
+        .testimonial-item .client-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: var(--color-accent);
+        }
+
+        .carousel-dots {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+
+        .dot.active {
+            background-color: var(--color-accent);
+        }
+
+        /* Market Insights */
+        .market-insights {
+            background-color: var(--color-background);
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .insight-card {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            transition: transform var(--transition-speed);
+            opacity: 0; /* For scroll reveal */
+            transform: translateY(50px); /* For scroll reveal */
+        }
+
+        .insight-card.animate {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .insight-card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .insight-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .insight-card:hover .insight-card-image img {
+            transform: scale(1.05);
+        }
+
+        .insight-card-content {
+            padding: 1.8rem;
+        }
+
+        .insight-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 0.6em;
+            color: var(--color-primary);
+        }
+
+        .insight-card p {
+            font-size: 0.95em;
+            color: var(--color-text-light);
+            margin-bottom: 1.5em;
+        }
+
+        .insight-card .read-more {
+            font-weight: 500;
+            color: var(--color-accent);
+            display: inline-block;
+            position: relative;
+        }
+
+        .insight-card .read-more::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-accent);
+            transition: width var(--transition-speed);
+        }
+
+        .insight-card .read-more:hover::after {
+            width: 100%;
+        }
+
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .contact .section-heading h2 {
+            color: var(--color-white);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .contact-info,
+        .contact-form-wrapper {
+            flex: 1;
+            opacity: 0; /* For scroll reveal */
+            transform: translateY(50px); /* For scroll reveal */
+        }
+
+        .contact-info.animate {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+        }
+        .contact-form-wrapper.animate {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        .contact-info h3 {
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            font-size: 2em;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .info-item svg {
+            color: var(--color-accent);
+            font-size: 1.8em;
+            margin-right: 1rem;
+            min-width: 30px;
+        }
+
+        .info-item p, .info-item a {
+            color: var(--color-white);
+            font-size: 1.1em;
+            margin: 0;
+        }
+
+        .contact-form {
+            background-color: var(--color-white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-form h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-size: 2em;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            font-size: 0.95em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9em 1.2em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1em;
+            color: var(--color-primary);
+            background-color: var(--color-background);
+            transition: border-color var(--transition-speed);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group .error-message {
+            color: #d32f2f;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+            display: none;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .footer .logo {
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-nav {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95em;
+        }
+
+        .footer-nav a:hover {
+            color: var(--color-accent);
+        }
+
+        .social-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5em;
+            margin: 0 0.8rem;
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer p {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+
+        /* Back To Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: opacity var(--transition-speed), transform var(--transition-speed);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 900;
+            cursor: pointer;
+            border: none;
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            background-color: var(--color-primary);
+        }
+
+        /* Scroll Reveal Animations */
+        @keyframes fadeInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .scroll-reveal.visible {
+            animation: fadeInFromBottom 0.8s ease-out forwards;
+        }
+        .scroll-reveal.visible-left {
+            animation: fadeInFromLeft 0.8s ease-out forwards;
+        }
+        .scroll-reveal.visible-right {
+            animation: fadeInFromRight 0.8s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            h1 { font-size: 3.8em; }
+            h2 { font-size: 2.4em; }
+            h3 { font-size: 2em; }
+            h4 { font-size: 1.6em; }
+
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .about-us {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+
+            .about-image {
+                width: 100%;
+                height: 400px;
+                padding-right: 0;
+                transform: none;
+            }
+            .about-content {
+                padding-right: 0;
+                text-align: center;
+                transform: none;
+            }
+            .about-content h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .contact-content {
+                flex-direction: column;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 4rem 0;
+            }
+            .section-heading {
+                margin-bottom: 3rem;
+            }
+            h1 { font-size: 3em; }
+            h2 { font-size: 2em; }
+            h3 { font-size: 1.7em; }
+            h4 { font-size: 1.4em; }
+
+            .navbar .nav-list {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .header.sticky .logo {
+                color: var(--color-primary);
+            }
+
+            .header.sticky .menu-toggle span {
+                background-color: var(--color-primary);
+            }
+
+            .hero {
+                height: 80vh;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+
+            .search-form {
+                padding: 2rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .search-group {
+                min-width: unset;
+            }
+
+            .testimonial-item {
+                padding: 2rem 1rem;
+            }
+            .testimonial-item p {
+                font-size: 1.1em;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            h4 { font-size: 1.2em; }
+
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 0.9em;
+            }
+
+            .listing-card-content, .service-card, .agent-card, .insight-card-content, .contact-form {
+                padding: 1.5rem;
+            }
+
+            .mobile-nav-link {
+                font-size: 1.8em;
+            }
+        }
+
+        /* SVG Icons (Font Awesome-like) */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.125em;
+            fill: currentColor;
+            line-height: 1;
+            position: relative;
+        }
+        .icon-lg { font-size: 1.5em; }
+        .icon-xl { font-size: 2em; }
+
+        /* SVG for general purpose icon */
+        .icon-house {
+            width: 1em; height: 1em;
+            /* Using inline SVG for simplicity in one file */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="logo">Éclat Estates</a>
+            <nav class="nav-list">
+                <li class="nav-item"><a href="#featured" class="nav-link">Featured</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#search" class="nav-link">Search</a></li>
+                <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
+                <li class="nav-item"><a href="#insights" class="nav-link">Insights</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="#featured" class="mobile-nav-link">Featured Properties</a></li>
+            <li class="mobile-nav-item"><a href="#services" class="mobile-nav-link">Our Services</a></li>
+            <li class="mobile-nav-item"><a href="#search" class="mobile-nav-link">Property Search</a></li>
+            <li class="mobile-nav-item"><a href="#team" class="mobile-nav-link">Meet The Team</a></li>
+            <li class="mobile-nav-item"><a href="#insights" class="mobile-nav-link">Market Insights</a></li>
+            <li class="mobile-nav-item"><a href="#contact" class="mobile-nav-link">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Éclat Estates</h1>
+            <p>Curating Unrivaled Luxury Real Estate Experiences.</p>
+            <a href="#featured" class="btn btn-primary">Discover Our Portfolio</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us section-padding container">
+        <div class="about-image scroll-reveal visible-left"></div>
+        <div class="about-content scroll-reveal visible-right">
+            <h2>Our Philosophy</h2>
+            <p>Éclat Estates is not just a real estate agency; it's a gateway to an exclusive world of properties, defined by unparalleled luxury, architectural mastery, and prestigious locations. We understand that a home is more than just a structure – it's a sanctuary, a statement, and an investment in your lifestyle.</p>
+            <p>Our discerning clientele trust us to navigate the high-end market with discretion, expertise, and a commitment to exceptional service, transforming property transactions into seamless journeys towards their dream residences. We pride ourselves on forging lasting relationships built on trust, transparency, and a shared vision for excellence.</p>
+            <a href="#contact" class="btn">Connect With Us</a>
+        </div>
+    </section>
+
+    <!-- Featured Listings Section -->
+    <section class="featured-listings section-padding" id="featured">
+        <div class="container">
+            <h2 class="section-heading text-center">Exclusive Listings</h2>
+            <div class="listing-grid">
+                <div class="listing-card scroll-reveal">
+                    <div class="listing-card-image">
+                        <img src="https://images.unsplash.com/photo-1574362791845-a42e557b7f16?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="The Belvedere Penthouse">
+                    </div>
+                    <div class="listing-card-content">
+                        <h3>The Belvedere Penthouse</h3>
+                        <p>Experience breathtaking panoramic NYC skyline views from this sprawling, bespoke penthouse. Meticulously designed interiors blend modern luxury with timeless elegance.</p>
+                        <span class="price">$25,000,000</span>
+                        <a href="#contact" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="listing-card scroll-reveal">
+                    <div class="listing-card-image">
+                        <img src="https://images.unsplash.com/photo-1582268711467-310892283a00?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Azure Coast Villa">
+                    </div>
+                    <div class="listing-card-content">
+                        <h3>Azure Coast Villa</h3>
+                        <p>A masterpiece of Mediterranean architecture nestled on the French Riviera. Enjoy unparalleled serenity, private beach access, and lush terraced gardens.</p>
+                        <span class="price">$18,500,000</span>
+                        <a href="#contact" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="listing-card scroll-reveal">
+                    <div class="listing-card-image">
+                        <img src="https://images.unsplash.com/photo-1628107567798-1981a539c361?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mountain Crest Estate">
+                    </div>
+                    <div class="listing-card-content">
+                        <h3>Mountain Crest Estate</h3>
+                        <p>An alpine sanctuary offering unparalleled luxury amidst majestic peaks. This modern lodge boasts ski-in/ski-out access and breathtaking natural beauty.</p>
+                        <span class="price">$12,800,000</span>
+                        <a href="#contact" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="listing-card scroll-reveal">
+                    <div class="listing-card-image">
+                        <img src="https://images.unsplash.com/photo-1622340320708-251f04494191?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Urban Oasis Residence">
+                    </div>
+                    <div class="listing-card-content">
+                        <h3>Urban Oasis Residence</h3>
+                        <p>Downtown elegance redefined. This chic city apartment features a private balcony, bespoke finishes, and immediate access to the city's finest cultural attractions.</p>
+                        <span class="price">$9,300,000</span>
+                        <a href="#contact" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section-padding" id="services">
+        <div class="container">
+            <h2 class="section-heading text-center">Our Exclusive Services</h2>
+            <div class="services-grid">
+                <div class="service-card scroll-reveal">
+                    <svg class="icon icon-xl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M576 416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96C0 60.7 28.7 32 64 32H288c17.7 0 32 14.3 32 32s-14.3 32-32 32H64c-17.7 0-32 14.3-32 32V416c0 17.7 14.3 32 32 32H512c17.7 0 32-14.3 32-32V288c0-17.7 14.3-32 32-32s32 14.3 32 32V416zm-400-80a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm268.4-192.4c-28.4-28.4-74.6-28.4-103 0L399.9 233c-3.1 3.1-4.9 7.4-4.9 11.9s1.8 8.8 4.9 11.9l36.2 36.2c3.1 3.1 7.4 4.9 11.9 4.9s8.8-1.8 11.9-4.9l75.4-75.4c28.4-28.4 28.4-74.6 0-103l-36.2-36.2zM288 336a96 96 0 1 1 0-192 96 96 0 1 1 0 192z"/></svg>
+                    <h3>Luxury Property Sales</h3>
+                    <p>Unlock access to our curated portfolio of exclusive, off-market properties and benefit from expertly crafted marketing strategies for your high-value assets.</p>
+                </div>
+                <div class="service-card scroll-reveal">
+                    <svg class="icon icon-xl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M192 64C86 64 0 150 0 256S86 448 192 448H448c106 0 192-86 192-192S554 64 448 64H192zm0 64H448c70.7 0 128 57.3 128 128s-57.3 128-128 128H192c-70.7 0-128-57.3-128-128S121.3 128 192 128zM399.1 214.6c1.2-1.7 2.9-3 4.9-3.9c16.3-7.5 35.8-2.6 43.3 13.7c7.5 16.3 2.6 35.8-13.7 43.3l-56 26l-18.1-39.7c-7.5-16.3-2.6-35.8 13.7-43.3zM224 256c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32z"/></svg>
+                    <h3>Buyer Representation</h3>
+                    <p>Receive personalized property sourcing, expert negotiation, and seamless acquisition services tailored to your unique preferences and investment goals.</p>
+                </div>
+                <div class="service-card scroll-reveal">
+                    <svg class="icon icon-xl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 80C0 35.8 35.8 0 80 0H496c44.2 0 80 35.8 80 80V432c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V80zm264 400c0 13.3-10.7 24-24 24s-24-10.7-24-24v-48c0-13.3 10.7-24 24-24s24 10.7 24 24v48zm10-318.9c-29.4-14.8-63.5-13.2-91.1 4.5l-63.4 49.8c-23.7 18.6-37.5 47.1-37.5 77.2V320h256V261.6c0-30.1-13.9-58.6-37.5-77.2L274 161.1z"/></svg>
+                    <h3>Investment Advisory</h3>
+                    <p>Gain strategic insights and identify lucrative opportunities in prime real estate markets, supported by our in-depth analysis and market foresight.</p>
+                </div>
+                <div class="service-card scroll-reveal">
+                    <svg class="icon icon-xl" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H200c-22.1 0-40-17.9-40-40v-48.7c-.3-2.7-.5-5.4-.5-8.1l.7-160.2h-32c-17 0-32-14-32-32.1 0-9 4.3-17.2 11.4-22.7L259.9 6.29c14.2-11.4 35.6-11.4 49.8 0L564.4 232.8c7.1 5.5 11.4 13.7 11.4 22.7zM352 416c0 17.7-14.3 32-32 32s-32-14.3-32-32V288c0-17.7 14.3-32 32-32s32 14.3 32 32V416z"/></svg>
+                    <h3>Property Management</h3>
+                    <p>Benefit from bespoke property management solutions for your high-value assets, ensuring optimal maintenance, tenant relations, and return on investment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Search Section -->
+    <section class="property-search section-padding" id="search">
+        <div class="container">
+            <h2 class="section-heading text-center">Find Your Dream Property</h2>
+            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 3rem;">Utilize our advanced search to filter through an exquisite collection of luxury homes and estates worldwide.</p>
+            <form class="search-form scroll-reveal" id="propertySearchForm">
+                <div class="search-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="e.g., London, Miami, Geneva">
+                </div>
+                <div class="search-group">
+                    <label for="property-type">Property Type</label>
+                    <select id="property-type">
+                        <option value="">Any Type</option>
+                        <option value="villa">Villa</option>
+                        <option value="apartment">Apartment/Condo</option>
+                        <option value="estate">Estate</option>
+                        <option value="penthouse">Penthouse</option>
+                        <option value="land">Land</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <label for="min-price">Min Price</label>
+                    <select id="min-price">
+                        <option value="">No Min</option>
+                        <option value="1000000">$1,000,000</option>
+                        <option value="5000000">$5,000,000</option>
+                        <option value="10000000">$10,000,000</option>
+                        <option value="20000000">$20,000,000</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <label for="max-price">Max Price</label>
+                    <select id="max-price">
+                        <option value="">No Max</option>
+                        <option value="5000000">$5,000,000</option>
+                        <option value="10000000">$10,000,000</option>
+                        <option value="20000000">$20,000,000</option>
+                        <option value="50000000">$50,000,000+</option>
+                    </select>
+                </div>
+                <div class="search-group" style="flex: 1 1 100%;">
+                    <button type="submit" class="btn btn-primary search-button">Search Properties</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="our-team section-padding" id="team">
+        <div class="container">
+            <h2 class="section-heading text-center">Meet Our Discerning Team</h2>
+            <div class="team-grid">
+                <div class="agent-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194d6b4890?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Alexander Thorne">
+                    <h3>Alexander Thorne</h3>
+                    <p class="title">Founder & Lead Broker</p>
+                    <p>With two decades in luxury real estate, Alexander's unparalleled market insight and extensive network ensure exceptional results.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 32H32C14.3 32 0 46.3 0 64v384c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32zM135.2 416H73.5V192h61.7V416zM104.5 167.3c-24.8 0-44.9-20.1-44.9-44.9 0-24.8 20.1-44.9 44.9-44.9 24.8 0 44.9 20.1 44.9 44.9 0 24.8-20.1 44.9-44.9 44.9zm275.5 248.7h-61.7V298.3c0-23.7-.4-54.3-33-54.3-33 0-38.1 25.8-38.1 52.6V416h-61.7V192h59.2v27.2h.8c8.2-15.5 28.3-31.8 58.4-31.8 62.6 0 74.2 41.2 74.2 94.4V416z"/></svg></a>
+                        <a href="#" aria-label="Email"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm0 96v240c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V160L256 288 48 160zm0-32l208 160c8.8 6.8 21.2 6.8 30 0L464 128H48z"/></svg></a>
+                    </div>
+                </div>
+                <div class="agent-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2561&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Isabella Rossi">
+                    <h3>Isabella Rossi</h3>
+                    <p class="title">Director of Global Sales</p>
+                    <p>Isabella connects international clients with their perfect properties, offering seamless service across continents with deep cultural understanding.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 32H32C14.3 32 0 46.3 0 64v384c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32zM135.2 416H73.5V192h61.7V416zM104.5 167.3c-24.8 0-44.9-20.1-44.9-44.9 0-24.8 20.1-44.9 44.9-44.9 24.8 0 44.9 20.1 44.9 44.9 0 24.8-20.1 44.9-44.9 44.9zm275.5 248.7h-61.7V298.3c0-23.7-.4-54.3-33-54.3-33 0-38.1 25.8-38.1 52.6V416h-61.7V192h59.2v27.2h.8c8.2-15.5 28.3-31.8 58.4-31.8 62.6 0 74.2 41.2 74.2 94.4V416z"/></svg></a>
+                        <a href="#" aria-label="Email"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm0 96v240c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V160L256 288 48 160zm0-32l208 160c8.8 6.8 21.2 6.8 30 0L464 128H48z"/></svg></a>
+                    </div>
+                </div>
+                <div class="agent-card scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2576&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Marcus Chen">
+                    <h3>Marcus Chen</h3>
+                    <p class="title">Investment & Advisory Specialist</p>
+                    <p>Marcus specializes in strategic real estate investments, providing invaluable guidance for maximizing portfolio growth and asset value.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 32H32C14.3 32 0 46.3 0 64v384c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32zM135.2 416H73.5V192h61.7V416zM104.5 167.3c-24.8 0-44.9-20.1-44.9-44.9 0-24.8 20.1-44.9 44.9-44.9 24.8 0 44.9 20.1 44.9 44.9 0 24.8-20.1 44.9-44.9 44.9zm275.5 248.7h-61.7V298.3c0-23.7-.4-54.3-33-54.3-33 0-38.1 25.8-38.1 52.6V416h-61.7V192h59.2v27.2h.8c8.2-15.5 28.3-31.8 58.4-31.8 62.6 0 74.2 41.2 74.2 94.4V416z"/></svg></a>
+                        <a href="#" aria-label="Email"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm0 96v240c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V160L256 288 48 160zm0-32l208 160c8.8 6.8 21.2 6.8 30 0L464 128H48z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section-padding">
+        <div class="container">
+            <h2 class="section-heading text-center">What Our Clients Say</h2>
+            <div class="testimonial-carousel" id="testimonial-carousel">
+                <div class="testimonial-item scroll-reveal">
+                    <p>"Éclat Estates truly understands the essence of luxury. Their personalized approach and access to exclusive listings made finding our dream home a truly effortless experience. A service truly beyond compare."</p>
+                    <span class="client-name">- Sophia & Robert C., Geneva</span>
+                </div>
+                <div class="testimonial-item scroll-reveal">
+                    <p>"The team at Éclat managed the sale of our estate with the utmost professionalism and discretion. Their market knowledge is unmatched, and they achieved a result far exceeding our expectations."</p>
+                    <span class="client-name">- Dr. Alistair Finch, London</span>
+                </div>
+                <div class="testimonial-item scroll-reveal">
+                    <p>"Navigating the luxury property market can be complex, but Éclat Estates made it feel seamless. Their guidance on investment opportunities was invaluable. Highly recommend their expertise."</p>
+                    <span class="client-name">- Mr. & Mrs. K. Patel, Dubai</span>
+                </div>
+            </div>
+            <div class="carousel-dots" id="carousel-dots"></div>
+        </div>
+    </section>
+
+    <!-- Market Insights Section -->
+    <section class="market-insights section-padding" id="insights">
+        <div class="container">
+            <h2 class="section-heading text-center">Market Insights & Exclusive Reports</h2>
+            <div class="insights-grid">
+                <div class="insight-card scroll-reveal">
+                    <div class="insight-card-image">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Global Luxury Trends">
+                    </div>
+                    <div class="insight-card-content">
+                        <h3>2024 Global Luxury Real Estate Trends</h3>
+                        <p>An in-depth analysis of emerging markets, investment opportunities, and shifting preferences among high-net-worth buyers worldwide.</p>
+                        <a href="#contact" class="read-more">Download Report</a>
+                    </div>
+                </div>
+                <div class="insight-card scroll-reveal">
+                    <div class="insight-card-image">
+                        <img src="https://images.unsplash.com/photo-1544377197-f7c8794c4809?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Smart Home Technology">
+                    </div>
+                    <div class="insight-card-content">
+                        <h3>The Rise of Smart Home Technology in Luxury Properties</h3>
+                        <p>Explore how cutting-edge technology is transforming high-end living spaces and enhancing comfort, security, and sustainability.</p>
+                        <a href="#contact" class="read-more">Read Article</a>
+                    </div>
+                </div>
+                <div class="insight-card scroll-reveal">
+                    <div class="insight-card-image">
+                        <img src="https://images.unsplash.com/photo-1506784868786-8f3ce3785461?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sustainable Luxury">
+                    </div>
+                    <div class="insight-card-content">
+                        <h3>Sustainable Luxury: Eco-Conscious Design in High-End Homes</h3>
+                        <p>Discover the latest in sustainable building practices and eco-friendly design elements shaping the future of luxury real estate.</p>
+                        <a href="#contact" class="read-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <h2 class="section-heading text-center">Request a Private Consultation</h2>
+            <div class="contact-content">
+                <div class="contact-info scroll-reveal">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <svg class="icon icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M164.9 24.6c-7.7-18.6-28-28.8-47.8-23.2l-88 24C12.9 35.1 0 46.4 0 64V200c0 43.1 14.8 84.6 40.8 117.6c31.4 40.8 67.6 75.9 103.4 103.7c38.6 30.7 74.3 46.2 109.6 46.2c4.4 0 8.8-.2 13.2-.6c4.3-.4 8.5-.9 12.7-1.5c.6-.1 1.1-.2 1.7-.3c.6-.1 1.2-.2 1.8-.3c.7-.1 1.3-.2 2-.3c.7-.1 1.4-.2 2.1-.3c1.7-.2 3.5-.3 5.2-.5c.9-.1 1.8-.1 2.7-.2c1.9-.1 3.9-.2 5.8-.3c1.9-.1 3.8-.2 5.7-.3c.4 0 .8-.1 1.2-.1c2.1-.1 4.2-.2 6.3-.2c1.8 0 3.6-.1 5.4-.1c1.3 0 2.6-.1 3.9-.1c1.2 0 2.5-.1 3.7-.1c1.2 0 2.5-.1 3.7-.1c.7 0 1.5 0 2.2 0c2.3 0 4.6-.1 6.9-.1c1.4 0 2.8-.1 4.2-.1c1.5 0 2.9-.1 4.4-.1c1.6 0 3.1-.1 4.7-.1c1.3 0 2.6-.1 3.9-.1c1.2 0 2.4-.1 3.6-.1c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.5 0 2.9 0 4.4 0c1.6 0 3.1 0 4.7 0c1.3 0 2.6 0 3.9 0c1.2 0 2.4 0 3.6 0c.7 0 1.5 0 2.2 0c.9 0 1.8 0 2.7 0c1.7 0 3.5 0 5.2 0c.9 0 1.8 0 2.7 0c.4 0 .8 0 1.2 0c2.1 0 4.2 0 6.3 0c1.8 0 3.6 0 5.4 0c1.3 0 2.6 0 3.9 0c1.2 0 2.5 0 3.7 0c1.2 0 2.5 0 3.7 0c.7 0 1.5 0 2.2 0c2.3 0 4.6 0 6.9 0c1.4 0 2.8 0 4.2 0c1.

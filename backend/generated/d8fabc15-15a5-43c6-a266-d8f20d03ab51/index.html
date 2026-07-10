@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Roast Co. - Crafted from Earth, Roasted with Soul.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #A66B56; /* Rich Muted Terracotta */
+            --color-secondary: #4A5F45; /* Deep Forest Green */
+            --color-background: #F8F4E3; /* Soft Cream */
+            --color-text-dark: #2C1B12; /* Dark Chocolate */
+            --color-accent-gold: #DDAA66; /* Faded Gold */
+            --color-light-grey: #E8E5DC; /* Slightly darker cream for contrast */
+
+            --font-playfair: 'Playfair Display', serif;
+            --font-inter: 'Inter', sans-serif;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4.5rem;
+            --spacing-xxl: 6rem;
+
+            --border-radius-sm: 0.25rem;
+            --border-radius-md: 0.5rem;
+
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --transition-speed: 0.3s ease-in-out;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-inter);
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--color-secondary);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-playfair);
+            color: var(--color-text-dark);
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 700; }
+        h2 { font-size: 2.8rem; font-weight: 700; }
+        h3 { font-size: 2.2rem; font-weight: 600; }
+        h4 { font-size: 1.6rem; font-weight: 600; }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        section {
+            padding: var(--spacing-xl) 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 2.2rem;
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-family: var(--font-inter);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-light);
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-secondary);
+            color: var(--color-background);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: rgba(248, 244, 227, 0.95); /* Soft Cream with transparency */
+            padding: var(--spacing-md) 0;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow-light);
+            transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .header.sticky {
+            background-color: var(--color-background);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-playfair);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            letter-spacing: -0.05em;
+        }
+
+        .logo span {
+            color: var(--color-secondary);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-links a {
+            font-family: var(--font-inter);
+            font-weight: 500;
+            color: var(--color-text-dark);
+            position: relative;
+            padding: var(--spacing-xs) 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transition: width var(--transition-speed);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-text-dark);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-background);
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080/4A3C2F/E8E5DC?text=Artisanal+Coffee+Roasting') no-repeat center center/cover;
+            filter: brightness(0.7);
+            transform: scale(1.05); /* Initial scale for subtle animation */
+            transition: transform 10s ease-out;
+        }
+
+        #hero:hover .hero-background {
+            transform: scale(1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: var(--spacing-lg);
+            animation: fadeInScale 1s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        #hero h1 {
+            font-size: 4.5rem;
+            color: var(--color-background);
+            margin-bottom: var(--spacing-sm);
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-light-grey);
+            font-weight: 300;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        /* Section: Our Philosophy */
+        #philosophy {
+            background-color: var(--color-light-grey);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+        }
+
+        #philosophy .container {
+            max-width: 800px;
+        }
+
+        #philosophy h2 {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-secondary);
+        }
+
+        #philosophy p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--color-text-dark);
+            font-weight: 300;
+        }
+
+        /* Section: Featured Roasts */
+        #featured-roasts {
+            background-color: var(--color-background);
+            text-align: center;
+            padding-bottom: calc(var(--spacing-xl) + 4rem); /* Add space for wave divider */
+        }
+
+        #featured-roasts h2 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .roasts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .roast-card {
+            background-color: #ffffff;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            text-align: left;
+        }
+
+        .roast-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .roast-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.6s ease-out;
+        }
+
+        .roast-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .roast-card-content {
+            padding: var(--spacing-md);
+        }
+
+        .roast-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-primary);
+        }
+
+        .roast-card p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .roast-card .btn {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            border-radius: var(--border-radius-sm);
+        }
+
+        /* Section divider - wave */
+        .section-divider-wave {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            background-color: var(--color-background);
+            margin-top: -100px; /* Overlap with previous section */
+            z-index: 1;
+        }
+        .section-divider-wave::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 L0,50 C25,10 75,90 100,50 L100,100 Z" fill="%23A66B56"/></svg>') repeat-x;
+            background-size: contain;
+            transform: scaleY(-1); /* Invert for bottom wave */
+            transform-origin: center bottom;
+        }
+
+        /* Section: The Craft */
+        #the-craft {
+            background-color: var(--color-primary); /* Use primary for a rich, warm section */
+            color: var(--color-background);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        #the-craft h2 {
+            color: var(--color-background);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .craft-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .craft-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .craft-item img {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-medium);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .craft-item h3 {
+            color: var(--color-accent-gold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .craft-item p {
+            color: var(--color-light-grey);
+            font-weight: 300;
+        }
+
+        /* Section: Coffee Journal */
+        #coffee-journal {
+            background-color: var(--color-background);
+            text-align: center;
+        }
+
+        #coffee-journal h2 {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .journal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .journal-post-card {
+            background-color: #ffffff;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            text-align: left;
+        }
+
+        .journal-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .journal-post-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .journal-post-content {
+            padding: var(--spacing-md);
+        }
+
+        .journal-post-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .journal-post-content p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .journal-post-content .read-more {
+            color: var(--color-secondary);
+            font-weight: 600;
+            display: inline-block;
+            margin-top: var(--spacing-xs);
+        }
+
+        /* Section: Subscribe */
+        #subscribe {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, #3a4b37 100%);
+            color: var(--color-background);
+            text-align: center;
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        #subscribe::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transform: rotate(-30deg);
+        }
+        #subscribe::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            transform: rotate(60deg);
+        }
+
+        #subscribe h2 {
+            color: var(--color-background);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            z-index: 1;
+        }
+
+        #subscribe p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg) auto;
+            color: var(--color-light-grey);
+            position: relative;
+            z-index: 1;
+        }
+
+        #subscribe .btn {
+            position: relative;
+            z-index: 1;
+            background-color: var(--color-accent-gold);
+            color: var(--color-text-dark);
+            box-shadow: var(--shadow-medium);
+        }
+        #subscribe .btn:hover {
+            background-color: #f0c37f;
+        }
+
+        /* Section: Community Voices (Testimonials) */
+        #community-voices {
+            background-color: var(--color-background);
+            text-align: center;
+        }
+
+        #community-voices h2 {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .testimonial-carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonial-wrapper {
+            display: flex;
+            transition: transform var(--transition-speed) ease-in-out;
+        }
+
+        .testimonial-card {
+            min-width: 100%; /* Each card takes full width */
+            padding: var(--spacing-lg);
+            margin: 0 var(--spacing-md);
+            background-color: #ffffff;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .testimonial-quote {
+            font-family: var(--font-playfair);
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--color-text-dark);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            margin-top: var(--spacing-sm);
+        }
+        .testimonial-source {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-md);
+            gap: var(--spacing-xs);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--color-light-grey);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+
+        .dot.active {
+            background-color: var(--color-primary);
+        }
+
+        /* Section: Connect */
+        #connect {
+            background-color: var(--color-light-grey);
+            text-align: center;
+        }
+
+        #connect h2 {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .contact-info, .contact-form-container {
+            background-color: #ffffff;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light);
+            text-align: left;
+        }
+
+        .contact-info h3 {
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-item svg {
+            color: var(--color-primary);
+            margin-right: var(--spacing-sm);
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+        }
+
+        .contact-item p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .contact-form-container h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+            color: var(--color-text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-sm);
+            font-family: var(--font-inter);
+            font-size: 1rem;
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--color-primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(166, 107, 86, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: var(--spacing-xs);
+            display: none;
+        }
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #e74c3c;
+        }
+        .form-group.error .error-message {
+            display: block;
+        }
+
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-text-dark);
+            color: var(--color-light-grey);
+            padding: var(--spacing-xl) 0 var(--spacing-md) 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-section h4 {
+            color: var(--color-background);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--color-light-grey);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .footer-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-links a {
+            color: var(--color-light-grey);
+            font-size: 1.5rem;
+            transition: color var(--transition-speed);
+        }
+
+        .social-links a:hover {
+            color: var(--color-accent-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: var(--spacing-md);
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-medium);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity var(--transition-speed), visibility var(--transition-speed), transform var(--transition-speed);
+            z-index: 999;
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* SVG Icons (minimal inline for simplicity) */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.125em;
+            fill: currentColor;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.8rem; }
+            #hero h1 { font-size: 3.5rem; }
+            #hero p { font-size: 1.2rem; }
+            .nav-links {
+                gap: var(--spacing-md);
+            }
+            .roasts-grid, .journal-grid, .craft-grid, .connect-grid, .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.5rem; }
+            #hero h1 { font-size: 2.8rem; }
+            #hero p { font-size: 1rem; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--color-background);
+                box-shadow: var(--shadow-medium);
+                padding: var(--spacing-md) 0;
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: var(--spacing-xs) 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .section-divider-wave {
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            #hero h1 { font-size: 2.2rem; }
+            #hero p { font-size: 0.9rem; }
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .hero-content {
+                padding: var(--spacing-md);
+            }
+            .section-divider-wave {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="logo">Terra <span>Roast</span> Co.</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#philosophy">Our Story</a></li>
+                    <li><a href="#featured-roasts">Shop</a></li>
+                    <li><a href="#the-craft">The Craft</a></li>
+                    <li><a href="#coffee-journal">Journal</a></li>
+                    <li><a href="#subscribe">Subscribe</a></li>
+                    <li><a href="#connect">Connect</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <h1>Terra Roast Co.</h1>
+                <p>Crafted from Earth, Roasted with Soul.</p>
+                <a href="#featured-roasts" class="btn btn-primary">Discover Our Coffees</a>
+            </div>
+        </section>
+
+        <section id="philosophy">
+            <div class="container">
+                <h2 class="section-title">Our Philosophy</h2>
+                <p>At Terra Roast Co., we believe exceptional coffee starts with respect for the earth and a passion for the bean. We meticulously source single-origin and thoughtfully blended coffees, hand-roasting each batch to unlock its unique story and flavor profile. More than just coffee, it's an experience built on sustainability, quality, and community.</p>
+                <a href="#the-craft" class="btn btn-outline">Learn More</a>
+            </div>
+        </section>
+
+        <section id="featured-roasts">
+            <div class="container">
+                <h2 class="section-title">Our Featured Roasts</h2>
+                <p>Experience the distinct character of our most beloved coffees, carefully selected and roasted for peak flavor.</p>
+                <div class="roasts-grid">
+                    <div class="roast-card">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&auto=format&fit=crop&q=80" alt="Sunrise Serenity Blend coffee beans" loading="lazy">
+                        <div class="roast-card-content">
+                            <h3>Sunrise Serenity Blend</h3>
+                            <p>Medium Roast, Notes of Caramel & Citrus. A harmonious blend perfect for your morning ritual, offering a bright and comforting start to your day.</p>
+                            <a href="#" class="btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="roast-card">
+                        <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=800&auto=format&fit=crop&q=80" alt="Ethiopian Yirgacheffe coffee beans" loading="lazy">
+                        <div class="roast-card-content">
+                            <h3>Ethiopian Yirgacheffe</h3>
+                            <p>Light Roast, Floral & Berry Aromas. Discover the vibrant, exotic notes of this exquisite single-origin coffee, a true gem from Ethiopia.</p>
+                            <a href="#" class="btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="roast-card">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&auto=format&fit=crop&q=80" alt="Sumatra Mandheling coffee beans" loading="lazy">
+                        <div class="roast-card-content">
+                            <h3>Sumatra Mandheling</h3>
+                            <p>Dark Roast, Earthy & Spice Undertones. A bold and robust coffee with a deep, complex body and hints of dark chocolate and herbal spice.</p>
+                            <a href="#" class="btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="roast-card">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&auto=format&fit=crop&q=80" alt="Guatemala Antigua coffee beans" loading="lazy">
+                        <div class="roast-card-content">
+                            <h3>Guatemala Antigua</h3>
+                            <p>Medium-Dark Roast, Chocolate & Nutty Finish. A classic, well-balanced cup with rich cocoa notes and a smooth, satisfying finish.</p>
+                            <a href="#" class="btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider-wave"></div>
+
+        <section id="the-craft">
+            <div class="container">
+                <h2 class="section-title">The Craft Behind Every Bean</h2>
+                <div class="craft-grid">
+                    <div class="craft-item">
+                        <img src="https://images.unsplash.com/photo-1579697096985-41ff147097f2?w=800&auto=format&fit=crop&q=80" alt="Hands holding coffee cherries" loading="lazy">
+                        <h3>Ethical Sourcing</h3>
+                        <p>We partner directly with small farms and ethical cooperatives around the globe, ensuring fair wages, sustainable practices, and the highest quality beans from origin to cup.</p>
+                    </div>
+                    <div class="craft-item">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&auto=format&fit=crop&q=80" alt="Coffee beans roasting in a machine" loading="lazy">
+                        <h3>Artisanal Roasting</h3>
+                        <p>Each batch is meticulously hand-roasted by our experts, using traditional methods combined with modern precision to bring out the unique flavor profile of every bean.</p>
+                    </div>
+                    <div class="craft-item">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&auto=format&fit=crop&q=80" alt="Freshly roasted coffee beans being sorted" loading="lazy">
+                        <h3>Freshness Guaranteed</h3>
+                        <p>We roast to order and ship promptly, ensuring that your coffee arrives at its peak freshness, ready to deliver an unparalleled brewing experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="coffee-journal">
+            <div class="container">
+                <h2 class="section-title">The Coffee Journal</h2>
+                <p>Dive deeper into the world of specialty coffee. Explore brewing guides, origin stories, and the latest news from Terra Roast Co.</p>
+                <div class="journal-grid">
+                    <div class="journal-post-card">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&auto=format&fit=crop&q=80" alt="Pour over coffee brewing" loading="lazy">
+                        <div class="journal-post-content">
+                            <h3>Mastering the Perfect Pour Over</h3>
+                            <p>Unlock the delicate nuances of your single-origin beans with our step-by-step guide to pour-over brewing. Achieving clarity and flavor has never been easier.</p>
+                            <a href="#" class="read-more">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="journal-post-card">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&auto=format&fit=crop&q=80" alt="Coffee farm in mountains" loading="lazy">
+                        <div class="journal-post-content">
+                            <h3>A Journey to the Ethiopian Highlands</h3>
+                            <p>Follow us on an immersive journey to the birthplace of coffee, exploring the rich culture and unique terroir that gives Yirgacheffe its distinctive taste.</p>
+                            <a href="#" class="read-more">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="journal-post-card">
+                        <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?w=800&auto=format&fit=crop&q=80" alt="Hands planting coffee sapling" loading="lazy">
+                        <div class="journal-post-content">
+                            <h3>Our Commitment to Sustainable Coffee</h3>
+                            <p>Learn about Terra Roast Co.'s initiatives in environmental stewardship and social responsibility, ensuring a better future for coffee and its communities.</p>
+                            <a href="#" class="read-more">Read More &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: var(--spacing-xl);">
+                    <a href="#" class="btn btn-secondary">Explore All Articles</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="subscribe">
+            <div class="container">
+                <h2 class="section-title">Never Run Out of Great Coffee</h2>
+                <p>Join the Terra Roast Co. family and get your favorite roasts, or a curated selection of new discoveries, delivered fresh to your door every month. Customize your plan and elevate your coffee journey.</p>
+                <a href="#" class="btn">Start Your Subscription</a>
+            </div>
+        </section>
+
+        <section id="community-voices">
+            <div class="container">
+                <h2 class="section-title">What Our Community Says</h2>
+                <div class="testimonial-carousel">
+                    <div class="testimonial-wrapper">
+                        <div class="testimonial-card">
+                            <svg class="icon" viewBox="0 0 24 24" width="36" height="36" fill="var(--color-accent-gold)" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M9.813 15.65C9.61 16.48 9 17.66 9 19c0 1.14.773 2.158 1.938 2.502C10.662 21.68 10.334 22 10 22c-5.523 0-10-4.477-10-10S4.477 2 10 2c3.784 0 6.942 2.072 8.795 5.176C18.423 7.067 19.344 7 20 7c2.209 0 4 1.791 4 4 0 1.05-.411 2.016-1.077 2.748L22 14c-1.105 0-2 .895-2 2s.895 2 2 2h2v2h-2c-2.209 0-4-1.791-4-4 0-.158.016-.315.045-.47zm-1.637-2.673c-.029-.158-.045-.315-.045-.47 0-2.209 1.791-4 4-4 .158 0 .315.016.47.045l.18.033c.105.019.21.033.315.045.16.02-.34.22-.34.22.453-.16 1.018-.154 1.57-.154 3.314 0 6 2.686 6 6s-2.686 6-6 6c-.347 0-.687-.03-1.018-.088-.552-.096-1.12-.112-1.68-.082-1.042 0-2.007-.282-2.857-.75l-.47-.257c-.16-.09-.3-.15-.46-.22-.656-.28-1.22-.7-1.66-1.15-1.01-.98-1.64-2.27-1.64-3.66zm6.823 3.653c.16 0 .315-.016.47-.045l.18-.033c.105-.019.21-.033.315-.045.16-.02-.34.22-.34.22.453-.16 1.018-.154 1.57-.154 3.314 0 6 2.686 6 6s-2.686 6-6 6c-.347 0-.687-.03-1.018-.088-.552-.096-1.12-.112-1.68-.082-1.042 0-2.007-.282-2.857-.75l-.47-.257c-.16-.09-.3-.15-.46-.22-.656-.28-1.22-.7-1.66-1.15-1.01-.98-1.64-2.27-1.64-3.66z"/></svg>
+                            <p class="testimonial-quote">"Terra Roast Co. transformed my morning ritual. The Ethiopian Yirgacheffe is pure magic – consistently fresh and bursting with flavor!"</p>
+                            <p class="testimonial-author">- Emily R.</p>
+                            <p class="testimonial-source">Coffee Lover & Home Brewer</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <svg class="icon" viewBox="0 0 24 24" width="36" height="36" fill="var(--color-accent-gold)" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M9.813 15.65C9.61 16.48 9 17.66 9 19c0 1.14.773 2.158 1.938 2.502C10.662 21.68 10.334 22 10 22c-5.523 0-10-4.477-10-10S4.477 2 10 2c3.784 0 6.942 2.072 8.795 5.176C18.423 7.067 19.344 7 20 7c2.209 0 4 1.791 4 4 0 1.05-.411 2.016-1.077 2.748L22 14c-1.105 0-2 .895-2 2s.895 2 2 2h2v2h-2c-2.209 0-4-1.791-4-4 0-.158.016-.315.045-.47zm-1.637-2.673c-.029-.158-.045-.315-.045-.47 0-2.209 1.791-4 4-4 .158 0 .315.016.47.045l.18.033c.105.019.21.033.315.045.16.02-.34.22-.34.22.453-.16 1.018-.154 1.57-.154 3.314 0 6 2.686 6 6s-2.686 6-6 6c-.347 0-.687-.03-1.018-.088-.552-.096-1.12-.112-1.68-.082-1.042 0-2.007-.282-2.857-.75l-.47-.257c-.16-.09-.3-.15-.46-.22-.656-.28-1.22-.7-1.66-1.15-1.01-.98-1.64-2.27-1.64-3.66zm6.823 3.653c.16 0 .315-.016.47-.045l.18-.033c.105-.019.21-.033.315-.045.16-.02-.34.22-.34.22.453-.16 1.018-.154 1.57-.154 3.314 0 6 2.686 6 6s-2.686 6-6 6c-.347 0-.687-.03-1.018-.088-.552-.096-1.12-.112-1.68-.082-1.042 0-2.007-.282-2.857-.75l-.47-.257c-.16-.09-.3-.15-.46-.22-.656-.28-1.22-.7-1.66-1.15-1.01-.98-1.64-2.27-1.64-3.66z"/></svg>
+                            <p class="testimonial-quote">"Finally, a roaster that truly cares about quality and ethical sourcing. The Sumatra is incredibly rich and full-bodied. A new favorite!"</p>
+                            <p class="testimonial-author">- David L.</p>
+                            <p class="testimonial-source">Restaurant Owner</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <svg class="icon" viewBox="0 0 24 24" width="36" height="36" fill="var(--color-accent-gold)" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M9.813 15.65C9.61 16.48 9 17.66 9 19c0 1.14.773 2.158 1.938 2.502C10.662 21.68 10.334 22 10 22c-5.523 0-10-4.477-10-10S4.477 2 10 2c3.784 0 6.942 2.072 8.795 5.176C18.423 7.067 19.344 7 20 7c2.209 0 4 1.791 4 4 0 1.05-.411 2.016-1.077 2.748L22 14c-1.105 0-2 .895-2 2s.895 2 2 2h2v2h-2c-2.209 0-4-1.791-4-4 0-.158.016-.315.045-.47zm-1.637-2.673c-.029-.158-.045-.315-.045-.47 0-2.209 1.791-4 4-4 .158 0 .315.016.47.045l.18.033c.105.019.21.033.315.045.16.02-.34.22-.34.22.453-.16 1.018-.154 1.57-.154 3.314 0 6 2.686 6 6s-2.686 6-6 6c-.347 0-.687-.03-1.018-.088-.552-.096-1.12-.112-1.68-.082-1.042 0-2.007-.282-2.857-.75l-.47-.257c-.16-.09-.3-.15-.46-.22-.656-.28-1.22-.7-1.66-1.15-1.01-.98-1.64-2.27-1.64-3.66zm6.823 3.653c.16 0 .315-.016.47-.045l.18-.033c.105-.019.21-.033.315-.045.16-.02-.34.22-.34.22.453-.16 1.018-.154 1.57-.154 3.314 0 6 2.686 6 6s-2.686 6-6 6c-.347 0-.687-.03-1.018-.088-.552-.096-1.12-.112-1.68-.082-1.042 0-2.007-.282-2.857-.75l-.47-.257c-.16-.09-.3-.15-.46-.22-.656-.28-1.22-.7-1.66-1.15-1.01-.98-1.64-2.27-1.64-3.66z"/></svg>
+                            <p class="testimonial-quote">"Their subscription box is a game-changer. I love trying new varieties, and the quality is consistently top-notch. Highly recommend!"</p>
+                            <p class="testimonial-author">- Sarah K.</p>
+                            <p class="testimonial-source">Loyal Subscriber</p>
+                        </div>
+                    </div>
+                    <div class="carousel-dots"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="connect">
+            <div class="container">
+                <h2 class="section-title">Connect With Terra Roast Co.</h2>
+                <div class="connect-grid">
+                    <div class="contact-info">
+                        <h3>Reach Out</h3>
+                        <div class="contact-item">
+                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            <div>
+                                <p><strong>Our Roastery:</strong></p>
+                                <p>123 Artisan Alley,<br>Coffeeville, CA 90210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <div>
+                                <p><strong>Email:</strong></p>
+                                <p>hello@terraroast.co</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.2 2.2z"/></svg>
+                            <div>
+                                <p><strong>Phone:</strong></p>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24"><path d="M12 2c-4.97 0-9 4.03-9 9 0 4.96 4.03 9 9 9s9-4.04 9-9c0-4.97-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-.5-5h1c.28 0 .5.22.5.5V13h.5c.28 0 .5.22.5.5s-.22.5-.5.5h-.5v1c0 .28-.22.5-.5.5s-.5-.22-.5-.5v-1h-.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5H11v-1c0-.28.22-.5.5-.5zM12 7c-1.38 0-2.5 1.12-2.5 2.5S10.62 12 12 12s2.5-1.12 2.5-2.5S13.38 7 12 7zm0 2.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5z"/></svg>
+                            <div>
+                                <p><strong>Working Hours:</strong></p>
+                                <p>Mon-Fri: 9 AM - 5 PM</p>
+                                <p>Sat: 10 AM - 3 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <h3>Send Us a Message</h3>
+                        <form class="contact-form" id="contactForm" novalidate>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                                <div class="error-message">Please enter your name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                                <div class="error-message">Please enter a valid email address.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                                <div class="error-message">Please enter a subject.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                                <div class="error-message">Please enter your message.</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Terra Roast Co.</h4>
+                    <p>Crafting exceptional coffee with passion and purpose, from our roastery to your cup.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.847c-4.013 0-5.153 3.192-5.153 5.859v2.141z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24"><path d="M12 2c3.232 0 3.585.009 4.85.071 1.17.067 1.772.294 2.227.465.603.228 1.07.472 1.543.945.474.473.717.94.945 1.543.171.455.398 1.057.465 2.228.062 1.265.071 1.619.071 4.85s-.009 3.585-.071 4.85c-.067 1.17-.294 1.772-.465 2.227-.228.603-.472 1.07-.945 1.543-.473.474-.94.717-1.543.945-.455.171-1.057.398-2.227.465-1.265.062-1.619.071-4.85.071s-3.585-.009-4.85-.071c-1.17-.067-1.772-.294-2.227-.465-.603-.228-1.07-.472-1.543-.945-.474-.473-.717-.94-.945-1.543-.171-.455-.398-1.057-.465-2.227-.062-1.265-.071-1.619-.071-4.85s.009-3.585.071-4.85c.067-1.17.294-1.772.465-2.227.228-.603.472-1.07.945-1.543.473-.474.94-.717 1.543-.945.455-.171 1.057-.398 2.227-.465C8.415 2.009 8.768 2 12 2zm0 4c-3.313 0-6 2.687-6 6s2.687 6 6 6 6-2.687 6-6-2.687-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm6.5-10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.89-.945-2.176-1.535-3.593-1.535-2.719 0-4.923 2.205-4.923 4.923 0 .386.044.76.127 1.124-4.1-.205-7.732-2.176-10.162-5.181-.423.72-.666 1.55-.666 2.43 0 1.708.875 3.227 2.213 4.108-.81-.026-1.572-.249-2.238-.618v.061c0 2.383 1.696 4.379 3.946 4.838-.41.111-.849.17-1.296.17-.317 0-.626-.031-.926-.088.629 1.956 2.449 3.38 4.6 3.42-1.685 1.321-3.805 2.108-6.102 2.108-.396 0-.786-.023-1.175-.069 2.179 1.397 4.768 2.212 7.548 2.212 9.057 0 13.997-7.499 13.997-13.996 0-.214-.005-.426-.014-.637.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#philosophy">Our Story</a></li>
+                        <li><a href="#featured-roasts">Shop All Coffees</a></li>
+                        <li><a href="#subscribe">Subscription</a></li>
+                        <li><a href="#coffee-journal">Coffee Journal</a></li>
+                        <li><a href="#connect">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Wholesale Inquiries</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with our latest roasts, offers, and coffee stories.</p>
+                    <form action="#" method="post" style="display: flex; flex-direction: column; gap: var(--spacing-sm); margin-top: var(--spacing-md);">
+                        <input type="email" placeholder="Your email address" style="padding: 0.7rem; border-radius: var(--border-radius-sm); border: none; background-color: rgba(255, 255, 255, 0.1); color: var(--color-background);" required>
+                        <button type="submit" class="btn btn-secondary" style="padding: 0.7rem; font-size: 0.9rem; background-color: var(--color-accent-gold); color: var(--color-text-dark); border-radius: var(--border-radius-sm);">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Terra Roast Co. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" title="Back to Top">
+        <svg class="icon" viewBox="0 0 24 24" width="24" height="24"><path d="M7 14l5-5 5 5z"/></svg>
+    </button>
+
+    <script>
+        // Sticky Navbar
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+
+        // Hamburger Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const scrollElements = document.querySelectorAll('section');
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add('is-visible');
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) { // Adjust dividend for earlier/later reveal
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.addEventListener('load', handleScrollAnimation); // Trigger on load for elements already in view
+
+        // Testimonial Carousel
+        const testimonialWrapper = document.querySelector('.testimonial-wrapper');
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const carouselDotsContainer = document.querySelector('.carousel-dots');
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        function createDots() {
+            testimonialCards.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                    resetAutoSlide();
+                });
+                carouselDotsContainer.appendChild(dot);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            const offset = -currentIndex * testimonialCards[0].offsetWidth; // Use offsetWidth for full width
+            testimonialWrapper.style.transform = `translateX(${offset}px)`;
+            updateDots();
+        }
+
+        function updateDots() {
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % testimonialCards.length;
+            goToSlide(currentIndex);
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        if (testimonialCards.length > 0) {
+            createDots();
+            startAutoSlide();
+
+            // Adjust carousel on window resize
+            window.addEventListener('resize', () => {
+                goToSlide(currentIndex); // Re-calculate transform on resize
+            });
+        }
+
+        // Contact Form Validation
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const subjectInput = document.getElementById('subject');
+            const messageInput = document.getElementById('message');
+
+            // Clear previous errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+
+            if (nameInput.value.trim() === '') {
+                nameInput.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+                emailInput.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+
+            if (subjectInput.value.trim() === '') {
+                subjectInput.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+
+            if (messageInput.value.trim() === '') {
+                messageInput.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Message sent successfully!');
+                contactForm.reset();
+            } else {
+                alert('Please correct the errors in the form.');
+            }
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Hero Parallax on hover (subtle)
+        const heroSection = document.getElementById('hero');
+        const heroBackground = document.querySelector('.hero-background');
+
+        heroSection.addEventListener('mousemove', (e) => {
+            const speed = 0.01;
+            const x = (window.innerWidth - e.pageX * speed) / 100;
+            const y = (window.innerHeight - e.pageY * speed) / 100;
+            heroBackground.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            heroBackground.style.transform = `translate(0px, 0px) scale(1.05)`;
+        });
+
+    </script>
+</body>
+</html>

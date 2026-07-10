@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Design Studio | Architecture That Tells a Story</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-charcoal: #1A1A1A;
+            --color-taupe: #D4CBC3;
+            --color-gold: #C0A070;
+            --color-off-white: #F8F8F8;
+            --color-dark-grey: #333333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --transition-speed: 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark-grey);
+            background-color: var(--color-off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: 2.8em;
+            color: var(--color-charcoal);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--color-gold);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: transparent;
+            color: var(--color-gold);
+            border: 2px solid var(--color-gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05em;
+            letter-spacing: 0.5px;
+            transition: all var(--transition-speed);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-gold);
+            transition: all var(--transition-speed);
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            color: var(--color-charcoal);
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            width: 100%;
+            padding: 20px 0;
+            background-color: transparent;
+            z-index: 1000;
+            transition: background-color 0.4s ease-out, padding 0.4s ease-out;
+        }
+
+        .header.sticky {
+            background-color: rgba(26, 26, 26, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            color: var(--color-off-white);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .logo span {
+            color: var(--color-gold);
+        }
+
+        .header.sticky .logo {
+            color: var(--color-off-white);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 40px;
+        }
+
+        .nav-links a {
+            color: var(--color-off-white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+            padding-bottom: 5px;
+        }
+
+        .header.sticky .nav-links a {
+            color: var(--color-off-white);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            height: 2px;
+            width: 25px;
+            background-color: var(--color-off-white);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .header.sticky .hamburger span {
+            background-color: var(--color-off-white);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-off-white);
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+            filter: brightness(0.7); /* Darken video for text readability */
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5em;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInTop 1s forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInTop 1s forwards 0.8s;
+        }
+
+        .hero .btn-primary {
+            opacity: 0;
+            animation: fadeInTop 1s forwards 1.1s;
+        }
+
+        /* Manifesto Section */
+        .manifesto {
+            background-color: var(--color-taupe);
+            padding: 100px 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .manifesto-content {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .manifesto-content.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .manifesto h2 {
+            font-family: var(--font-heading);
+            font-size: 3.5em;
+            color: var(--color-charcoal);
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .manifesto p {
+            font-size: 1.2em;
+            color: var(--color-dark-grey);
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Signature Projects Section */
+        .signature-projects {
+            padding: 100px 0;
+            background-color: var(--color-off-white);
+            overflow: hidden;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background-color: var(--color-charcoal);
+            color: var(--color-off-white);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: var(--shadow-subtle);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+            transition-delay: var(--delay);
+        }
+
+        .project-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card-content {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: var(--color-gold);
+        }
+
+        .project-card p {
+            font-size: 1em;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: var(--color-taupe);
+        }
+
+        .project-card .btn-tertiary {
+            color: var(--color-off-white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding-right: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .project-card .btn-tertiary::after {
+            content: '→';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-card:hover .btn-tertiary {
+            color: var(--color-gold);
+        }
+
+        .project-card:hover .btn-tertiary::after {
+            transform: translateY(-50%) translateX(5px);
+        }
+
+        /* The Process Section */
+        .process {
+            background-color: var(--color-charcoal);
+            color: var(--color-off-white);
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition-delay: var(--delay);
+            z-index: 1;
+        }
+
+        .process-step.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .process-step .icon {
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            background-color: var(--color-gold);
+            color: var(--color-charcoal);
+            border-radius: 50%;
+            font-size: 2.5em;
+            margin: 0 auto 20px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid var(--color-taupe);
+        }
+
+        .process-step h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: var(--color-gold);
+        }
+
+        .process-step p {
+            font-size: 0.95em;
+            color: var(--color-taupe);
+        }
+
+        /* Our Architects Section */
+        .our-architects {
+            padding: 100px 0;
+            background-color: var(--color-off-white);
+            overflow: hidden;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .team-member {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: var(--shadow-subtle);
+            overflow: hidden;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+            transition-delay: var(--delay);
+        }
+
+        .team-member.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .team-member-info {
+            padding: 25px;
+        }
+
+        .team-member h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6em;
+            color: var(--color-charcoal);
+            margin-bottom: 8px;
+        }
+
+        .team-member p {
+            font-size: 1em;
+            color: var(--color-dark-grey);
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 8px;
+            color: var(--color-gold);
+            font-size: 1.2em;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--color-charcoal);
+            transform: translateY(-3px);
+        }
+        
+        .team-member:hover img {
+            transform: scale(1.05);
+        }
+
+
+        /* Client Testimonials Section */
+        .testimonials {
+            background-color: var(--color-taupe);
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .testimonial-carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 60px auto 0;
+            overflow: hidden;
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            text-align: center;
+            padding: 0 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-slide blockquote {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            font-style: italic;
+            color: var(--color-charcoal);
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .testimonial-slide p {
+            font-size: 1.1em;
+            color: var(--color-dark-grey);
+            font-weight: 500;
+        }
+
+        .carousel-nav-dots {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: rgba(26, 26, 26, 0.3);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--color-charcoal);
+        }
+        
+        /* Inquire Section */
+        .inquire {
+            background-color: var(--color-charcoal);
+            color: var(--color-off-white);
+            padding: 100px 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .inquire-content {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .inquire-content.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .inquire h2 {
+            font-family: var(--font-heading);
+            font-size: 3em;
+            color: var(--color-gold);
+            margin-bottom: 20px;
+        }
+
+        .inquire p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: var(--color-taupe);
+            font-weight: 300;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition-delay: var(--delay);
+        }
+
+        .contact-item.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-item .icon {
+            font-size: 2.2em;
+            color: var(--color-gold);
+            margin-bottom: 15px;
+        }
+
+        .contact-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: var(--color-off-white);
+        }
+
+        .contact-item p,
+        .contact-item a {
+            color: var(--color-taupe);
+            text-decoration: none;
+            font-size: 1.05em;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-gold);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-dark-grey);
+            color: var(--color-taupe);
+            padding: 60px 0 30px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .footer .logo {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: var(--color-off-white);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links li {
+            margin: 0 15px 10px;
+        }
+
+        .footer-links a {
+            color: var(--color-taupe);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer .social-icons {
+            margin-bottom: 30px;
+        }
+
+        .footer .social-icons a {
+            color: var(--color-taupe);
+            font-size: 1.4em;
+        }
+
+        .footer .social-icons a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--color-gold);
+            color: var(--color-charcoal);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 999;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #backToTop:hover {
+            transform: translateY(-3px);
+        }
+
+
+        /* Keyframe Animations */
+        @keyframes fadeInTop {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .section-heading {
+                font-size: 2.2em;
+            }
+
+            .manifesto h2 {
+                font-size: 2.8em;
+            }
+
+            .manifesto p {
+                font-size: 1.1em;
+            }
+
+            .projects-grid, .team-grid, .process-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .process-grid::before {
+                display: none; /* Hide horizontal line on smaller screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: rgba(26, 26, 26, 0.98);
+                padding: 20px 0;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: flex;
+                position: absolute;
+                right: 20px;
+                top: 30px;
+            }
+
+            .logo {
+                font-size: 1.5em;
+                margin-bottom: 0;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+
+            .manifesto h2 {
+                font-size: 2.2em;
+            }
+            .manifesto p {
+                font-size: 1em;
+            }
+
+            .project-card img {
+                height: 280px;
+            }
+            .testimonial-slide blockquote {
+                font-size: 1.4em;
+            }
+            .inquire h2 {
+                font-size: 2.4em;
+            }
+            .inquire p {
+                font-size: 1em;
+            }
+            .contact-details {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 0.9em;
+            }
+            .btn-primary {
+                padding: 12px 25px;
+                font-size: 0.9em;
+            }
+            .section-heading {
+                font-size: 1.8em;
+            }
+            .manifesto h2 {
+                font-size: 1.8em;
+            }
+            .manifesto p {
+                font-size: 0.9em;
+            }
+            .projects-grid, .team-grid, .process-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-card h3 {
+                font-size: 1.5em;
+            }
+            .process-step .icon {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 2em;
+            }
+            .team-member h3 {
+                font-size: 1.4em;
+            }
+            .testimonial-slide blockquote {
+                font-size: 1.2em;
+            }
+            .inquire h2 {
+                font-size: 2em;
+            }
+            .footer-links li {
+                margin: 0 10px 8px;
+            }
+            #backToTop {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3em;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">Nexus <span>Design</span> Studio</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#manifesto" class="nav-link">Our Vision</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#process" class="nav-link">Process</a></li>
+                    <li><a href="#team" class="nav-link">Team</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <video autoplay muted loop class="hero-video">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-architecture-exterior-of-a-house-34907-large.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content">
+                <h1>Nexus Design Studio</h1>
+                <p>Architecture that tells a story. Spaces that inspire.</p>
+                <a href="#projects" class="btn-primary">Explore Our Projects</a>
+            </div>
+        </section>
+
+        <section class="manifesto" id="manifesto">
+            <div class="container manifesto-content">
+                <h2 class="section-heading">Crafting Environments with Purpose</h2>
+                <p>At Nexus Design Studio, we believe architecture is more than just structures; it's the art of crafting environments that resonate with purpose, emotion, and enduring beauty. Our process is a collaborative journey, transforming visions into tangible realities, each design a narrative sculpted from light, material, and human experience.</p>
+                <p>We are committed to innovative solutions that harmonize aesthetics with functionality, sustainability, and the unique aspirations of our clients. Every project begins with a deep dive into its context, culminating in spaces that truly belong and profoundly impact.</p>
+            </div>
+        </section>
+
+        <section class="signature-projects" id="projects">
+            <div class="container text-center">
+                <h2 class="section-heading">Signature Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card" style="--delay: 0s;">
+                        <img src="https://images.unsplash.com/photo-1594242637996-857e5e347072?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="The Luminous Gallery">
+                        <div class="project-card-content">
+                            <h3>The Luminous Gallery</h3>
+                            <p>A cultural landmark designed to invite light and foster artistic contemplation, blurring the lines between indoor and outdoor exhibition spaces.</p>
+                            <a href="#" class="btn-tertiary">View Case Study</a>
+                        </div>
+                    </div>
+                    <div class="project-card" style="--delay: 0.1s;">
+                        <img src="https://images.unsplash.com/photo-1577719661386-4f4044b7f8e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Verdant Haven Residences">
+                        <div class="project-card-content">
+                            <h3>Verdant Haven Residences</h3>
+                            <p>Sustainable luxury homes integrated seamlessly into their natural surroundings, emphasizing green living and serene, private environments.</p>
+                            <a href="#" class="btn-tertiary">View Case Study</a>
+                        </div>
+                    </div>
+                    <div class="project-card" style="--delay: 0.2s;">
+                        <img src="https://images.unsplash.com/photo-1628172960656-11b7149a4f6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Urban Canvas Tower">
+                        <div class="project-card-content">
+                            <h3>Urban Canvas Tower</h3>
+                            <p>An iconic mixed-use commercial tower that reshapes the city skyline, offering dynamic spaces for work, retail, and urban connection.</p>
+                            <a href="#" class="btn-tertiary">View Case Study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process" id="process">
+            <div class="container text-center">
+                <h2 class="section-heading">Our Collaborative Process</h2>
+                <div class="process-grid">
+                    <div class="process-step" style="--delay: 0s;">
+                        <div class="icon">1</div>
+                        <h3>Concept & Vision</h3>
+                        <p>We begin by deeply understanding your aspirations, site context, and project goals, translating initial ideas into a compelling conceptual framework.</p>
+                    </div>
+                    <div class="process-step" style="--delay: 0.1s;">
+                        <div class="icon">2</div>
+                        <h3>Design & Development</h3>
+                        <p>Through iterative sketching, 3D modeling, and material exploration, we refine the design, ensuring aesthetic integrity and functional excellence.</p>
+                    </div>
+                    <div class="process-step" style="--delay: 0.2s;">
+                        <div class="icon">3</div>
+                        <h3>Documentation & Planning</h3>
+                        <p>Detailed architectural drawings, specifications, and project management plans are meticulously prepared for seamless execution and regulatory compliance.</p>
+                    </div>
+                    <div class="process-step" style="--delay: 0.3s;">
+                        <div class="icon">4</div>
+                        <h3>Execution & Oversight</h3>
+                        <p>We provide comprehensive construction administration, closely monitoring progress and quality to ensure the design vision is realized precisely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="our-architects" id="team">
+            <div class="container text-center">
+                <h2 class="section-heading">Meet Our Architects</h2>
+                <div class="team-grid">
+                    <div class="team-member" style="--delay: 0s;">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194d6b4890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Elias Vance">
+                        <div class="team-member-info">
+                            <h3>Elias Vance</h3>
+                            <p>Founder & Lead Architect</p>
+                            <p>Elias is the visionary behind Nexus, renowned for his innovative approach to sustainable design and storytelling through form.</p>
+                            <div class="social-icons">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member" style="--delay: 0.1s;">
+                        <img src="https://images.unsplash.com/photo-1573497019236-791f4d97b919?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Sofia Reyes">
+                        <div class="team-member-info">
+                            <h3>Sofia Reyes</h3>
+                            <p>Principal Designer</p>
+                            <p>Sofia brings a deep passion for materiality and meticulous attention to detail, crafting spaces with exceptional tactile quality.</p>
+                            <div class="social-icons">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member" style="--delay: 0.2s;">
+                        <img src="https://images.unsplash.com/photo-1557862590-50220261730d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Daniel Chen">
+                        <div class="team-member-info">
+                            <h3>Daniel Chen</h3>
+                            <p>Senior Project Architect</p>
+                            <p>Daniel is an expert in technical execution and project coordination, ensuring every design is robustly built and delivered on time.</p>
+                            <div class="social-icons">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <div class="container text-center">
+                <h2 class="section-heading">Client Testimonials</h2>
+                <div class="testimonial-carousel-container">
+                    <div class="testimonial-carousel">
+                        <div class="testimonial-slide active">
+                            <blockquote>"Nexus Design Studio brought our vision to life with unparalleled creativity and precision. The result is a masterpiece that continues to inspire."</blockquote>
+                            <p>— Sarah M., Gallery Director</p>
+                        </div>
+                        <div class="testimonial-slide">
+                            <blockquote>"Their thoughtful approach to integrating sustainable elements into our home was truly exceptional. We couldn't be happier with our verdant haven."</blockquote>
+                            <p>— David & Emily R., Homeowners</p>
+                        </div>
+                        <div class="testimonial-slide">
+                            <blockquote>"Professional, innovative, and deeply collaborative. Nexus transformed our commercial space into a dynamic and highly functional environment."</blockquote>
+                            <p>— Alex P., CEO, Tech Solutions Inc.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-nav-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="inquire" id="contact">
+            <div class="container inquire-content">
+                <h2 class="section-heading">Let's Create Together</h2>
+                <p>Have a project in mind? We'd love to hear from you and explore how Nexus Design Studio can bring your architectural vision to life.</p>
+                <a href="mailto:info@nexusdesign.studio" class="btn-primary">Start a Conversation</a>
+
+                <div class="contact-details">
+                    <div class="contact-item" style="--delay: 0s;">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <h3>Our Studio</h3>
+                        <p>123 Archway Blvd</p>
+                        <p>Metropolis, NY 10001</p>
+                    </div>
+                    <div class="contact-item" style="--delay: 0.1s;">
+                        <i class="fas fa-phone-alt icon"></i>
+                        <h3>Call Us</h3>
+                        <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                    <div class="contact-item" style="--delay: 0.2s;">
+                        <i class="fas fa-envelope icon"></i>
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:info@nexusdesign.studio">info@nexusdesign.studio</a></p>
+                        <p>We typically reply within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="logo">Nexus <span>Design</span> Studio</a>
+            <ul class="footer-links">
+                <li><a href="#manifesto">Our Vision</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>&copy; 2023 Nexus Design Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Back to Top">&#8593;</button>
+
+    <script>
+        // Sticky Navbar
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll Reveal Animation
+        const scrollReveal = () => {
+            const elements = document.querySelectorAll('.manifesto-content, .project-card, .process-step, .team-member, .testimonial-slide, .inquire-content, .contact-item');
+
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight * 0.85) {
+                    el.classList.add('reveal');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', scrollReveal);
+        window.addEventListener('load', scrollReveal); // Trigger on load for elements already in view
+
+        // Testimonial Carousel
+        const carousel = document.querySelector('.testimonial-carousel');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dotsContainer = document.querySelector('.carousel-nav-dots');
+        let currentIndex = 0;
+
+        const showSlide = (index) => {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.remove('active');
+                if (i === index) {
+                    dot.classList.add('active');
+                }
+            });
+        };
+
+        dotsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('dot')) {
+                currentIndex = parseInt(e.target.dataset.slide);
+                showSlide(currentIndex);
+            }
+        });
+
+        let autoSlideInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }, 5000); // Change slide every 5 seconds
+
+        // Stop auto-slide on hover for a better UX
+        carousel.parentNode.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+        carousel.parentNode.addEventListener('mouseleave', () => {
+            autoSlideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }, 5000);
+        });
+
+        showSlide(currentIndex); // Initialize first slide
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+    </script>
+</body>
+</html>
