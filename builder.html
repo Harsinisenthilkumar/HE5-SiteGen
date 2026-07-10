@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Builder — HE5 SiteGen</title>
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    body { background: #f7f7f8; }
+    .builder-shell { min-height: 100vh; padding: 7rem 1.5rem 3rem; }
+    .builder-card { max-width: 1100px; margin: 0 auto; background: #fff; border: 1px solid var(--border-light); border-radius: 1.5rem; box-shadow: var(--shadow-xl); overflow: hidden; }
+    .builder-header { padding: 2rem; border-bottom: 1px solid var(--border-light); background: linear-gradient(135deg, rgba(240,121,0,0.08), rgba(255,255,255,1)); }
+    .builder-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0; }
+    .builder-form { padding: 2rem; }
+    .builder-side { padding: 2rem; border-left: 1px solid var(--border-light); background: #fbfbfb; }
+    textarea { width:100%; min-height: 180px; border:1px solid var(--border-light); border-radius: 1rem; padding: 1rem; resize: vertical; }
+    .prompt-chip { display:inline-flex; margin:0.35rem 0.4rem 0.35rem 0; padding:0.55rem 0.8rem; border-radius:999px; background:#f5f5f5; color:var(--grey-dark); font-size:0.9rem; cursor:pointer; }
+    .status-box { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: 1rem; background: rgba(240,121,0,0.08); color: var(--grey-dark); }
+    .hidden { display:none; }
+    .spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.25); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (max-width: 900px) { .builder-grid { grid-template-columns: 1fr; } .builder-side { border-left:0; border-top:1px solid var(--border-light);} }
+  </style>
+  <script src="js/auth.js"></script>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner container-2xl" style="max-width:1440px;margin-inline:auto;padding-inline:2rem;">
+      <a href="index.html" class="navbar-logo"><div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span class="logo-text">HE5 <span>SiteGen</span></span></a>
+      <nav class="navbar-nav"><div class="nav-item"><a href="index.html" class="nav-link">Home</a></div><div class="nav-item"><a href="features.html" class="nav-link">Features</a></div><div class="nav-item"><a href="solutions.html" class="nav-link">Solutions</a></div><div class="nav-item"><a href="builder.html" class="nav-link active">Builder</a></div></nav>
+      <div class="navbar-actions">
+        <a href="contact.html" class="btn-login">Login</a>
+        <a href="preview.html" class="btn btn-primary btn-sm">Preview</a>
+      </div>
+      <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="features.html" class="mobile-nav-link">Features</a>
+      <a href="solutions.html" class="mobile-nav-link">Solutions</a>
+      <a href="builder.html" class="mobile-nav-link">Builder</a>
+    </nav>
+    <div class="mobile-actions">
+      <a href="contact.html" class="btn btn-secondary btn-lg" style="width:100%;justify-content:center;">Login</a>
+      <a href="preview.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Preview</a>
+    </div>
+  </div>
+
+  <main class="builder-shell">
+    <section class="builder-card">
+      <div class="builder-header">
+        <span class="section-label">AI Website Builder</span>
+        <h1 class="section-title" style="margin-bottom:0.75rem; text-align:left;">Generate a polished website from a single prompt</h1>
+        <p class="section-desc" style="text-align:left; margin:0; max-width:700px;">Describe your business, launch the generation workflow, and preview the result inside the app.</p>
+      </div>
+      <div class="builder-grid">
+        <div class="builder-form">
+          <label for="prompt" style="display:block;font-weight:700;margin-bottom:0.75rem;">Your prompt</label>
+          <textarea id="prompt" placeholder="Tell us about the business, audience, tone, and the kind of website you want..."></textarea>
+          <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <button id="generateBtn" class="btn btn-primary">Generate Website</button>
+            <button id="resetBtn" class="btn btn-outline-orange">Clear</button>
+          </div>
+          <div id="statusBox" class="status-box hidden" role="status"></div>
+        </div>
+        <div class="builder-side">
+          <h2 style="margin-top:0;">Suggested prompts</h2>
+          <div>
+            <button class="prompt-chip" data-prompt="Create a premium modern website for a boutique dental clinic focused on comfort, trust, and family care.">Dental clinic</button>
+            <button class="prompt-chip" data-prompt="Create a stylish, conversion-focused website for a boutique coffee roastery with a warm editorial feel.">Coffee roastery</button>
+            <button class="prompt-chip" data-prompt="Create a polished website for a modern architecture studio with strong storytelling and case studies.">Architecture studio</button>
+            <button class="prompt-chip" data-prompt="Create a premium website for a luxury real estate agency with elegant imagery and lead capture.">Real estate</button>
+          </div>
+          <div style="margin-top:1.5rem; padding:1rem 1.2rem; border-radius:1rem; background:#fff; border:1px solid var(--border-light);">
+            <h3 style="margin-top:0;">What happens next</h3>
+            <ol style="margin:0; padding-left:1.1rem; line-height:1.8;">
+              <li>Your prompt is sent to the backend.</li>
+              <li>The backend prepares a generated website.</li>
+              <li>The preview page opens with the finished project.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="0viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order your favorite teas and snacks online from Tea & Treats. Freshly brewed tea, delicious pastries, and quick delivery.">
+    <meta name="keywords" content="tea, snacks, online order, cafe, bakery, coffee, pastries, delivery, hot drinks, cold drinks">
+    <meta name="author" content="Tea & Treats">
+    <title>Tea & Treats - Your Daily Brew & Bite</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F07900' d='M20 3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3l3 4h4l3-4h3a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8 12h8v2H8v-2zm-1-4h10v2H7V8z'%3E%3C/path%3E%3C/svg%3E" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Base Styles */
+        :root {
+            --primary-orange: #F07900;
+            --light-orange: #F8A145;
+            --dark-orange: #D35100;
+            --dark-grey: #151515;
+            --black: #000000;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-grey);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-orange);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--dark-grey);
+            margin-bottom: 0.8em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-orange);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-orange);
+            border: 2px solid var(--primary-orange);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            color: var(--dark-grey);
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-orange);
+            border-radius: 2px;
+        }
+
+        /* Sticky Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-grey);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--primary-orange);
+        }
+
+        .logo svg {
+            margin-right: 8px;
+            width: 30px;
+            height: 30px;
+            fill: var(--primary-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark-grey);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-orange);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-grey);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542475730-8ce69888636f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: var(--white);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px; /* Account for fixed navbar */
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            color: var(--white);
+        }
+
+        .hero .btn {
+            margin: 10px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--dark-grey);
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-item svg {
+            width: 60px;
+            height: 60px;
+            fill: var(--primary-orange);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-grey);
+        }
+
+        .feature-item p {
+            color: var(--dark-grey);
+        }
+
+        /* Services (Menu) Section */
+        .services {
+            background-color: #f9f9f9;
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab-btn {
+            background-color: var(--light-orange);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .menu-tab-btn:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-2px);
+        }
+
+        .menu-tab-btn.active {
+            background-color: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+
+        .menu-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s forwards; /* For initial load/tab switch */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .menu-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark-grey);
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .menu-item .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-orange);
+            margin-top: 15px;
+        }
+
+        .menu-item .btn {
+            margin-top: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background-color: #fcfcfc;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--primary-orange);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: #f9f9f9;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-grey);
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+
+        .faq-question span {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active span {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            color: #555;
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px;
+        }
+
+        .faq-answer.open {
+            max-height: 200px; /* Adjust based on content */
+            padding: 20px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--white);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-info,
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info ul {
+            margin-top: 20px;
+        }
+
+        .contact-info ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--dark-grey);
+        }
+
+        .contact-info ul li svg {
+            margin-right: 15px;
+            fill: var(--primary-orange);
+            width: 25px;
+            height: 25px;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form label {
+            font-weight: 600;
+            color: var(--dark-grey);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 2px rgba(240, 121, 0, 0.2);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .btn {
+            align-self: flex-start;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-grey);
+            color: var(--white);
+            padding: 60px 0 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo span {
+            color: var(--primary-orange);
+        }
+
+        .footer-logo svg {
+            margin-right: 8px;
+            width: 30px;
+            height: 30px;
+            fill: var(--primary-orange);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--light-orange);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .social-links {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-image {
+                order: -1;
+            }
+
+            .about-image img {
+                width: 70%;
+                margin: 0 auto;
+            }
+            .section-heading {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links a {
+                padding: 10px 0;
+                color: var(--dark-grey);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .hero {
+                height: auto;
+                min-height: 80vh;
+                padding: 120px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-image img {
+                width: 90%;
+            }
+
+            .contact-content {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .social-links {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .section-heading {
+                font-size: 1.8rem;
+            }
+
+            .menu-tab-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <a href="#" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3l3 4h4l3-4h3a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8 12h8v2H8v-2zm-1-4h10v2H7V8z"/></svg>
+                    Tea & <span>Treats</span>
+                </a>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Why Choose Us</a></li>
+                    <li><a href="#services">Menu</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero animate">
+            <div class="container">
+                <h1>Sip, Savor, & Enjoy</h1>
+                <p>Your daily dose of comfort with freshly brewed teas and delightful snacks, delivered right to your door.</p>
+                <a href="#services" class="btn">Explore Our Menu</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container about-content">
+                <div class="about-image animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1579737920199-52e04313b827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="About Tea & Treats">
+                </div>
+                <div class="about-text animate-on-scroll">
+                    <h2 class="section-heading text-center">About Tea & Treats</h2>
+                    <h3>Crafting Moments, One Sip at a Time</h3>
+                    <p>At Tea & Treats, we believe in the simple joy of a perfect cup of tea paired with a delicious snack. Our journey began with a passion for high-quality ingredients and a desire to bring a moment of peace to your busy day. We meticulously source our teas from the finest estates around the world and bake our snacks fresh daily, ensuring every bite and sip is a delightful experience.</p>
+                    <p>Whether you're starting your day, taking a break, or enjoying an evening wind-down, Tea & Treats is here to elevate your ritual. We are committed to sustainability, exceptional service, and creating a community that cherishes good food and great company.</p>
+                    <a href="#services" class="btn">Order Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container text-center">
+                <h2 class="section-heading">Why Choose Tea & Treats?</h2>
+                <div class="features-grid">
+                    <div class="feature-item animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-.001 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm.247-15.503c-2.32 0-3.66 1.748-3.66 4.387 0 1.258.468 2.21 1.25 2.808l-1.353 3.658h-.011c.219-.594.394-.951.394-.951l-.546 1.558-.003.008.012.036c.216.59.39.948.39.948-.48-.962-.904-2.02-.904-2.02.001 2.26.172 4.168 2.508 4.168 1.956 0 2.915-1.574 2.915-4.102 0-2.822-1.25-4.387-3.612-4.387zm-.001 1.503c1.789 0 2.062 1.397 2.062 2.872 0 1.408-.553 2.833-2.062 2.833-1.638 0-2.008-1.425-2.008-2.833.001-1.475.274-2.872 2.008-2.872z"/></svg>
+                        <h3>Premium Ingredients</h3>
+                        <p>We use only the finest loose-leaf teas and fresh, high-quality ingredients for all our snacks.</p>
+                    </div>
+                    <div class="feature-item animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-.001 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-4.25-6.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm8.5 0c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm-3.882 3.868c-1.312-1.238-3.132-1.99-5.118-1.99s-3.806.752-5.118 1.99c-.315.298-.445.748-.344 1.15c.101.402.46.702.872.702H16.002c.412 0 .771-.3.872-.702.101-.402-.029-.852-.344-1.15z"/></svg>
+                        <h3>Handcrafted Freshness</h3>
+                        <p>Our snacks are baked fresh daily and teas are brewed to perfection, ensuring optimal taste.</p>
+                    </div>
+                    <div class="feature-item animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-.001 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-5.004-8.718l-1.414 1.414 4.414 4.414 8-8-1.414-1.414-6.586 6.586z"/></svg>
+                        <h3>Convenient Delivery</h3>
+                        <p>Enjoy your favorite treats without leaving your home with our fast and reliable delivery service.</p>
+                    </div>
+                    <div class="feature-item animate-on-scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-.001 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm.001-15c-.933 0-1.7.767-1.7 1.7s.767 1.7 1.7 1.7 1.7-.767 1.7-1.7-.767-1.7-1.7-1.7zm-.001 3.5c-2.481 0-4.5 2.019-4.5 4.5s2.019 4.5 4.5 4.5 4.5-2.019 4.5-4.5-2.019-4.5-4.5-4.5z"/></svg>
+                        <h3>Variety for Every Craving</h3>
+                        <p>From classic black teas to exotic herbal blends, and savory to sweet snacks, we have something for everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container text-center">
+                <h2 class="section-heading">Our Menu</h2>
+                <div class="menu-tabs">
+                    <button class="menu-tab-btn active" data-category="all">All Items</button>
+                    <button class="menu-tab-btn" data-category="hot-tea">Hot Teas</button>
+                    <button class="menu-tab-btn" data-category="cold-tea">Cold Teas</button>
+                    <button class="menu-tab-btn" data-category="pastries">Pastries</button>
+                    <button class="menu-tab-btn" data-category="savory">Savory Snacks</button>
+                </div>
+                <div class="menu-items-grid" id="menu-items-grid">
+                    <!-- Menu Items will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container text-center">
+                <h2 class="section-heading">What Our Customers Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card animate-on-scroll">
+                        <p>"Tea & Treats has completely changed my mornings! The Earl Grey is exquisite and the croissant is always flaky and fresh. Highly recommend!"</p>
+                        <p class="author">- Jane Doe</p>
+                    </div>
+                    <div class="testimonial-card animate-on-scroll">
+                        <p>"I love their wide selection of herbal teas and gluten-free snacks. It's so hard to find quality options, but Tea & Treats delivers every time."</p>
+                        <p class="author">- John Smith</p>
+                    </div>
+                    <div class="testimonial-card animate-on-scroll">
+                        <p>"Fast delivery and consistently delicious. Their iced peach tea is my summer go-to, and the mini quiches are perfect for a quick lunch."</p>
+                        <p class="author">- Emily R.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq">
+            <div class="container text-center">
+                <h2 class="section-heading">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item animate-on-scroll">
+                        <div class="faq-question">
+                            What are your delivery hours? <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We deliver daily from 8:00 AM to 6:00 PM. Orders placed outside these hours will be scheduled for the next delivery window.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item animate-on-scroll">
+                        <div class="faq-question">
+                            Do you offer gluten-free options? <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we have a selection of delicious gluten-free teas and snacks. Please check our 'Menu' section and filter by dietary preferences.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item animate-on-scroll">
+                        <div class="faq-question">
+                            How can I track my order? <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Once your order is confirmed, you will receive an email with a tracking link. You can also log into your account on our website to view order status.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item animate-on-scroll">
+                        <div class="faq-question">
+                            What payment methods do you accept? <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards (Visa, MasterCard, American Express) and PayPal. We are also working to integrate more payment options soon!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container text-center">
+                <h2 class="section-heading">Get in Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info animate-on-scroll">
+                        <h3>We'd Love to Hear From You!</h3>
+                        <p>Have a question, feedback, or a special request? Reach out to us through any of the methods below.</p>
+                        <ul>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.083-8-6.083V6h16zM4 18V9.754l7.465 5.672L20 9.754V18H4z"/></svg>
+                                <a href="mailto:info@teaandtreats.com">info@teaandtreats.com</a>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 18c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2H20zm-2-9h-2V7h2v2zm-4 0h-2V7h2v2zm-4 0H8V7h2v2zM6 9H4V7h2v2zm12 4h-2v-2h2v2zm-4 0h-2v-2h2v2zm-4 0H8v-2h2v2zM6 13H4v-2h2v2zm12 4h-2v-2h2v2zm-4 0h-2v-2h2v2zm-4 0H8v-2h2v2zM6 17H4v-2h2v2z"/></svg>
+                                123 Tea Lane, Brew City, TC 98765
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.508c-.29-.168-2.45-.98-2.958-1.15c-.508-.17-1.017-.035-1.31.298c-.292.333-.767.98-1.047 1.292c-.28.312-.56.355-1.047.123c-.488-.232-2.053-.75-3.92-2.413c-1.455-1.32-2.435-2.924-2.725-3.416c-.29-.492-.03-.767.262-1.058c.264-.264.58-.6.87-.923c.29-.323.38-.602.262-.843c-.118-.24-.508-1.21-1.017-1.47c-.508-.26-1.026-.22-1.31.05c-.284.27-.61.767-.902 1.108s-.58.74-.87 1.18c-.29.44-1.455 1.702-1.455 3.328c0 1.625 1.57 3.172 1.86 3.413s2.99 4.67 4.542 5.378c1.55.708 3.13.568 3.692.485c.562-.083 1.705-.697 2.01-1.332c.304-.635.304-1.173.212-1.332s-.284-.332-.564-.492z"/></svg>
+                                <a href="tel:+1234567890">+1 (234) 567-890</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contact-form animate-on-scroll">
+                        <h3>Send Us a Message</h3>
+                        <form action="#" method="POST">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" placeholder="Inquiry Subject" required>
+
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="footer-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3l3 4h4l3-4h3a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8 12h8v2H8v-2zm-1-4h10v2H7V8z"/></svg>
+                Tea & <span>Treats</span>
+            </a>
+            <ul class="footer-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#services">Menu</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.5 8h-2.5V7.5c0-.552.448-1 1-1h1V4.14C14.77 4.053 14 4 13.5 4c-1.879 0-3.12 1.13-3.12 3.25v2.75H8v3h2.38v7h3.24v-7h2.98l.45-3z"/></svg></a>
+                <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm5.82 7.02c.004.09.006.18.006.273 0 2.78-2.112 5.99-5.99 5.99-1.192 0-2.298-.35-3.233-.944.16.02.324.03.49.03.962 0 1.848-.328 2.553-.884a2.096 2.096 0 0 1-1.956-1.45.195.195 0 0 0 .038.006c.115 0 .23-.015.34-.044a2.09 2.09 0 0 1-1.678-2.058v-.025c.348.192.753.308 1.18.32a2.093 2.093 0 0 1-.65-2.795c.57.702 1.424 1.163 2.397 1.213a2.097 2.097 0 0 1-.587-2.025c.616-.54 1.54-.884 2.58-.884.74 0 1.413.29 1.91.758a3.784 3.784 0 0 0 1.32-.486 2.072 2.072 0 0 1-.92 1.15c.52-.06 1.017-.2 1.478-.403a3.868 3.868 0 0 0-1.29.35z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.27 2.32c-.89-.09-1.39-.14-4.27-.14s-3.38.05-4.27.14C6.67 2.41 5.41 3.23 4.54 4.54c-.09.89-.14 1.39-.14 4.27s.05 3.38.14 4.27c.09.89.34 1.43.79 1.88s.99.7 1.88.79c.89.09 1.39.14 4.27.14s3.38-.05 4.27-.14c.89-.09 1.43-.34 1.88-.79s.7-1 .79-1.88c.09-.89.14-1.39.14-4.27s-.05-3.38-.14-4.27c-.09-.89-.34-1.43-.79-1.88s-1-.7-1.88-.79zm-4.27 12.02c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5zm0-7.5c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zm5.75-2.25c-.414 0-.75-.336-.75-.75s.336-.75.75-.75.75.336.75.75-.336.75-.75.75z"/></svg></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Tea & Treats. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Sticky and Hamburger
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close nav menu on link click for mobile
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // Scroll animations
+            const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            animateOnScrollElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Initial animation for Hero section
+            const heroSection = document.getElementById('hero');
+            if (heroSection) {
+                setTimeout(() => {
+                    heroSection.classList.add('animate');
+                }, 100); // Small delay to ensure CSS is loaded
+            }
+
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+
+                    // Close all other open answers
+                    faqQuestions.forEach(q => {
+                        if (q !== question && q.classList.contains('active')) {
+                            q.classList.remove('active');
+                            q.nextElementSibling.classList.remove('open');
+                        }
+                    });
+
+                    // Toggle current one
+                    question.classList.toggle('active');
+                    if (isActive) {
+                        answer.classList.remove('open');
+                    } else {
+                        answer.classList.add('open');
+                    }
+                });
+            });
+
+            // Menu Tab Functionality
+            const menuItems = [
+                { category: 'hot-tea', name: 'Classic English Breakfast', description: 'A robust and full-bodied black tea, perfect to start your day.', price: '$3.50', image: 'https://images.unsplash.com/photo-1574744040974-9b1684c7170a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'hot-tea', name: 'Soothing Chamomile', description: 'Naturally caffeine-free herbal tea, ideal for relaxation.', price: '$3.00', image: 'https://images.unsplash.com/photo-1548655291-31412e873130?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'hot-tea', name: 'Spiced Chai Latte', description: 'Black tea infused with aromatic spices and steamed milk.', price: '$4.50', image: 'https://images.unsplash.com/photo-1596462502278-27ddab8a245d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'cold-tea', name: 'Iced Peach Tea', description: 'Refreshing black tea with a sweet peach flavor, served over ice.', price: '$4.00', image: 'https://images.unsplash.com/photo-1629851720857-e43599905663?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'cold-tea', name: 'Mint Green Iced Tea', description: 'Cool and invigorating green tea with fresh mint leaves.', price: '$3.75', image: 'https://images.unsplash.com/photo-1507720239401-29e20b33e218?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'pastries', name: 'Flaky Croissant', description: 'Buttery, golden, and perfectly flaky – a classic treat.', price: '$3.25', image: 'https://images.unsplash.com/photo-1527719327891-fb540562e6e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'pastries', name: 'Blueberry Muffin', description: 'Soft and moist muffin loaded with fresh blueberries.', price: '$2.75', image: 'https://images.unsplash.com/photo-1563722770519-c70a98f1614f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'pastries', name: 'Chocolate Chip Cookie', description: 'A timeless favorite, rich with chocolate chips.', price: '$2.50', image: 'https://images.unsplash.com/photo-1582236113647-a937a0928ffc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'savory', name: 'Spinach & Feta Scone', description: 'Savory scone baked with fresh spinach and crumbled feta cheese.', price: '$3.75', image: 'https://images.unsplash.com/photo-1590748530396-e17f526058e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'savory', name: 'Mini Quiche Lorraine', description: 'Fluffy eggs, bacon, and cheese in a delicate pastry crust.', price: '$4.25', image: 'https://images.unsplash.com/photo-1616781206105-01e4a36e6a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'hot-tea', name: 'Earl Grey Delight', description: 'Black tea blended with bergamot oil for a fragrant, sophisticated taste.', price: '$3.50', image: 'https://images.unsplash.com/photo-1586280068991-e40742115167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+                { category: 'pastries', name: 'Lemon Drizzle Cake', description: 'Zesty lemon cake with a sweet, tangy glaze.', price: '$3.00', image: 'https://images.unsplash.com/photo-1629851720857-e43599905663?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80' },
+            ];
+
+            const menuGrid = document.getElementById('menu-items-grid');
+            const menuTabButtons = document.querySelectorAll('.menu-tab-btn');
+
+            function displayMenuItems(category) {
+                menuGrid.innerHTML = ''; // Clear current items
+                const filteredItems = category === 'all'
+                    ? menuItems
+                    : menuItems.filter(item => item.category === category);
+
+                filteredItems.forEach(item => {
+                    const menuItemDiv = document.createElement('div');
+                    menuItemDiv.classList.add('menu-item');
+                    menuItemDiv.setAttribute('data-category', item.category);
+                    menuItemDiv.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <h4>${item.name}</h4>
+                        <p>${item.description}</p>
+                        <span class="price">${item.price}</span>
+                        <button class="btn">Add to Cart</button>
+                    `;
+                    menuGrid.appendChild(menuItemDiv);
+                });
+
+                // Re-apply scroll animation for newly loaded items
+                setTimeout(() => {
+                    document.querySelectorAll('.menu-item').forEach(el => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    });
+                }, 10);
+            }
+
+            menuTabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    menuTabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const category = button.getAttribute('data-category');
+                    displayMenuItems(category);
+                });
+            });
+
+            // Initial display of all menu items
+            displayMenuItems('all');
+        });
+    </script>
+</body>
+</html>

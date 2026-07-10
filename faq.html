@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Read common HE5 SiteGen questions about building, launching, and customizing websites." />
+  <title>FAQ — HE5 SiteGen</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/pricing.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <script src="js/auth.js"></script>
+</head>
+<body>
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar-inner container-2xl" style="max-width:1440px;margin-inline:auto;padding-inline:2rem;">
+    <a href="index.html" class="navbar-logo" aria-label="HE5 SiteGen Home">
+      <div class="logo-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <span class="logo-text">HE5 <span>SiteGen</span></span>
+    </a>
+    <nav class="navbar-nav" aria-label="Desktop navigation">
+      <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
+      <div class="nav-item"><a href="features.html" class="nav-link">Features</a></div>
+      <div class="nav-item"><a href="solutions.html" class="nav-link">Solutions</a></div>
+      <div class="nav-item"><a href="builder.html" class="nav-link">Prompt Library</a></div>
+      <div class="nav-item"><a href="resources.html" class="nav-link">Resources</a></div>
+      <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+      <div class="nav-item"><a href="contact.html" class="nav-link">Contact</a></div>
+    </nav>
+    <div class="navbar-actions">
+      <a href="contact.html" class="btn-login">Login</a>
+      <a href="builder.html" class="btn btn-primary btn-sm">Start Building</a>
+    </div>
+    <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <nav class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="features.html" class="mobile-nav-link">Features</a>
+    <a href="solutions.html" class="mobile-nav-link">Solutions</a>
+    <a href="builder.html" class="mobile-nav-link">Prompt Library</a>
+    <a href="resources.html" class="mobile-nav-link">Resources</a>
+    <a href="about.html" class="mobile-nav-link">About</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+  </nav>
+  <div class="mobile-actions">
+    <a href="contact.html" class="btn btn-secondary btn-lg" style="width:100%;justify-content:center;">Login</a>
+    <a href="builder.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Start Building</a>
+  </div>
+</div>
+
+<main id="main-content">
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="section-label" style="margin-bottom:1.5rem;">Frequently Asked Questions</span>
+      <h1 class="page-hero-title">Answers to the questions teams ask most often</h1>
+      <p class="page-hero-desc">From setup to launch and support, these are the common things customers want to know before building with HE5 SiteGen.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg">Need more help?</a>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--white);">
+    <div class="container">
+      <div class="features-grid reveal-stagger" style="grid-template-columns:1fr;">
+        <div class="feature-card" style="padding:2rem;">
+          <h3 class="feature-title">Do I need coding experience?</h3>
+          <p class="feature-desc">No. HE5 SiteGen is designed for non-technical users, but developers can still export and customize the source code when needed.</p>
+        </div>
+        <div class="feature-card" style="padding:2rem;">
+          <h3 class="feature-title">Can I publish my website immediately?</h3>
+          <p class="feature-desc">Yes. Once your site is generated and refined, you can publish it quickly with our hosting and domain options.</p>
+        </div>
+        <div class="feature-card" style="padding:2rem;">
+          <h3 class="feature-title">Is the platform suitable for agencies?</h3>
+          <p class="feature-desc">Absolutely. Agencies can manage multiple sites, collaborate with clients, and launch polished work in less time.</p>
+        </div>
+        <div class="feature-card" style="padding:2rem;">
+          <h3 class="feature-title">What if I need support?</h3>
+          <p class="feature-desc">Our team is available to help with onboarding, best practices, and launch strategy. Visit the contact page to get started.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo"><div class="footer-logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span class="footer-logo-text">HE5 <span>SiteGen</span></span></a>
+        <p class="footer-tagline">Build Smarter. Launch Faster. AI-powered website creation for every business.</p>
+      </div>
+      <div><h3 class="footer-col-title">Product</h3><ul class="footer-links"><li><a href="features.html" class="footer-link">Features</a></li><li><a href="builder.html" class="footer-link">Prompt Library</a></li><li><a href="solutions.html" class="footer-link">Solutions</a></li></ul></div>
+      <div><h3 class="footer-col-title">Company</h3><ul class="footer-links"><li><a href="about.html" class="footer-link">About Us</a></li><li><a href="contact.html" class="footer-link">Contact</a></li><li><a href="resources.html" class="footer-link">Resources</a></li></ul></div>
+      <div><h3 class="footer-col-title">Resources</h3><ul class="footer-links"><li><a href="resources.html" class="footer-link">Guides</a></li><li><a href="faq.html" class="footer-link">FAQ</a></li><li><a href="contact.html" class="footer-link">Support</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 HE5 SiteGen. All rights reserved.</p>
+      <nav class="footer-legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="faq.html">FAQ</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

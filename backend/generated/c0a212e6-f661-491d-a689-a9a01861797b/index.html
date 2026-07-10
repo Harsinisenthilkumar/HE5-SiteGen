@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySmart - Personalized Daily Study Plans</title>
+    <meta name="description" content="StudySmart helps you generate personalized daily study plans based on your subjects, goals, and available study hours. Optimize your learning with our intelligent tool.">
+    <meta name="keywords" content="study plan, personalized study, daily planner, study tool, goal setting, time management, education, learning, productivity">
+    <meta name="author" content="StudySmart Team">
+    <link rel="canonical" href="https://www.studysmart.com">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+        :root {
+            --primary-orange: #F07900;
+            --light-orange: #F8A145;
+            --dark-orange: #D35100;
+            --dark-grey: #151515;
+            --black: #000000;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-grey);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-grey);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-orange);
+        }
+
+        a:hover {
+            color: var(--dark-orange);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-orange);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.8rem;
+            color: var(--dark-grey);
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-orange);
+            border-radius: 2px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .navbar-brand:hover {
+            color: var(--dark-orange);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            color: var(--dark-grey);
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-orange);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+        }
+
+        .hamburger .bar {
+            height: 3px;
+            width: 100%;
+            background-color: var(--dark-grey);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: var(--white);
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--dark-grey);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-grey);
+        }
+
+        .feature-item p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Services Section (Our Tool) */
+        .services {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--primary-orange);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--dark-grey);
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card .btn {
+            font-size: 0.9rem;
+            padding: 10px 20px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: #f0f0f0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: auto;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--light-orange);
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: var(--dark-grey);
+        }
+
+        .testimonial-author-info span {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background-color: #f9f9f9;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            cursor: pointer;
+            background-color: var(--white);
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #f5f5f5;
+        }
+
+        .accordion-header h3 {
+            font-size: 1.25rem;
+            color: var(--dark-grey);
+            margin: 0;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: #f9f9f9;
+        }
+
+        .accordion-content p {
+            padding: 15px 0 25px;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Contact Form Section */
+        .contact {
+            padding: 100px 0;
+            background-color: #f0f0f0;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            padding-right: 30px;
+            border-right: 1px solid #eee;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--dark-grey);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 1.05rem;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .contact-info ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--dark-grey);
+            font-size: 1.1rem;
+        }
+
+        .contact-info ul li i {
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-form {
+            flex: 1;
+            padding-left: 30px;
+        }
+
+        .contact-form h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--dark-grey);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-grey);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            color: var(--dark-grey);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--light-orange);
+            box-shadow: 0 0 0 3px rgba(240, 121, 0, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .btn {
+            width: auto;
+            padding: 14px 30px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-grey);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.4rem;
+            color: var(--white);
+            margin-bottom: 25px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-orange);
+        }
+
+        .footer-col p,
+        .footer-col ul li {
+            color: #ccc;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--light-orange);
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--dark-grey);
+            background-color: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        /* Font Awesome (for icons) */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+        /* Scroll Animation (Utility Class) */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal.fade-in {
+            transition: opacity 1s ease-out;
+            transform: none; /* No vertical movement for simple fade */
+        }
+        .reveal.active.fade-in {
+            opacity: 1;
+        }
+
+        .reveal.from-left {
+            transform: translateX(-50px);
+        }
+        .reveal.active.from-left {
+            transform: translateX(0);
+        }
+
+        .reveal.from-right {
+            transform: translateX(50px);
+        }
+        .reveal.active.from-right {
+            transform: translateX(0);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar .container {
+                flex-wrap: wrap;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--white);
+                position: absolute;
+                top: 70px; /* Adjust based on navbar height */
+                left: 0;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+                border-top: 1px solid #eee;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 0;
+                text-align: center;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 15px 0;
+                color: var(--dark-grey);
+                font-size: 1.1rem;
+            }
+
+            .nav-link::after {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+            }
+
+            .nav-link:hover::after,
+            .nav-link.active::after {
+                width: 50%;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image {
+                margin-bottom: 30px;
+            }
+
+            .about-text {
+                padding: 0;
+            }
+
+            .contact-content {
+                flex-direction: column;
+                padding: 30px;
+            }
+
+            .contact-info {
+                padding-right: 0;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 30px;
+                margin-bottom: 30px;
+            }
+
+            .contact-form {
+                padding-left: 0;
+            }
+
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-col {
+                min-width: unset;
+                width: 100%;
+            }
+
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .social-links {
+                margin-top: 20px;
+            }
+
+            .social-links a {
+                margin: 0 8px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+                min-height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+
+            .about, .features, .services, .testimonials, .faq, .contact, .footer {
+                padding: 60px 0;
+            }
+
+            .feature-item, .service-card, .testimonial-card {
+                padding: 25px;
+            }
+
+            .contact-info h3, .contact-form h3 {
+                font-size: 1.8rem;
+            }
+
+            .accordion-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .accordion-header {
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .footer-col h4 {
+                font-size: 1.2rem;
+            }
+
+            .footer-col p, .footer-col ul li, .footer-bottom {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">StudySmart</a>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Plan Generator</a></li>
+                <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container reveal fade-in">
+            <div class="hero-content">
+                <h1>Unlock Your Learning Potential</h1>
+                <p>Generate personalized daily study plans tailored to your subjects, goals, and available time.</p>
+                <a href="#services" class="btn">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title reveal from-left">About StudySmart</h2>
+            <div class="about-content">
+                <div class="about-image reveal from-left">
+                    <img src="https://images.unsplash.com/photo-1596495578033-d92e5926710b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Student studying with StudySmart">
+                </div>
+                <div class="about-text reveal from-right">
+                    <h3>Your Personalized Study Companion</h3>
+                    <p>StudySmart is designed to revolutionize how you approach studying. We understand that every learner is unique, with different strengths, weaknesses, and schedules. Our intelligent tool takes your specific needs into account to create a dynamic and effective study roadmap.</p>
+                    <p>Say goodbye to generic study schedules and hello to a plan that adapts to you. Achieve your academic goals with clarity, focus, and improved time management. Start making every study session count!</p>
+                    <a href="#features" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title reveal from-left">Why Choose StudySmart?</h2>
+            <div class="features-grid">
+                <div class="feature-item reveal">
+                    <i class="fas fa-magic"></i>
+                    <h3>Smart Planning</h3>
+                    <p>Our algorithm intelligently distributes your study hours across subjects based on your goals and priorities.</p>
+                </div>
+                <div class="feature-item reveal" data-delay="100">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Customization</h3>
+                    <p>Tailor your plan with specific subjects, set mastery goals, and define your daily available study time.</p>
+                </div>
+                <div class="feature-item reveal" data-delay="200">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Progress Tracking</h3>
+                    <p>Stay motivated by seeing your progress and adjusting your plans as you achieve your milestones.</p>
+                </div>
+                <div class="feature-item reveal" data-delay="300">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Anywhere, Anytime</h3>
+                    <p>Access your personalized study plan on any device, ensuring you're always prepared.</p>
+                </div>
+                <div class="feature-item reveal" data-delay="400">
+                    <i class="fas fa-clock"></i>
+                    <h3>Time Optimization</h3>
+                    <p>Maximize your efficiency by structuring your study sessions for optimal focus and retention.</p>
+                </div>
+                <div class="feature-item reveal" data-delay="500">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Goal Achievement</h3>
+                    <p>Turn your academic aspirations into reality with a clear, actionable path to success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Study Plan Generator Tool) -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title reveal from-left">Generate Your Personalized Study Plan</h2>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <i class="fas fa-book"></i>
+                    <h3>Define Your Subjects</h3>
+                    <p>Input all the subjects you need to study. You can add as many as you like and even prioritize them.</p>
+                    <a href="#plan-form" class="btn">Start Defining</a>
+                </div>
+                <div class="service-card reveal" data-delay="100">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Set Your Goals</h3>
+                    <p>Specify your learning objectives for each subject – whether it's exam preparation or skill mastery.</p>
+                    <a href="#plan-form" class="btn">Set Goals</a>
+                </div>
+                <div class="service-card reveal" data-delay="200">
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3>Input Available Hours</h3>
+                    <p>Tell us how many hours you can dedicate to studying each day, and we'll optimize your schedule.</p>
+                    <a href="#plan-form" class="btn">Enter Hours</a>
+                </div>
+            </div>
+
+            <!-- Study Plan Generation Form -->
+            <div id="plan-form" class="contact-content reveal" style="margin-top: 80px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+                <div class="contact-form">
+                    <h3>Create Your Plan</h3>
+                    <form id="studyPlanForm">
+                        <div id="subjects-container">
+                            <div class="form-group subject-group">
+                                <label for="subject1">Subject 1:</label>
+                                <input type="text" id="subject1" name="subject[]" placeholder="e.g., Mathematics" required>
+                                <label for="goal1">Goal for Subject 1:</label>
+                                <textarea id="goal1" name="goal[]" placeholder="e.g., Master Calculus for final exam" required></textarea>
+                            </div>
+                        </div>
+                        <button type="button" class="btn" id="addSubjectBtn" style="margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> Add Another Subject</button>
+
+                        <div class="form-group">
+                            <label for="studyHours">Available Study Hours Per Day:</label>
+                            <input type="number" id="studyHours" name="studyHours" min="1" max="16" value="4" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="planDuration">Plan Duration (Days):</label>
+                            <input type="number" id="planDuration" name="planDuration" min="1" max="30" value="7" required>
+                        </div>
+
+                        <button type="submit" class="btn"><i class="fas fa-calendar-alt"></i> Generate Plan</button>
+                    </form>
+
+                    <div id="generatedPlan" style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; display: none;">
+                        <h3>Your Daily Study Plan:</h3>
+                        <div id="planOutput"></div>
+                        <button type="button" class="btn" id="printPlanBtn" style="margin-top: 30px;"><i class="fas fa-print"></i> Print Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title reveal from-left">What Our Users Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card reveal">
+                    <p>"StudySmart transformed my study habits! I used to procrastinate, but now I have a clear, achievable plan every day. My grades have improved significantly."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Avatar">
+                        <div class="testimonial-author-info">
+                            <h4>Michael B.</h4>
+                            <span>University Student</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal" data-delay="100">
+                    <p>"As a working professional trying to learn new skills, StudySmart is a lifesaver. It helps me fit consistent study time into my busy schedule seamlessly."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Avatar">
+                        <div class="testimonial-author-info">
+                            <h4>Sarah P.</h4>
+                            <span>Professional Developer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal" data-delay="200">
+                    <p>"The ability to set specific goals for each subject and have the plan adapt is incredible. It keeps me focused on what truly matters for my exams."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/50.jpg" alt="User Avatar">
+                        <div class="testimonial-author-info">
+                            <h4>David C.</h4>
+                            <span>High School Student</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title reveal from-left">Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                <div class="accordion-item reveal">
+                    <div class="accordion-header">
+                        <h3>How does StudySmart personalize my plan?</h3>
+                        <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>StudySmart uses your input for subjects, specific goals per subject, and daily available study hours. It intelligently distributes your time, prioritizing subjects where you've set more ambitious goals or need more focus.</p>
+                    </div>
+                </div>
+                <div class="accordion-item reveal" data-delay="100">
+                    <div class="accordion-header">
+                        <h3>Can I adjust my plan after it's generated?</h3>
+                        <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Currently, you can regenerate a new plan by re-submitting the form with updated information. Future updates will include direct editing of an active plan.</p>
+                    </div>
+                </div>
+                <div class="accordion-item reveal" data-delay="200">
+                    <div class="accordion-header">
+                        <h3>What if I miss a study session?</h3>
+                        <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Our plans are designed to be flexible. While we encourage consistency, if you miss a session, you can always input your updated available hours and goals to generate a revised plan that accommodates your current situation.</p>
+                    </div>
+                </div>
+                <div class="accordion-item reveal" data-delay="300">
+                    <div class="accordion-header">
+                        <h3>Is StudySmart free to use?</h3>
+                        <span class="accordion-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, the basic study plan generation tool is completely free! We aim to make effective study planning accessible to everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title reveal from-left">Get In Touch</h2>
+            <div class="contact-content reveal fade-in">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Have questions, feedback, or need support? We're here to help! Reach out to us through the details below or fill out the contact form.</p>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Study Lane, Knowledge City, World</li>
+                        <li><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> support@studysmart.com</li>
+                        <li><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 5:00 PM</li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required placeholder="john.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Question about features">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col reveal">
+                <h4>StudySmart</h4>
+                <p>Your intelligent partner for personalized study planning and academic success.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col reveal" data-delay="100">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#services">Plan Generator</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col reveal" data-delay="200">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#contact">Contact Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col reveal" data-delay="300">
+                <h4>Newsletter</h4>
+                <p>Stay updated with our latest news and study tips.</p>
+                <form action="#" method="POST" class="newsletter-form">
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <input type="email" placeholder="Enter your email" required style="background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white);">
+                    </div>
+                    <button type="submit" class="btn" style="background-color: var(--light-orange); padding: 10px 20px; font-size: 0.9rem;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom reveal">
+            <p>&copy; <span id="currentYear"></span> StudySmart. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar sticky and active link
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - navbar.offsetHeight - 10; // Adjust for sticky nav height
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.href.includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Hamburger menu toggle
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu on link click
+            navMenu.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+
+            // Smooth scrolling for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - navbar.offsetHeight;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay ? parseInt(entry.target.dataset.delay) : 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('active');
+                        }, delay);
+                    } else {
+                        // Optionally remove 'active' when out of view if you want repeat animation
+                        // entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                threshold: 0.1, // Trigger when 10% of the item is visible
+                rootMargin: '0px 0px -50px 0px' // Start animation 50px before reaching bottom of viewport
+            });
+
+            document.querySelectorAll('.reveal').forEach(element => {
+                observer.observe(element);
+            });
+
+            // FAQ Accordion
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.closest('.accordion-item');
+                    const content = item.querySelector('.accordion-content');
+                    const icon = header.querySelector('.accordion-icon');
+
+                    // Close other open accordions
+                    document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.querySelector('.accordion-header').classList.remove('active');
+                            otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                            otherItem.querySelector('.accordion-icon').style.transform = null;
+                        }
+                    });
+
+                    // Toggle current accordion
+                    header.classList.toggle('active');
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.style.transform = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            // Footer year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Study Plan Generator Logic
+            const studyPlanForm = document.getElementById('studyPlanForm');
+            const subjectsContainer = document.getElementById('subjects-container');
+            const addSubjectBtn = document.getElementById('addSubjectBtn');
+            const generatedPlanDiv = document.getElementById('generatedPlan');
+            const planOutput = document.getElementById('planOutput');
+            const printPlanBtn = document.getElementById('printPlanBtn');
+            let subjectCount = 1;
+
+            addSubjectBtn.addEventListener('click', () => {
+                subjectCount++;
+                const newSubjectGroup = document.createElement('div');
+                newSubjectGroup.classList.add('form-group', 'subject-group');
+                newSubjectGroup.innerHTML = `
+                    <label for="subject${subjectCount}">Subject ${subjectCount}:</label>
+                    <input type="text" id="subject${subjectCount}" name="subject[]" placeholder="e.g., Physics" required>
+                    <label for="goal${subjectCount}">Goal for Subject ${subjectCount}:</label>
+                    <textarea id="goal${subjectCount}" name="goal[]" placeholder="e.g., Prepare for midterm on quantum mechanics" required></textarea>
+                    <button type="button" class="btn remove-subject-btn" style="background-color: var(--dark-orange); margin-top: 10px; padding: 8px 15px; font-size: 0.9rem;"><i class="fas fa-minus-circle"></i> Remove</button>
+                `;
+                subjectsContainer.appendChild(newSubjectGroup);
+
+                newSubjectGroup.querySelector('.remove-subject-btn').addEventListener('click', (e) => {
+                    e.target.closest('.subject-group').remove();
+                });
+            });
+
+            studyPlanForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const subjects = Array.from(document.querySelectorAll('input[name="subject[]"]')).map(input => input.value.trim()).filter(val => val !== '');
+                const goals = Array.from(document.querySelectorAll('textarea[name="goal[]"]')).map(textarea => textarea.value.trim()).filter(val => val !== '');
+                const studyHours = parseInt(document.getElementById('studyHours').value);
+                const planDuration = parseInt(document.getElementById('planDuration').value);
+
+                if (subjects.length === 0 || subjects.length !== goals.length) {
+                    alert('Please add at least one subject and its corresponding goal.');
+                    return;
+                }
+                if (isNaN(studyHours) || studyHours < 1 || isNaN(planDuration) || planDuration < 1) {
+                    alert('Please enter valid numbers for study hours and plan duration.');
+                    return;
+                }
+
+                const dailyPlan = generateStudyPlan(subjects, goals, studyHours, planDuration);
+                displayStudyPlan(dailyPlan, planDuration);
+                generatedPlanDiv.style.display = 'block';
+                generatedPlanDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            function generateStudyPlan(subjects, goals, dailyHours, durationDays) {
+                const totalSubjects = subjects.length;
+                const minTimePerSubject = 0.5; // Minimum 30 minutes per subject if possible
+                const plan = [];
+
+                for (let day = 1; day <= durationDays; day++) {
+                    const dailySchedule = { day: day, tasks: [] };
+                    let remainingHours = dailyHours;
+
+                    // Simple distribution: try to give each subject minTime, then distribute remaining
+                    let subjectsWithGoals = subjects.map((subj, index) => ({
+                        name: subj,
+                        goal: goals[index],
+                        priority: calculatePriority(goals[index]) // A simple priority based on goal complexity
+                    }));
+
+                    // Sort subjects by priority (higher priority first)
+                    subjectsWithGoals.sort((a, b) => b.priority - a.priority);
+
+                    // First pass: Allocate minimum time for high priority subjects
+                    subjectsWithGoals.forEach(subj => {
+                        if (remainingHours >= minTimePerSubject) {
+                            dailySchedule.tasks.push({ subject: subj.name, time: minTimePerSubject, goal: subj.goal });
+                            remainingHours -= minTimePerSubject;
+                        } else if (remainingHours > 0) { // Allocate remaining small time to a high priority subject
+                             dailySchedule.tasks.push({ subject: subj.name, time: remainingHours, goal: subj.goal });
+                             remainingHours = 0;
+                        }
+                    });
+
+                    // Second pass: Distribute remaining hours among all subjects, favoring higher priority
+                    let taskIndex = 0;
+                    while (remainingHours > 0 && taskIndex < dailySchedule.tasks.length) {
+                        // Find the subject in the daily schedule that corresponds to the current sorted subject
+                        const currentTask = dailySchedule.tasks[taskIndex];
+                        const originalSubjectIndex = subjects.indexOf(currentTask.subject); // Find its original index
+                        const subjectPriority = subjectsWithGoals.find(s => s.name === currentTask.subject).priority;
+
+                        let timeToAdd = 0.5; // Add 30 minutes at a time
+                        if (remainingHours < timeToAdd) timeToAdd = remainingHours;
+
+                        // Distribute time based on priority (simple weighting)
+                        // More sophisticated logic needed for real-world scenarios
+                        // For this example, we'll just cycle through and add if time available.
+                        // A more robust solution would distribute proportionally.
+
+                        currentTask.time += timeToAdd;
+                        remainingHours -= timeToAdd;
+
+                        taskIndex = (taskIndex + 1) % dailySchedule.tasks.length; // Cycle through subjects
+                    }
+
+
+                    plan.push(dailySchedule);
+                }
+                return plan;
+            }
+
+            function calculatePriority(goal) {
+                // A very simple heuristic: longer goals might imply more complexity/priority
+                // In a real app, this would involve NLP or user-defined priority levels
+                return goal.length > 50 ? 3 : (goal.length > 20 ? 2 : 1);
+            }
+
+            function displayStudyPlan(plan, durationDays) {
+                planOutput.innerHTML = '';
+                if (plan.length === 0) {
+                    planOutput.innerHTML = '<p>No plan could be generated with the given inputs. Please adjust your subjects, goals, or available hours.</p>';
+                    return;
+                }
+
+                plan.forEach(daySchedule => {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.style.marginBottom = '30px';
+                    dayDiv.style.padding = '20px';
+                    dayDiv.style.border = '1px solid #ddd';
+                    dayDiv.style.borderRadius = '8px';
+                    dayDiv.style.backgroundColor = '#fff';
+                    dayDiv.innerHTML = `<h4>Day ${daySchedule.day}</h4>`;
+
+                    if (daySchedule.tasks.length > 0) {
+                        const taskList = document.createElement('ul');
+                        taskList.style.listStyle = 'none';
+                        taskList.style.paddingLeft = '0';
+                        daySchedule.tasks.forEach(task => {
+                            const listItem = document.createElement('li');
+                            listItem.style.marginBottom = '10px';
+                            listItem.style.padding = '10px';
+                            listItem.style.backgroundColor = '#f9f9f9';
+                            listItem.style.borderRadius = '5px';
+                            listItem.innerHTML = `<strong>${task.subject}</strong> (${task.time} hours) - <em>Goal: ${task.goal}</em>`;
+                            taskList.appendChild(listItem);
+                        });
+                        dayDiv.appendChild(taskList);
+                    } else {
+                        dayDiv.innerHTML += '<p>No study tasks scheduled for this day (insufficient time).</p>';
+                    }
+                    planOutput.appendChild(dayDiv);
+                });
+            }
+
+            printPlanBtn.addEventListener('click', () => {
+                const planContent = document.getElementById('generatedPlan').innerHTML;
+                const originalBody = document.body.innerHTML;
+                document.body.innerHTML = `
+                    <html>
+                    <head>
+                        <title>StudySmart - Daily Study Plan</title>
+                        <style>
+                            body { font-family: 'Roboto', sans-serif; margin: 30px; }
+                            h3 { font-family: 'Montserrat', sans-serif; color: var(--dark-grey); margin-bottom: 20px; }
+                            h4 { font-family: 'Montserrat', sans-serif; color: var(--primary-orange); margin-top: 25px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+                            ul { list-style: none; padding-left: 0; }
+                            li { margin-bottom: 8px; padding: 8px; background-color: #f0f0f0; border-radius: 4px; }
+                            strong { color: var(--dark-grey); }
+                            em { color: #555; font-size: 0.95em; }
+                            p { margin-bottom: 10px; color: #666; }
+                            @media print {
+                                button { display: none; }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        ${planContent}
+                    </body>
+                    </html>
+                `;
+                window.print();
+                document.body.innerHTML = originalBody; // Restore original content
+                window.location.reload(); // Reload to reattach event listeners
+            });
+
+        });
+    </script>
+</body>
+</html>

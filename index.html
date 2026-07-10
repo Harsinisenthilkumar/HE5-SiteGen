@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HE5 SiteGen — AI-powered website builder. Describe your business and launch a professional website in minutes. No coding needed." />
+  <meta property="og:title" content="HE5 SiteGen — Build Smarter. Launch Faster." />
+  <meta property="og:description" content="Generate professional websites with AI. Visual editor, instant publishing, custom domains, and full source code export." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>HE5 SiteGen — Build Smarter. Launch Faster.</title>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/pricing.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <script src="js/auth.js"></script>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar-inner container-2xl" style="max-width:1440px;margin-inline:auto;padding-inline:2rem;">
+    <a href="index.html" class="navbar-logo" aria-label="HE5 SiteGen Home">
+      <div class="logo-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <span class="logo-text">HE5 <span>SiteGen</span></span>
+    </a>
+
+    <nav class="navbar-nav" aria-label="Desktop navigation">
+      <div class="nav-item"><a href="index.html" class="nav-link active">Home</a></div>
+      <div class="nav-item"><a href="features.html" class="nav-link">Features</a></div>
+      <div class="nav-item"><a href="solutions.html" class="nav-link">Solutions</a></div>
+      <div class="nav-item"><a href="builder.html" class="nav-link">Prompt Library</a></div>
+      <div class="nav-item"><a href="resources.html" class="nav-link">Resources</a></div>
+      <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+      <div class="nav-item"><a href="contact.html" class="nav-link">Contact</a></div>
+    </nav>
+
+    <div class="navbar-actions">
+      <a href="contact.html" class="btn-login">Login</a>
+      <a href="builder.html" class="btn btn-primary btn-sm">Start Building</a>
+    </div>
+
+    <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <nav class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="features.html" class="mobile-nav-link">Features</a>
+    <a href="solutions.html" class="mobile-nav-link">Solutions</a>
+    <a href="builder.html" class="mobile-nav-link">Prompt Library</a>
+    <a href="resources.html" class="mobile-nav-link">Resources</a>
+    <a href="about.html" class="mobile-nav-link">About</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+  </nav>
+  <div class="mobile-actions">
+    <a href="contact.html" class="btn btn-secondary btn-lg" style="width:100%;justify-content:center;">Login</a>
+    <a href="builder.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Start Building</a>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════ -->
+<section class="hero" id="hero" aria-labelledby="hero-headline">
+  <div class="hero-bg-grid" aria-hidden="true"></div>
+  <div class="hero-glow-1" aria-hidden="true"></div>
+  <div class="hero-glow-2" aria-hidden="true"></div>
+
+  <div class="hero-container">
+    <!-- Left Content -->
+    <div class="hero-content">
+      <div class="hero-badge" aria-label="New: AI-Powered Platform">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        <span>AI-Powered Website Builder</span>
+      </div>
+
+      <h1 class="hero-headline" id="hero-headline">
+        Build Smarter.
+        <span class="highlight">Launch Faster.</span>
+      </h1>
+
+      <p class="hero-desc">
+        Describe your business in plain English and watch HE5 SiteGen's AI instantly generate a professional, fully customizable website — ready to publish in minutes, not months.
+      </p>
+
+      <div class="hero-actions">
+        <a href="builder.html" class="btn btn-primary btn-lg btn-ripple" id="hero-cta-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Start Building Free
+        </a>
+        <a href="#interactive-demo" class="btn btn-secondary btn-lg" id="hero-cta-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          Watch Demo
+        </a>
+      </div>
+
+      <div class="hero-social-proof">
+        <div class="hero-avatars" aria-hidden="true">
+          <div class="hero-avatar">JD</div>
+          <div class="hero-avatar">SM</div>
+          <div class="hero-avatar">KR</div>
+          <div class="hero-avatar">AL</div>
+          <div class="hero-avatar">+</div>
+        </div>
+        <p class="hero-social-text">
+          Trusted by <strong>10,000+ businesses</strong> worldwide
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Visual -->
+    <div class="hero-visual" aria-label="HE5 SiteGen AI builder preview">
+      <!-- Floating cards -->
+      <div class="hero-float-card card-1" aria-hidden="true">
+        <div class="float-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="float-content">
+          <div class="float-label">Site Generated</div>
+          <div class="float-value">In 12 seconds ⚡</div>
+        </div>
+      </div>
+
+      <div class="hero-float-card card-2" aria-hidden="true">
+        <div class="float-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="float-content">
+          <div class="float-label">Monthly Visitors</div>
+          <div class="float-value">+284% Growth</div>
+        </div>
+      </div>
+
+      <!-- Main Panel -->
+      <div class="hero-panel">
+        <div class="hero-panel-header">
+          <div class="panel-dots" aria-hidden="true">
+            <span class="panel-dot red"></span>
+            <span class="panel-dot yellow"></span>
+            <span class="panel-dot green"></span>
+          </div>
+          <span class="panel-title">HE5 SiteGen AI Builder</span>
+        </div>
+
+        <!-- AI Prompt -->
+        <div class="ai-prompt-panel">
+          <p class="prompt-label">Describe your business</p>
+          <div class="prompt-input-wrapper">
+            <div class="prompt-text">
+              <span class="prompt-text-content"></span><span class="cursor" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="prompt-generate-btn">
+            <span style="font-size:0.7rem;color:rgba(255,255,255,0.3);font-family:var(--font-heading);">Ctrl+Enter to generate</span>
+            <button class="generate-btn" aria-label="Generate website with AI">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              Generate Website
+            </button>
+          </div>
+        </div>
+
+        <!-- Website Preview -->
+        <div class="website-preview">
+          <img src="assets/hero-mockup.png" alt="AI-generated website preview for a business" loading="eager" />
+          <div class="preview-overlay" aria-hidden="true"></div>
+          <div class="preview-generated-badge" aria-label="Website generated in 12 seconds">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Generated in 12s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <a href="#trusted" class="hero-scroll" aria-label="Scroll down to explore">
+    <div class="scroll-mouse"><span class="scroll-wheel"></span></div>
+    <span class="scroll-text">Scroll</span>
+  </a>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     TRUSTED BY
+════════════════════════════════════════ -->
+<section class="trusted-section" id="trusted" aria-label="Companies that trust HE5 SiteGen">
+  <div class="container">
+    <p class="trusted-label">Trusted by leading businesses worldwide</p>
+    <div class="logos-track reveal-stagger">
+      <div class="logo-item"><div class="logo-item-icon">🏪</div><span class="logo-item-name">RetailPro</span></div>
+      <div class="logo-item"><div class="logo-item-icon">🏥</div><span class="logo-item-name">MedCare</span></div>
+      <div class="logo-item"><div class="logo-item-icon">🏡</div><span class="logo-item-name">EstateX</span></div>
+      <div class="logo-item"><div class="logo-item-icon">🎓</div><span class="logo-item-name">EduConnect</span></div>
+      <div class="logo-item"><div class="logo-item-icon">⚖️</div><span class="logo-item-name">LexFirm</span></div>
+      <div class="logo-item"><div class="logo-item-icon">💪</div><span class="logo-item-name">FitStudio</span></div>
+      <div class="logo-item"><div class="logo-item-icon">🍽️</div><span class="logo-item-name">DineWell</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     STATISTICS
+════════════════════════════════════════ -->
+<section class="stats-section" aria-label="HE5 SiteGen platform statistics">
+  <div class="container">
+    <div class="stats-grid reveal-stagger">
+      <div class="stat-card">
+        <div class="stat-number" data-count="10000" data-suffix="+">0</div>
+        <p class="stat-label">Websites Generated</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-count="99.9" data-suffix="%">0</div>
+        <p class="stat-label">Platform Uptime</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-count="95" data-suffix="%">0</div>
+        <p class="stat-label">Faster to Launch</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-count="100" data-suffix="+">0</div>
+        <p class="stat-label">Industry Templates</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════ -->
+<section class="how-section section" id="how-it-works" aria-labelledby="how-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        Simple Process
+      </span>
+      <h2 class="section-title" id="how-title">Your Website in <span>4 Simple Steps</span></h2>
+      <p class="section-desc">From idea to live website in minutes. No technical expertise needed — our AI handles the hard work for you.</p>
+    </header>
+
+    <div class="steps-container">
+      <div class="steps-connector" aria-hidden="true"></div>
+
+      <div class="step-item reveal">
+        <div class="step-number" aria-label="Step 1">1</div>
+        <div class="step-icon-wrap" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3 class="step-title">Describe Your Business</h3>
+        <p class="step-desc">Type a description of your business, industry, and style preferences in plain language. Our AI understands context and tone.</p>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-number" aria-label="Step 2">2</div>
+        <div class="step-icon-wrap" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="step-title">AI Generates Website</h3>
+        <p class="step-desc">In seconds, our AI crafts a complete, professional website with tailored content, design, and structure specific to your business.</p>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-number" aria-label="Step 3">3</div>
+        <div class="step-icon-wrap" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3 class="step-title">Customize Visually</h3>
+        <p class="step-desc">Fine-tune colors, fonts, images, and content using our intuitive visual editor. No coding required — drag, click, and personalize.</p>
+      </div>
+
+      <div class="step-item reveal">
+        <div class="step-number" aria-label="Step 4">4</div>
+        <div class="step-icon-wrap" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <h3 class="step-title">Publish Instantly</h3>
+        <p class="step-desc">Hit publish and your website goes live immediately. Connect your custom domain, export your code, or let us host it for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FEATURES
+════════════════════════════════════════ -->
+<section class="features-section section" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Everything You Need
+      </span>
+      <h2 class="section-title" id="features-title">Powerful Features, <span>Zero Complexity</span></h2>
+      <p class="section-desc">Every tool you need to build, grow, and manage a successful online presence — all in one intelligent platform.</p>
+    </header>
+
+    <div class="features-grid reveal-stagger">
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="feature-title">AI Website Generation</h3>
+        <p class="feature-desc">Describe your business and get a complete, professional website generated in seconds using state-of-the-art AI.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3 class="feature-title">Visual Editor</h3>
+        <p class="feature-desc">Click-to-edit interface lets you customize every element of your website without writing a single line of code.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3 class="feature-title">Responsive Design</h3>
+        <p class="feature-desc">Every website automatically adapts to desktop, tablet, and mobile — optimized for every screen size and device.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 class="feature-title">Source Code Export</h3>
+        <p class="feature-desc">Download the complete source code of your website at any time. You own your code — no vendor lock-in.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3 class="feature-title">SEO Optimization</h3>
+        <p class="feature-desc">Built-in SEO tools automatically optimize meta tags, headings, structured data, and content for top search rankings.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3 class="feature-title">Analytics Dashboard</h3>
+        <p class="feature-desc">Track visitor behavior, conversion rates, traffic sources, and more with real-time, actionable analytics insights.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3 class="feature-title">Lead Collection Forms</h3>
+        <p class="feature-desc">Smart contact forms that capture leads, integrate with your CRM, and send instant email notifications automatically.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3 class="feature-title">Marketing Tools</h3>
+        <p class="feature-desc">Built-in marketing automation, email campaigns, social sharing, and conversion optimization tools to grow your business.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3 class="feature-title">Custom Domains</h3>
+        <p class="feature-desc">Connect your existing domain or purchase a new one. Free SSL certificate included with automatic HTTPS security.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="feature-title">Role-Based Access</h3>
+        <p class="feature-desc">Collaborate with your team using granular permission controls. Assign editor, reviewer, or admin roles to team members.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3 class="feature-title">Enterprise Security</h3>
+        <p class="feature-desc">SOC 2 compliant infrastructure with DDoS protection, daily backups, and enterprise-grade data encryption at rest and in transit.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3 class="feature-title">Multi-Site Management</h3>
+        <p class="feature-desc">Manage unlimited websites from a single dashboard. Perfect for agencies managing multiple client websites efficiently.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3 class="feature-title">Fast Global Hosting</h3>
+        <p class="feature-desc">Lightning-fast CDN across 200+ global edge locations. Your website loads in under 1 second anywhere in the world.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="feature-title">Business Templates</h3>
+        <p class="feature-desc">100+ professionally designed templates for every industry — restaurants, healthcare, real estate, retail, education, and more.</p>
+      </div>
+
+    </div>
+
+    <div class="text-center" style="margin-top:3rem;">
+      <a href="features.html" class="btn btn-outline-orange btn-lg" id="features-view-all">
+        View All Features
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     INTERACTIVE DEMO
+════════════════════════════════════════ -->
+<section class="demo-section section" id="interactive-demo" aria-labelledby="demo-title">
+  <div class="container demo-container">
+    <header class="section-header reveal">
+      <span class="section-label">Try It Now</span>
+      <h2 class="section-title text-white" id="demo-title">See the <span>Magic in Action</span></h2>
+      <p class="section-desc text-light">Type a business description below and watch our AI generate a complete website in real-time. No sign-up required.</p>
+    </header>
+
+    <div class="demo-wrapper reveal">
+      <div class="demo-header">
+        <div class="panel-dots" aria-hidden="true">
+          <span class="panel-dot red"></span>
+          <span class="panel-dot yellow"></span>
+          <span class="panel-dot green"></span>
+        </div>
+        <div class="demo-tabs" role="tablist">
+          <button class="demo-tab active" role="tab" aria-selected="true">AI Builder</button>
+          <button class="demo-tab" role="tab" aria-selected="false">Visual Editor</button>
+          <button class="demo-tab" role="tab" aria-selected="false">Preview</button>
+        </div>
+      </div>
+
+      <div class="demo-body">
+        <!-- Suggestion chips -->
+        <div class="demo-suggestions" aria-label="Try these business examples">
+          <button class="suggestion-chip" id="chip-restaurant">🍕 Italian Restaurant</button>
+          <button class="suggestion-chip" id="chip-fitness">💪 Fitness Studio</button>
+          <button class="suggestion-chip" id="chip-realestate">🏡 Real Estate Agency</button>
+          <button class="suggestion-chip" id="chip-dental">🦷 Dental Clinic</button>
+          <button class="suggestion-chip" id="chip-law">⚖️ Law Firm</button>
+        </div>
+
+        <!-- Prompt Input -->
+        <div class="demo-prompt-area">
+          <label for="demo-textarea" style="display:block;font-family:var(--font-heading);font-size:0.75rem;color:rgba(255,255,255,0.40);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;">Describe Your Business</label>
+          <div class="demo-input-group">
+            <textarea
+              id="demo-textarea"
+              class="demo-textarea"
+              placeholder="e.g. I run a cozy Italian restaurant in downtown Chicago specializing in wood-fired pizzas and homemade pasta. Family-owned for 20 years with a warm, rustic atmosphere..."
+              rows="4"
+              aria-label="Business description for AI website generation"
+            ></textarea>
+            <button class="demo-generate-btn" id="demo-generate-btn" aria-label="Generate website with AI">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              Generate
+            </button>
+          </div>
+        </div>
+
+        <!-- Preview Area -->
+        <div id="demo-preview" class="demo-preview">
+          <div id="demo-placeholder" class="demo-preview-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p>Your AI-generated website will appear here</p>
+            <p style="font-size:0.75rem;opacity:0.6;margin-top:8px;">Enter a description above and click Generate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     TEMPLATES
+════════════════════════════════════════ -->
+<section class="templates-section section" id="templates" aria-labelledby="templates-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">Ready-Made Templates</span>
+      <h2 class="section-title" id="templates-title">100+ Industry <span>Templates</span></h2>
+      <p class="section-desc">Start with a professionally designed template tailored to your industry, then customize it to match your brand perfectly.</p>
+    </header>
+
+    <div class="templates-grid reveal-stagger">
+      <div class="template-card">
+        <div class="template-preview template-restaurant">
+          <span class="template-emoji" aria-hidden="true">🍝</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Restaurant template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">Bella Cucina</p>
+          <p class="template-category">Restaurant &amp; Dining</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-healthcare">
+          <span class="template-emoji" aria-hidden="true">🏥</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Healthcare template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">MedCare Clinic</p>
+          <p class="template-category">Healthcare &amp; Medical</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-education">
+          <span class="template-emoji" aria-hidden="true">🎓</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Education template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">EduConnect</p>
+          <p class="template-category">Education &amp; Learning</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-realestate">
+          <span class="template-emoji" aria-hidden="true">🏡</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Real Estate template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">EstateX Realty</p>
+          <p class="template-category">Real Estate</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-agency">
+          <span class="template-emoji" aria-hidden="true">🎯</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Agency template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">CreativeEdge</p>
+          <p class="template-category">Creative Agency</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-fitness">
+          <span class="template-emoji" aria-hidden="true">💪</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Fitness template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">Peak Fitness</p>
+          <p class="template-category">Fitness &amp; Wellness</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-portfolio">
+          <span class="template-emoji" aria-hidden="true">🎨</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Portfolio template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">ArtFolio</p>
+          <p class="template-category">Portfolio &amp; Creative</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-retail">
+          <span class="template-emoji" aria-hidden="true">🛍️</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Retail template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">ShopFront</p>
+          <p class="template-category">Retail &amp; eCommerce</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-consulting">
+          <span class="template-emoji" aria-hidden="true">💼</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Consulting template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">Consul Partners</p>
+          <p class="template-category">Consulting &amp; Advisory</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-hotel">
+          <span class="template-emoji" aria-hidden="true">🏨</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Hotel template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">Grand Stay Hotel</p>
+          <p class="template-category">Hotel &amp; Hospitality</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-beauty">
+          <span class="template-emoji" aria-hidden="true">💅</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Beauty template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">Glow Beauty Spa</p>
+          <p class="template-category">Beauty &amp; Wellness</p>
+        </div>
+      </div>
+
+      <div class="template-card">
+        <div class="template-preview template-law">
+          <span class="template-emoji" aria-hidden="true">⚖️</span>
+          <div class="template-overlay">
+            <button class="template-use-btn" aria-label="Use Law Firm template">Use Template</button>
+          </div>
+        </div>
+        <div class="template-info">
+          <p class="template-name">Justice &amp; Associates</p>
+          <p class="template-category">Law &amp; Legal Services</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <a href="resources.html" class="btn btn-outline-orange btn-lg" id="templates-browse-all">
+        Browse All 100+ Templates
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SOLUTIONS
+════════════════════════════════════════ -->
+<section class="solutions-section section" id="solutions" aria-labelledby="solutions-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">Industry Solutions</span>
+      <h2 class="section-title" id="solutions-title">Built for <span>Every Industry</span></h2>
+      <p class="section-desc">HE5 SiteGen understands your industry's unique needs and delivers purpose-built solutions for businesses of every type.</p>
+    </header>
+
+    <div class="solutions-grid reveal-stagger">
+      <a href="solutions.html#restaurants" class="solution-card">
+        <span class="solution-icon" aria-hidden="true">🍽️</span>
+        <h3 class="solution-title">Restaurants &amp; Food</h3>
+        <p class="solution-desc">Menus, reservations, online ordering, gallery, and location pages designed to fill your tables.</p>
+        <span class="solution-link">Explore Solution <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a href="solutions.html#healthcare" class="solution-card">
+        <span class="solution-icon" aria-hidden="true">🏥</span>
+        <h3 class="solution-title">Healthcare &amp; Medical</h3>
+        <p class="solution-desc">Patient portals, appointment booking, service listings, and trust-building doctor profiles.</p>
+        <span class="solution-link">Explore Solution <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a href="solutions.html#realestate" class="solution-card">
+        <span class="solution-icon" aria-hidden="true">🏡</span>
+        <h3 class="solution-title">Real Estate</h3>
+        <p class="solution-desc">Property listings, virtual tours, agent profiles, and lead generation forms that convert browsers to buyers.</p>
+        <span class="solution-link">Explore Solution <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a href="solutions.html#education" class="solution-card">
+        <span class="solution-icon" aria-hidden="true">🎓</span>
+        <h3 class="solution-title">Education &amp; Training</h3>
+        <p class="solution-desc">Course catalogs, enrollment forms, faculty profiles, and event pages for schools and training institutions.</p>
+        <span class="solution-link">Explore Solution <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a href="solutions.html#agencies" class="solution-card">
+        <span class="solution-icon" aria-hidden="true">🎯</span>
+        <h3 class="solution-title">Agencies &amp; Startups</h3>
+        <p class="solution-desc">Portfolio showcases, case studies, team pages, and client-winning landing pages that demonstrate your expertise.</p>
+        <span class="solution-link">Explore Solution <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a href="solutions.html#retail" class="solution-card">
+        <span class="solution-icon" aria-hidden="true">🛍️</span>
+        <h3 class="solution-title">Retail &amp; eCommerce</h3>
+        <p class="solution-desc">Product catalogs, store pages, promotions, and customer testimonials to drive foot traffic and online sales.</p>
+        <span class="solution-link">Explore Solution <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     WHY HE5 SITEGEN
+════════════════════════════════════════ -->
+<section class="why-section section" id="why-us" aria-labelledby="why-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title text-white" id="why-title">The Smarter Way to <span>Build Online</span></h2>
+      <p class="section-desc text-light">HE5 SiteGen combines cutting-edge AI with professional design principles to give your business the competitive edge it deserves.</p>
+    </header>
+
+    <div class="why-grid reveal-stagger">
+      <div class="why-card">
+        <div class="why-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="why-title">AI-First Architecture</h3>
+        <p class="why-desc">Our proprietary AI doesn't just fill templates — it creates contextually intelligent websites by understanding your business's unique identity, audience, and goals.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="why-title">Launch in Minutes, Not Months</h3>
+        <p class="why-desc">Traditional web development takes weeks or months. HE5 SiteGen delivers a production-ready website in under 60 seconds. Time is your most valuable asset.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="why-title">Save 90% on Web Costs</h3>
+        <p class="why-desc">Professional websites used to cost $5,000–$50,000. HE5 SiteGen delivers the same quality for a fraction of the cost, with no hidden fees or expensive developers.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="why-title">No Technical Skills Needed</h3>
+        <p class="why-desc">Designed for business owners, not developers. Our intuitive interface means anyone can create, edit, and manage a professional website with zero technical knowledge.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3 class="why-title">Conversion-Optimized by Default</h3>
+        <p class="why-desc">Every website is designed with conversion science built-in. Strategic CTAs, proven layouts, and psychological design principles that turn visitors into customers.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="why-title">You Own Your Website</h3>
+        <p class="why-desc">Export your complete source code at any time. No proprietary lock-in, no hostage situations. Your business, your website, your code — always.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     COMPARISON TABLE
+════════════════════════════════════════ -->
+<section class="comparison-section section" id="comparison" aria-labelledby="comparison-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">How We Compare</span>
+      <h2 class="section-title" id="comparison-title">HE5 SiteGen vs. <span>The Rest</span></h2>
+      <p class="section-desc">See why thousands of businesses are switching from traditional web builders to the AI-powered future of website creation.</p>
+    </header>
+
+    <div class="comparison-table-wrapper reveal">
+      <table class="comparison-table" aria-label="Feature comparison between HE5 SiteGen and competitors">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col" class="col-he5">HE5 SiteGen ⚡</th>
+            <th scope="col" class="col-other">Traditional Builders</th>
+            <th scope="col" class="col-other">Hiring a Developer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AI-Powered Generation</td>
+            <td class="col-he5"><span class="check-icon" aria-label="Yes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-other"><span class="x-icon" aria-label="No"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td class="col-other"><span class="x-icon" aria-label="No"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Launch Time</td>
+            <td class="col-he5" style="font-weight:700;color:var(--orange);">Under 5 minutes</td>
+            <td class="col-other">Hours to days</td>
+            <td class="col-other">Weeks to months</td>
+          </tr>
+          <tr>
+            <td>Source Code Export</td>
+            <td class="col-he5"><span class="check-icon" aria-label="Yes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-other"><span class="x-icon" aria-label="No"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td class="col-other"><span class="check-icon" aria-label="Yes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Built-in SEO</td>
+            <td class="col-he5"><span class="check-icon" aria-label="Yes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-other">Partial</td>
+            <td class="col-other">Extra cost</td>
+          </tr>
+          <tr>
+            <td>Analytics Included</td>
+            <td class="col-he5"><span class="check-icon" aria-label="Yes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-other">Basic only</td>
+            <td class="col-other">Third-party required</td>
+          </tr>
+          <tr>
+            <td>Monthly Cost</td>
+            <td class="col-he5" style="font-weight:700;color:var(--orange);">From $29/mo</td>
+            <td class="col-other">$30–$200/mo</td>
+            <td class="col-other">$3,000–$10,000+</td>
+          </tr>
+          <tr>
+            <td>No Technical Skills</td>
+            <td class="col-he5"><span class="check-icon" aria-label="Yes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-other">Some learning curve</td>
+            <td class="col-other"><span class="x-icon" aria-label="No"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Multi-Site Management</td>
+            <td class="col-he5"><span class="check-icon" aria-label="Yes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-other">Limited</td>
+            <td class="col-other">Manual, expensive</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════ -->
+<section class="testimonials-section section" id="testimonials" aria-labelledby="testimonials-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">Customer Stories</span>
+      <h2 class="section-title" id="testimonials-title">Loved by <span>10,000+ Businesses</span></h2>
+      <p class="section-desc">Don't take our word for it — hear from the real business owners who transformed their online presence with HE5 SiteGen.</p>
+    </header>
+
+    <div class="testimonials-carousel reveal">
+      <div class="testimonials-track" aria-live="polite">
+
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          </div>
+          <blockquote class="testimonial-quote">"HE5 SiteGen transformed our restaurant's online presence overnight. Our online reservations increased by 340% within the first month. The AI-generated site looked more professional than anything our previous developer built."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">MR</div>
+            <div>
+              <p class="author-name">Marco Ricci</p>
+              <p class="author-role">Owner, Bella Cucina Restaurant, Chicago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          </div>
+          <blockquote class="testimonial-quote">"As a healthcare clinic, our website needed to convey trust and professionalism. HE5 SiteGen delivered a HIPAA-friendly design in minutes that would have cost us $15,000 from a web agency. Absolutely incredible."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">SP</div>
+            <div>
+              <p class="author-name">Dr. Sarah Patel</p>
+              <p class="author-role">Director, Wellness First Medical Center, NYC</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          </div>
+          <blockquote class="testimonial-quote">"We manage 47 client websites with HE5 SiteGen. The multi-site dashboard saves us 20+ hours every week. Our agency revenue grew 60% because we can now onboard clients in days instead of weeks."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">JT</div>
+            <div>
+              <p class="author-name">Jake Thompson</p>
+              <p class="author-role">CEO, Digital Frontier Agency, Austin</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          </div>
+          <blockquote class="testimonial-quote">"I launched my real estate business website in literally 8 minutes. The AI understood exactly what I needed — property listings, agent bio, contact forms. My leads increased 200% compared to my old site."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">AL</div>
+            <div>
+              <p class="author-name">Amanda Lee</p>
+              <p class="author-role">Principal Agent, Luxe Properties, Miami</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          </div>
+          <blockquote class="testimonial-quote">"The source code export feature is a game-changer. I started with HE5 SiteGen, then exported the clean code to host on my own servers. Best of both worlds — AI speed with complete ownership."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">RK</div>
+            <div>
+              <p class="author-name">Raj Kumar</p>
+              <p class="author-role">Founder, TechFlow Solutions, San Francisco</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          </div>
+          <blockquote class="testimonial-quote">"As a freelance photographer, I had zero budget for a web designer. HE5 SiteGen gave me a gorgeous portfolio site for $29/month. I've already booked 3 new clients who found me through my website this month!"</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">EC</div>
+            <div>
+              <p class="author-name">Elena Chen</p>
+              <p class="author-role">Freelance Photographer, Los Angeles</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="carousel-prev" aria-label="Previous testimonial">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="carousel-dots" role="group" aria-label="Testimonial carousel navigation"></div>
+      <button class="carousel-btn" id="carousel-next" aria-label="Next testimonial">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     PRICING
+════════════════════════════════════════ -->
+<section class="pricing-section section" id="pricing" aria-labelledby="pricing-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">Simple Pricing</span>
+      <h2 class="section-title" id="pricing-title">Transparent Plans, <span>No Surprises</span></h2>
+      <p class="section-desc">Start free, scale as you grow. Every plan includes AI generation, hosting, and SSL — no hidden fees, ever.</p>
+    </header>
+
+    <!-- Billing Toggle -->
+    <div class="billing-toggle reveal">
+      <span class="billing-label">Monthly</span>
+      <button class="toggle-switch" id="billing-toggle" aria-label="Toggle annual billing" aria-pressed="false">
+        <span class="toggle-thumb"></span>
+      </button>
+      <span class="billing-label">Annual</span>
+      <span class="save-badge">Save 30%</span>
+    </div>
+
+    <div class="pricing-grid reveal-stagger">
+
+      <!-- Starter -->
+      <div class="pricing-card">
+        <p class="pricing-tier-name">Starter</p>
+        <div class="pricing-price-wrap">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-amount price-monthly">29</span>
+          <span class="pricing-amount price-annual">19</span>
+          <span class="pricing-period">/ month</span>
+        </div>
+        <p class="pricing-desc">Perfect for freelancers, solopreneurs, and small businesses getting started online.</p>
+        <ul class="pricing-features" aria-label="Starter plan features">
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            3 AI-generated websites
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Visual editor access
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Custom domain connection
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Free SSL certificate
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Basic SEO tools
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Email support
+          </li>
+        </ul>
+        <a href="builder.html" class="btn btn-dark btn-lg" id="pricing-starter-cta">Get Started Free</a>
+      </div>
+
+      <!-- Professional (Featured) -->
+      <div class="pricing-card featured" aria-label="Most popular plan">
+        <div class="pricing-badge-popular" aria-label="Most Popular">Most Popular</div>
+        <p class="pricing-tier-name">Professional</p>
+        <div class="pricing-price-wrap">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-amount price-monthly">79</span>
+          <span class="pricing-amount price-annual">55</span>
+          <span class="pricing-period">/ month</span>
+        </div>
+        <p class="pricing-desc">For growing businesses and agencies who need more power, customization, and team collaboration.</p>
+        <ul class="pricing-features" aria-label="Professional plan features">
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Unlimited websites
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Advanced visual editor
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Source code export
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Advanced SEO &amp; Analytics
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Lead forms &amp; CRM integration
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            5 team members
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Priority support
+          </li>
+        </ul>
+        <a href="builder.html" class="btn btn-primary btn-lg" id="pricing-pro-cta">Start Building</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="pricing-card">
+        <p class="pricing-tier-name">Enterprise</p>
+        <div class="pricing-price-wrap">
+          <span class="pricing-currency" style="color:var(--grey-dark);">$</span>
+          <span class="pricing-amount price-monthly" style="color:var(--grey-dark);">249</span>
+          <span class="pricing-amount price-annual" style="color:var(--grey-dark);">175</span>
+          <span class="pricing-period">/ month</span>
+        </div>
+        <p class="pricing-desc">For large enterprises and agencies managing many clients with advanced security and compliance needs.</p>
+        <ul class="pricing-features" aria-label="Enterprise plan features">
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Everything in Professional
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Unlimited team members
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            White-label solution
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            SOC 2 &amp; HIPAA compliance
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Custom AI model training
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Dedicated account manager
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            24/7 phone support &amp; SLA
+          </li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline-orange btn-lg" id="pricing-enterprise-cta">Contact Sales</a>
+      </div>
+
+    </div>
+
+    <p class="text-center text-muted" style="margin-top:2rem;font-size:0.875rem;font-family:var(--font-heading);">
+      🔒 14-day free trial on all plans. No credit card required. Cancel anytime.
+    </p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FAQ
+════════════════════════════════════════ -->
+<section class="faq-section section" id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">Got Questions?</span>
+      <h2 class="section-title" id="faq-title">Frequently Asked <span>Questions</span></h2>
+      <p class="section-desc">Everything you need to know about HE5 SiteGen. Can't find your answer? <a href="contact.html" style="color:var(--orange);">Contact our team →</a></p>
+    </header>
+
+    <div class="faq-container reveal">
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-text">How does HE5 SiteGen's AI actually work?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            HE5 SiteGen uses advanced large language models combined with our proprietary design system to understand your business description. The AI analyzes your industry, target audience, tone, and goals to generate a complete website with appropriate content, structure, colors, and layout — all in under 60 seconds.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-text">Do I need any coding or design skills to use HE5 SiteGen?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Absolutely not. HE5 SiteGen was designed for business owners, not developers. You simply describe your business in plain language and our AI does everything else — from design to content writing to SEO optimization. Our visual editor works exactly like editing a document, with no technical knowledge required.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-text">Can I use my own domain name with HE5 SiteGen?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes! All paid plans support custom domain connections. You can connect any domain you already own, or purchase one directly through our platform. We also provide a free SSL certificate (HTTPS) for every website, which is automatically configured within minutes.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-text">Can I export and own the source code of my website?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes, on Professional and Enterprise plans you can download the complete, clean source code of your website at any time — including HTML, CSS, JavaScript, and all assets. There's no proprietary lock-in. You own your code completely and can host it anywhere you choose.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-text">How is HE5 SiteGen different from Wix, Squarespace, or WordPress?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Traditional website builders require you to manually drag and drop elements, pick templates, and write your own content — a process that takes hours or days. HE5 SiteGen's AI generates a complete, customized website from scratch based on your description in seconds. We also offer source code export (which competitors don't), built-in analytics, and AI-powered content optimization that evolves with your business.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-text">Is there a free trial available?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes! Every plan includes a 14-day free trial with no credit card required. You can generate websites, explore all features, and even publish to a HE5 subdomain for free during the trial. After 14 days, you only pay if you love the product — and we're confident you will.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span class="faq-q-text">What happens to my websites if I cancel my subscription?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            If you cancel, your websites will remain accessible for 30 days, giving you time to export your source code or migrate to another host. We'll remind you 7 days and 1 day before any data deletion. We also offer a pause feature so you can resume later without losing your work.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FINAL CTA
+════════════════════════════════════════ -->
+<section class="cta-section" id="cta" aria-labelledby="cta-title">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-content reveal">
+      <span class="cta-eyebrow">Ready to Build?</span>
+      <h2 class="cta-title" id="cta-title">Your Next Website is<br>60 Seconds Away</h2>
+      <p class="cta-desc">Join 10,000+ businesses who replaced expensive developers and generic templates with HE5 SiteGen's intelligent AI builder.</p>
+      <div class="cta-actions">
+        <a href="builder.html" class="btn btn-lg btn-cta-white btn-ripple" id="cta-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Start Building for Free
+        </a>
+        <a href="builder.html" class="btn btn-lg btn-cta-outline" id="cta-secondary">
+          Open Builder Plans
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-top">
+
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="HE5 SiteGen Home">
+          <div class="footer-logo-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <span class="footer-logo-text">HE5 <span>SiteGen</span></span>
+        </a>
+        <p class="footer-tagline">Build Smarter. Launch Faster. AI-powered website creation for every business.</p>
+
+        <p class="newsletter-label">Stay in the loop</p>
+        <form class="newsletter-form" aria-label="Newsletter subscription">
+          <label for="newsletter-email" class="sr-only">Email address</label>
+          <input type="email" id="newsletter-email" class="newsletter-input" placeholder="Enter your email" autocomplete="email" />
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Follow HE5 SiteGen on Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Follow HE5 SiteGen on LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Follow HE5 SiteGen on YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Follow HE5 SiteGen on Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product Links -->
+      <div>
+        <h3 class="footer-col-title">Product</h3>
+        <ul class="footer-links">
+          <li><a href="features.html" class="footer-link">Features</a></li>
+          <li><a href="#templates" class="footer-link">Templates</a></li>
+          <li><a href="builder.html" class="footer-link">Prompt Library</a></li>
+          <li><a href="#interactive-demo" class="footer-link">Live Demo</a></li>
+          <li><a href="resources.html" class="footer-link">Changelog</a></li>
+          <li><a href="builder.html" class="footer-link">Roadmap</a></li>
+        </ul>
+      </div>
+
+      <!-- Solutions Links -->
+      <div>
+        <h3 class="footer-col-title">Solutions</h3>
+        <ul class="footer-links">
+          <li><a href="solutions.html#restaurants" class="footer-link">Restaurants</a></li>
+          <li><a href="solutions.html#healthcare" class="footer-link">Healthcare</a></li>
+          <li><a href="solutions.html#realestate" class="footer-link">Real Estate</a></li>
+          <li><a href="solutions.html#education" class="footer-link">Education</a></li>
+          <li><a href="solutions.html#agencies" class="footer-link">Agencies</a></li>
+          <li><a href="solutions.html#retail" class="footer-link">Retail</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources Links -->
+      <div>
+        <h3 class="footer-col-title">Resources</h3>
+        <ul class="footer-links">
+          <li><a href="resources.html" class="footer-link">Documentation</a></li>
+          <li><a href="resources.html" class="footer-link">Blog</a></li>
+          <li><a href="faq.html" class="footer-link">FAQs</a></li>
+          <li><a href="resources.html" class="footer-link">Starter Guide</a></li>
+          <li><a href="contact.html" class="footer-link">Support</a></li>
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div>
+        <h3 class="footer-col-title">Company</h3>
+        <ul class="footer-links">
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+          <li><a href="resources.html" class="footer-link">Resources</a></li>
+          <li><a href="builder.html" class="footer-link">Prompt Library</a></li>
+          <li><a href="faq.html" class="footer-link">FAQ</a></li>
+          <li><a href="privacy.html" class="footer-link">Privacy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 HE5 SiteGen. All rights reserved.</p>
+      <nav class="footer-legal" aria-label="Legal links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="faq.html">FAQ</a>
+        <a href="404.html">Support</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<!-- JavaScript -->
+<script src="js/main.js"></script>
+<script src="js/testimonials.js"></script>
+<script src="js/faq.js"></script>
+<script src="js/pricing.js"></script>
+<script src="js/demo.js"></script>
+
+</body>
+</html>

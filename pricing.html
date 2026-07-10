@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HE5 SiteGen Pricing — Simple, transparent plans that grow with your business. Start free, scale as you grow. No hidden fees, ever." />
+  <meta property="og:title" content="Pricing — HE5 SiteGen | Build Smarter. Launch Faster." />
+  <meta property="og:description" content="Choose the HE5 SiteGen plan that's right for your business. Starter from $29/mo, Professional at $79/mo, or Enterprise. Cancel anytime." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Pricing — HE5 SiteGen | Build Smarter. Launch Faster.</title>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/pricing.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+
+  <style>
+    /* ── Feature Comparison Table ── */
+    .comparison-pricing-section {
+      background: var(--white);
+    }
+
+    .feature-table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      min-width: 680px;
+    }
+
+    .feature-table thead tr {
+      background: var(--grey-dark);
+    }
+
+    .feature-table thead th {
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .feature-table thead th:first-child {
+      color: rgba(255,255,255,0.55);
+      font-weight: 500;
+    }
+
+    .feature-table thead th.col-starter {
+      color: rgba(255,255,255,0.80);
+    }
+
+    .feature-table thead th.col-pro {
+      color: var(--orange);
+      background: rgba(240,121,0,0.12);
+    }
+
+    .feature-table thead th.col-enterprise {
+      color: rgba(255,255,255,0.80);
+    }
+
+    .feature-table tbody tr {
+      border-bottom: 1px solid var(--border-light);
+      transition: background 0.15s ease;
+    }
+
+    .feature-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .feature-table tbody tr:hover {
+      background: rgba(240,121,0,0.03);
+    }
+
+    .feature-table tbody tr:nth-child(even) {
+      background: rgba(21,21,21,0.02);
+    }
+
+    .feature-table tbody tr:nth-child(even):hover {
+      background: rgba(240,121,0,0.04);
+    }
+
+    .feature-table td {
+      padding: 1.1rem 1.5rem;
+      color: var(--text-body);
+      vertical-align: middle;
+    }
+
+    .feature-table td:first-child {
+      font-weight: 600;
+      color: var(--grey-dark);
+      font-size: 0.875rem;
+    }
+
+    .feature-table td.col-pro {
+      background: rgba(240,121,0,0.035);
+    }
+
+    .ft-check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(240,121,0,0.12);
+      border: 1px solid rgba(240,121,0,0.25);
+      color: var(--orange);
+    }
+
+    .ft-check svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .ft-x {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(21,21,21,0.05);
+      border: 1px solid rgba(21,21,21,0.10);
+      color: rgba(21,21,21,0.3);
+    }
+
+    .ft-x svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    .ft-text {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-body);
+    }
+
+    .ft-text.highlight {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* ── Trust Badges ── */
+    .trust-badges-section {
+      background: var(--white);
+      padding-block: 3.5rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .trust-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.375rem;
+      background: var(--white);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-full);
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--grey-dark);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+    }
+
+    .trust-badge:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(240,121,0,0.12);
+    }
+
+    .trust-badge-icon {
+      font-size: 1.1rem;
+    }
+
+    /* ── Pricing Page specific overrides ── */
+    .pricing-page-section {
+      background: var(--white);
+      padding-block: 5rem;
+    }
+
+    .billing-toggle-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ── FAQ section for pricing page ── */
+    .faq-pricing-section {
+      background: #FAFAFA;
+    }
+
+    /* ── Table group header rows ── */
+    .feature-table-group th {
+      background: rgba(240,121,0,0.06);
+      color: var(--orange);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.65rem 1.5rem;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(240,121,0,0.15);
+    }
+
+    /* ── Annual savings callout ── */
+    .annual-savings-note {
+      display: none;
+      text-align: center;
+      margin-top: 1.5rem;
+      margin-bottom: 0;
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .billing-annual ~ * .annual-savings-note,
+    .billing-annual .annual-savings-note {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .feature-table td,
+      .feature-table th {
+        padding: 0.875rem 1rem;
+      }
+    }
+  </style>
+  <script src="js/auth.js"></script>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="navbar-inner" style="max-width:1440px;margin-inline:auto;padding-inline:2rem;">
+    <a href="index.html" class="navbar-logo">
+      <div class="logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <span class="logo-text">HE5 <span>SiteGen</span></span>
+    </a>
+    <nav class="navbar-nav">
+      <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
+      <div class="nav-item"><a href="features.html" class="nav-link">Features</a></div>
+      <div class="nav-item"><a href="solutions.html" class="nav-link">Solutions</a></div>
+      <div class="nav-item"><a href="builder.html" class="nav-link active" aria-current="page">Prompt Library</a></div>
+      <div class="nav-item"><a href="resources.html" class="nav-link">Resources</a></div>
+      <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+      <div class="nav-item"><a href="contact.html" class="nav-link">Contact</a></div>
+    </nav>
+    <div class="navbar-actions">
+      <a href="contact.html" class="btn-login">Login</a>
+      <a href="builder.html" class="btn btn-primary btn-sm">Start Building</a>
+    </div>
+    <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="features.html" class="mobile-nav-link">Features</a>
+    <a href="solutions.html" class="mobile-nav-link">Solutions</a>
+    <a href="builder.html" class="mobile-nav-link active">Prompt Library</a>
+    <a href="resources.html" class="mobile-nav-link">Resources</a>
+    <a href="about.html" class="mobile-nav-link">About</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+  </nav>
+  <div class="mobile-actions">
+    <a href="contact.html" class="btn btn-secondary btn-lg" style="width:100%;justify-content:center;">Login</a>
+    <a href="builder.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Start Building</a>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     PAGE HERO
+════════════════════════════════════════ -->
+<section class="page-hero" aria-labelledby="pricing-hero-title">
+  <div class="page-hero-content">
+    <span class="section-label" style="margin-bottom:1.5rem;">Simple Pricing</span>
+    <h1 class="page-hero-title" id="pricing-hero-title">Plans That Grow <span>With You</span></h1>
+    <p class="page-hero-desc">Start for free. Scale as your business grows. No hidden fees, no surprises — ever. Cancel anytime.</p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     PRICING CARDS
+════════════════════════════════════════ -->
+<section class="pricing-page-section" id="plans" aria-labelledby="pricing-plans-title">
+  <div class="container">
+
+    <!-- Section header (screen-reader only anchor) -->
+    <h2 id="pricing-plans-title" class="sr-only">Pricing Plans</h2>
+
+    <!-- Billing Toggle -->
+    <div class="billing-toggle-center">
+      <div class="billing-toggle reveal" style="margin-bottom:3rem;">
+        <span class="billing-label">Monthly</span>
+        <button class="toggle-switch" id="billing-toggle" aria-label="Toggle annual billing" aria-pressed="false">
+          <span class="toggle-thumb"></span>
+        </button>
+        <span class="billing-label">Annual</span>
+        <span class="save-badge">Save 30%</span>
+      </div>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="pricing-grid reveal-stagger" id="pricing-grid-main">
+
+      <!-- Starter -->
+      <div class="pricing-card">
+        <p class="pricing-tier-name">Starter</p>
+        <div class="pricing-price-wrap">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-amount price-monthly">29</span>
+          <span class="pricing-amount price-annual">19</span>
+          <span class="pricing-period">/ month</span>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);font-family:var(--font-heading);margin-bottom:var(--space-4);font-weight:500;">
+          <span class="price-annual" style="color:var(--orange);">Billed $228/year — save $120</span>
+          <span class="price-monthly">&nbsp;</span>
+        </p>
+        <p class="pricing-desc">Perfect for freelancers, solopreneurs, and small businesses getting started online.</p>
+        <ul class="pricing-features" aria-label="Starter plan features">
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            3 AI-generated websites
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            50 AI generations per month
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Custom domain connection
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Free SSL certificate
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Visual editor access
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Basic SEO tools
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Email support
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            99.5% uptime SLA
+          </li>
+        </ul>
+        <a href="builder.html" class="btn btn-dark btn-lg" id="pricing-page-starter-cta">Get Started Free</a>
+      </div>
+
+      <!-- Professional (Featured) -->
+      <div class="pricing-card featured" aria-label="Most popular plan">
+        <div class="pricing-badge-popular" aria-label="Most Popular">⭐ Most Popular</div>
+        <p class="pricing-tier-name">Professional</p>
+        <div class="pricing-price-wrap">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-amount price-monthly">79</span>
+          <span class="pricing-amount price-annual">55</span>
+          <span class="pricing-period">/ month</span>
+        </div>
+        <p style="font-size:0.8rem;font-family:var(--font-heading);margin-bottom:var(--space-4);font-weight:500;">
+          <span class="price-annual" style="color:rgba(240,121,0,0.9);">Billed $660/year — save $288</span>
+          <span class="price-monthly" style="color:rgba(255,255,255,0);">·</span>
+        </p>
+        <p class="pricing-desc">For growing businesses and agencies who need more power, customization, and team collaboration.</p>
+        <ul class="pricing-features" aria-label="Professional plan features">
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Unlimited websites
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            500 AI generations per month
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Advanced visual editor
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Source code export
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Advanced SEO &amp; Analytics
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Lead forms &amp; CRM integration
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            5 team members
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Marketing automation tools
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Priority support
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            99.9% uptime SLA
+          </li>
+        </ul>
+        <a href="builder.html" class="btn btn-primary btn-lg" id="pricing-page-pro-cta">Start Building</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="pricing-card">
+        <p class="pricing-tier-name">Enterprise</p>
+        <div class="pricing-price-wrap">
+          <span class="pricing-currency" style="color:var(--grey-dark);">$</span>
+          <span class="pricing-amount price-monthly" style="color:var(--grey-dark);">249</span>
+          <span class="pricing-amount price-annual" style="color:var(--grey-dark);">175</span>
+          <span class="pricing-period">/ month</span>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);font-family:var(--font-heading);margin-bottom:var(--space-4);font-weight:500;">
+          <span class="price-annual" style="color:var(--orange);">Billed $2,100/year — save $888</span>
+          <span class="price-monthly">&nbsp;</span>
+        </p>
+        <p class="pricing-desc">For large enterprises and agencies managing many clients with advanced security and compliance needs.</p>
+        <ul class="pricing-features" aria-label="Enterprise plan features">
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Everything in Professional
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Unlimited AI generations
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Unlimited team members
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            White-label solution
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Multi-site management dashboard
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            SOC 2 &amp; HIPAA compliance
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Custom AI model training
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Dedicated account manager
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            24/7 phone support &amp; SLA
+          </li>
+          <li class="pricing-feature">
+            <span class="pricing-check" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            99.99% uptime SLA
+          </li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline-orange btn-lg" id="pricing-page-enterprise-cta">Contact Sales</a>
+      </div>
+
+    </div><!-- /pricing-grid -->
+
+    <p class="text-center text-muted" style="margin-top:2rem;font-size:0.875rem;font-family:var(--font-heading);">
+      🔒 14-day free trial on all plans. No credit card required. Cancel anytime.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FEATURE COMPARISON TABLE
+════════════════════════════════════════ -->
+<section class="comparison-pricing-section section" id="comparison-table" aria-labelledby="comparison-table-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">Full Feature Breakdown</span>
+      <h2 class="section-title" id="comparison-table-title">Compare All <span>Plan Features</span></h2>
+      <p class="section-desc">Every feature, clearly laid out — so you can choose the plan that's exactly right for your business.</p>
+    </header>
+
+    <div class="feature-table-wrapper reveal">
+      <table class="feature-table" aria-label="Full feature comparison table across Starter, Professional, and Enterprise plans">
+        <thead>
+          <tr>
+            <th scope="col" style="width:36%;">Feature</th>
+            <th scope="col" class="col-starter" style="width:21%;text-align:center;">Starter<br><span style="font-size:0.75rem;font-weight:500;opacity:0.7;">$29/mo</span></th>
+            <th scope="col" class="col-pro" style="width:21%;text-align:center;">Professional<br><span style="font-size:0.75rem;font-weight:600;color:var(--orange);">$79/mo</span></th>
+            <th scope="col" class="col-enterprise" style="width:22%;text-align:center;">Enterprise<br><span style="font-size:0.75rem;font-weight:500;opacity:0.7;">$249/mo</span></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- Group: Core AI -->
+          <tr class="feature-table-group" aria-label="Core AI features group">
+            <th colspan="4" scope="colgroup">⚡ Core AI Features</th>
+          </tr>
+          <tr>
+            <td>AI Website Generation</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Websites Allowed</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-text">3 sites</span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-text highlight">Unlimited</span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-text highlight">Unlimited</span></td>
+          </tr>
+          <tr>
+            <td>AI Generations per Month</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-text">50 / mo</span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-text highlight">500 / mo</span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-text highlight">Unlimited</span></td>
+          </tr>
+
+          <!-- Group: Hosting & Security -->
+          <tr class="feature-table-group" aria-label="Hosting and security features group">
+            <th colspan="4" scope="colgroup">🔒 Hosting &amp; Security</th>
+          </tr>
+          <tr>
+            <td>Custom Domain</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>SSL Certificate</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Uptime SLA</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-text">99.5%</span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-text highlight">99.9%</span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-text highlight">99.99%</span></td>
+          </tr>
+
+          <!-- Group: Editing & Export -->
+          <tr class="feature-table-group" aria-label="Editing and export features group">
+            <th colspan="4" scope="colgroup">✏️ Editing &amp; Export</th>
+          </tr>
+          <tr>
+            <td>Visual Editor</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-text">Basic</span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-text highlight">Advanced</span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-text highlight">Advanced</span></td>
+          </tr>
+          <tr>
+            <td>Source Code Export</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-x" aria-label="Not included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          </tr>
+
+          <!-- Group: SEO & Analytics -->
+          <tr class="feature-table-group" aria-label="SEO and analytics features group">
+            <th colspan="4" scope="colgroup">📈 SEO &amp; Analytics</th>
+          </tr>
+          <tr>
+            <td>SEO Tools Level</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-text">Basic</span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-text highlight">Advanced</span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-text highlight">Enterprise</span></td>
+          </tr>
+          <tr>
+            <td>Analytics Dashboard</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-text">Basic</span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-text highlight">Full</span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-text highlight">Custom</span></td>
+          </tr>
+
+          <!-- Group: Growth -->
+          <tr class="feature-table-group" aria-label="Growth and marketing features group">
+            <th colspan="4" scope="colgroup">🚀 Growth &amp; Marketing</th>
+          </tr>
+          <tr>
+            <td>Lead Forms &amp; CRM</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-x" aria-label="Not included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>Marketing Tools</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-x" aria-label="Not included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          </tr>
+
+          <!-- Group: Team & Enterprise -->
+          <tr class="feature-table-group" aria-label="Team and enterprise features group">
+            <th colspan="4" scope="colgroup">🏢 Team &amp; Enterprise</th>
+          </tr>
+          <tr>
+            <td>Team Members</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-text">1 member</span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-text highlight">5 members</span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-text highlight">Unlimited</span></td>
+          </tr>
+          <tr>
+            <td>Multi-Site Management</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-x" aria-label="Not included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          </tr>
+          <tr>
+            <td>White-Label Option</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-x" aria-label="Not included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-x" aria-label="Not included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-check" aria-label="Included"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></td>
+          </tr>
+
+          <!-- Group: Support -->
+          <tr class="feature-table-group" aria-label="Support features group">
+            <th colspan="4" scope="colgroup">💬 Support</th>
+          </tr>
+          <tr>
+            <td>Support Level</td>
+            <td class="col-starter" style="text-align:center;"><span class="ft-text">Email</span></td>
+            <td class="col-pro" style="text-align:center;"><span class="ft-text highlight">Priority</span></td>
+            <td class="col-enterprise" style="text-align:center;"><span class="ft-text highlight">24/7 Phone + SLA</span></td>
+          </tr>
+
+          <!-- CTA row -->
+          <tr style="background:rgba(240,121,0,0.04);">
+            <td style="font-weight:700;color:var(--grey-dark);">Get Started</td>
+            <td class="col-starter" style="text-align:center;padding:1.5rem;">
+              <a href="builder.html" class="btn btn-dark btn-sm" style="display:inline-flex;">Get Started Free</a>
+            </td>
+            <td class="col-pro" style="text-align:center;padding:1.5rem;">
+              <a href="builder.html" class="btn btn-primary btn-sm" style="display:inline-flex;">Start Building</a>
+            </td>
+            <td class="col-enterprise" style="text-align:center;padding:1.5rem;">
+              <a href="contact.html" class="btn btn-outline-orange btn-sm" style="display:inline-flex;">Contact Sales</a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div><!-- /feature-table-wrapper -->
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FAQ — PRICING SPECIFIC
+════════════════════════════════════════ -->
+<section class="faq-pricing-section section" id="pricing-faq" aria-labelledby="pricing-faq-title">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-label">Pricing Questions</span>
+      <h2 class="section-title" id="pricing-faq-title">Frequently Asked <span>Questions</span></h2>
+      <p class="section-desc">Have more questions? <a href="contact.html" style="color:var(--orange);font-weight:600;">Talk to our team →</a></p>
+    </header>
+
+    <div class="faq-container reveal" style="max-width:780px;margin-inline:auto;">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" role="button" tabindex="0">
+          <span class="faq-q-text">Is there really no credit card required for the free trial?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            That's correct — no credit card is needed to start your 14-day free trial. You can sign up instantly and explore all features of your chosen plan without entering any payment details. You'll only be asked for billing information if you decide to continue after the trial period ends. There are no surprise charges, ever.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" role="button" tabindex="0">
+          <span class="faq-q-text">Can I switch between plans at any time?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Absolutely. You can upgrade or downgrade your plan at any time directly from your account dashboard. Upgrades take effect immediately, and you'll be billed a prorated amount for the remainder of the billing period. Downgrades take effect at the start of your next billing cycle, so you keep full access to your current plan until then.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" role="button" tabindex="0">
+          <span class="faq-q-text">What does "30% savings on annual billing" actually mean?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            When you choose annual billing, you pay for 12 months upfront at a discounted rate equivalent to getting about 4 months free. For example, the Starter plan drops from $29/month to just $19/month when billed annually — saving you $120 per year. The Professional plan saves you $288/year, and Enterprise saves $888/year. The discount is applied automatically when you select "Annual" billing.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" role="button" tabindex="0">
+          <span class="faq-q-text">What happens to my websites if I cancel my subscription?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            If you cancel your subscription, your websites remain live and accessible for 30 days after cancellation. During this grace period, you can export your complete source code (on Professional &amp; Enterprise plans), download all your assets, or migrate to another hosting provider. We'll send you reminder emails 7 days and 1 day before any data deletion. We also offer a subscription pause option — great if you want to take a break without losing your work.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" role="button" tabindex="0">
+          <span class="faq-q-text">Do you offer discounts for nonprofits, students, or startups?</span>
+          <span class="faq-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes! We offer a 50% discount for registered nonprofits and charitable organizations, a student discount for those with a valid .edu email address, and a startup program for seed-stage companies. Additionally, qualifying early-stage startups may be eligible for our Startup Partner Program, which includes extended trial periods and special pricing. Contact our team at <a href="mailto:support@he5sitegen.com" style="color:var(--orange);">support@he5sitegen.com</a> with proof of eligibility to get your discount applied.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     TRUST BADGES
+════════════════════════════════════════ -->
+<div class="trust-badges-section" role="region" aria-label="Trust and security guarantees">
+  <div class="container">
+    <div class="trust-badges-row reveal">
+      <span class="trust-badge">
+        <span class="trust-badge-icon" aria-hidden="true">🗓️</span>
+        14-day free trial
+      </span>
+      <span class="trust-badge">
+        <span class="trust-badge-icon" aria-hidden="true">💳</span>
+        No credit card required
+      </span>
+      <span class="trust-badge">
+        <span class="trust-badge-icon" aria-hidden="true">✖️</span>
+        Cancel anytime
+      </span>
+      <span class="trust-badge">
+        <span class="trust-badge-icon" aria-hidden="true">🛡️</span>
+        SOC 2 Compliant
+      </span>
+      <span class="trust-badge">
+        <span class="trust-badge-icon" aria-hidden="true">🔒</span>
+        Free SSL included
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     CTA SECTION
+════════════════════════════════════════ -->
+<section class="cta-section" id="pricing-cta" aria-labelledby="pricing-cta-title">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-content reveal">
+      <span class="cta-eyebrow">Ready to Build?</span>
+      <h2 class="cta-title" id="pricing-cta-title">Still Have <span style="opacity:0.9;">Questions?</span></h2>
+      <p class="cta-desc">Our team is happy to walk you through the right plan for your business. Start a free trial with no commitment, or talk to a product expert who can answer every question you have.</p>
+      <div class="cta-actions">
+        <a href="builder.html" class="btn btn-lg btn-cta-white btn-ripple" id="pricing-cta-trial">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Start Free Trial
+        </a>
+        <a href="contact.html" class="btn btn-lg btn-cta-outline" id="pricing-cta-sales">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Talk to Sales
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <div class="footer-logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <span class="footer-logo-text">HE5 <span>SiteGen</span></span>
+        </a>
+        <p class="footer-tagline">Build Smarter. Launch Faster. AI-powered website creation for every business.</p>
+        <form class="newsletter-form" aria-label="Newsletter">
+          <label for="footer-email-pricing" class="sr-only">Email</label>
+          <input type="email" id="footer-email-pricing" class="newsletter-input" placeholder="Enter your email" autocomplete="email" />
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Product</h3>
+        <ul class="footer-links">
+          <li><a href="features.html" class="footer-link">Features</a></li>
+          <li><a href="builder.html" class="footer-link">Prompt Library</a></li>
+          <li><a href="solutions.html" class="footer-link">Solutions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Company</h3>
+        <ul class="footer-links">
+          <li><a href="about.html" class="footer-link">About Us</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+          <li><a href="resources.html" class="footer-link">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Resources</h3>
+        <ul class="footer-links">
+          <li><a href="resources.html" class="footer-link">Guides</a></li>
+          <li><a href="faq.html" class="footer-link">FAQ</a></li>
+          <li><a href="contact.html" class="footer-link">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 HE5 SiteGen. All rights reserved.</p>
+      <nav class="footer-legal">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/pricing.js"></script>
+<script src="js/faq.js"></script>
+
+</body>
+</html>

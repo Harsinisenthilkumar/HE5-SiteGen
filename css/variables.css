@@ -1,0 +1,102 @@
+/* =============================================
+   HE5 SiteGen — Design Tokens & Variables
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ── Brand Colors ── */
+  --orange:       #F07900;
+  --orange-light: #F8A145;
+  --orange-dark:  #D35100;
+
+  --grey:         #151515;
+  --grey-light:   #3A3A3A;
+  --grey-dark:    #000000;
+
+  --white:        #FFFFFF;
+  --text-light:   #E0E0E0;
+
+  /* ── Extended Palette ── */
+  --surface-1:    #1E1E1E;
+  --surface-2:    #252525;
+  --surface-3:    #2E2E2E;
+  --border-dark:  rgba(255,255,255,0.08);
+  --border-light: rgba(0,0,0,0.08);
+
+  --text-muted:   #9A9A9A;
+  --text-body:    #4A4A4A;
+
+  /* ── Gradients ── */
+  --gradient-orange:  linear-gradient(135deg, var(--orange-dark) 0%, var(--orange) 50%, var(--orange-light) 100%);
+  --gradient-dark:    linear-gradient(135deg, var(--grey-dark) 0%, var(--grey) 100%);
+  --gradient-hero:    linear-gradient(135deg, #000000 0%, #151515 60%, #1a0d00 100%);
+  --gradient-glow:    radial-gradient(ellipse at center, rgba(240,121,0,0.15) 0%, transparent 70%);
+  --gradient-card:    linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+
+  /* ── Typography ── */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.25rem;    /* 36px */
+  --text-5xl:  3rem;       /* 48px */
+  --text-6xl:  3.75rem;    /* 60px */
+  --text-7xl:  4.5rem;     /* 72px */
+
+  /* ── Spacing ── */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ── Border Radius ── */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg:   0 10px 40px rgba(0,0,0,0.15), 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-xl:   0 20px 60px rgba(0,0,0,0.20), 0 8px 24px rgba(0,0,0,0.12);
+  --shadow-orange: 0 8px 32px rgba(240,121,0,0.30);
+  --shadow-orange-lg: 0 16px 48px rgba(240,121,0,0.40);
+
+  /* ── Transitions ── */
+  --transition-fast: all 0.15s ease;
+  --transition-base: all 0.25s ease;
+  --transition-slow: all 0.4s ease;
+  --transition-spring: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Z-Index ── */
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-modal:    300;
+  --z-toast:    400;
+
+  /* ── Container ── */
+  --container-sm:  640px;
+  --container-md:  768px;
+  --container-lg:  1024px;
+  --container-xl:  1280px;
+  --container-2xl: 1440px;
+}

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HE5 SiteGen delivers purpose-built AI website solutions for restaurants, healthcare, real estate, education, retail, fitness, legal, and hospitality industries." />
+  <title>Industry Solutions | HE5 SiteGen</title>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/pricing.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+
+  <style>
+    /* ── Industry Cards Grid ─────────────────────────────────────── */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .solutions-grid { grid-template-columns: 1fr; }
+    }
+
+    .industry-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(240, 121, 0, 0.12);
+      border-radius: 1.25rem;
+      padding: 2.25rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .industry-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(240, 121, 0, 0.14);
+      border-color: rgba(240, 121, 0, 0.4);
+    }
+
+    .industry-card-emoji {
+      font-size: 3rem;
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .industry-card h2 {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--grey, #151515);
+      margin: 0;
+    }
+
+    .industry-card p {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: #4a4a4a;
+      margin: 0;
+    }
+
+    .industry-card-features {
+      list-style: none;
+      padding: 0;
+      margin: 0.25rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .industry-card-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      color: #333;
+    }
+
+    .industry-card-features li::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange, #F07900);
+      flex-shrink: 0;
+    }
+
+    .industry-card .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    /* ── Stats Bar ───────────────────────────────────────────────── */
+    .stats-bar {
+      background: var(--grey, #151515);
+      padding: 4.5rem 0;
+    }
+
+    .stats-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .stats-bar-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .stats-bar-grid { grid-template-columns: 1fr; }
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--orange, #F07900);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Active nav link ─────────────────────────────────────────── */
+    .nav-link.active {
+      color: var(--orange, #F07900);
+    }
+  </style>
+  <script src="js/auth.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════ NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner" style="max-width:1440px;margin-inline:auto;padding-inline:2rem;">
+      <a href="index.html" class="navbar-logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <span class="logo-text">HE5 <span>SiteGen</span></span>
+      </a>
+      <nav class="navbar-nav">
+        <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
+        <div class="nav-item"><a href="features.html" class="nav-link">Features</a></div>
+        <div class="nav-item"><a href="solutions.html" class="nav-link active" aria-current="page">Solutions</a></div>
+        <div class="nav-item"><a href="builder.html" class="nav-link">Prompt Library</a></div>
+        <div class="nav-item"><a href="resources.html" class="nav-link">Resources</a></div>
+        <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+        <div class="nav-item"><a href="contact.html" class="nav-link">Contact</a></div>
+      </nav>
+      <div class="navbar-actions">
+        <a href="contact.html" class="btn-login">Login</a>
+        <a href="builder.html" class="btn btn-primary btn-sm">Start Building</a>
+      </div>
+      <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="features.html" class="mobile-nav-link">Features</a>
+      <a href="solutions.html" class="mobile-nav-link">Solutions</a>
+      <a href="builder.html" class="mobile-nav-link">Prompt Library</a>
+      <a href="resources.html" class="mobile-nav-link">Resources</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+    <div class="mobile-actions">
+      <a href="contact.html" class="btn btn-secondary btn-lg" style="width:100%;justify-content:center;">Login</a>
+      <a href="builder.html" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Start Building</a>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════════════════════════ PAGE HERO -->
+    <section class="page-hero" aria-labelledby="solutions-hero-title">
+      <div class="page-hero-content">
+        <span class="section-label" style="margin-bottom:1.5rem;">INDUSTRY SOLUTIONS</span>
+        <h1 class="page-hero-title" id="solutions-hero-title">
+          The Right Solution for <span>Your Industry</span>
+        </h1>
+        <p class="page-hero-desc">
+          HE5 SiteGen delivers purpose-built website solutions for every type of business. Your industry has unique needs — our AI understands them all.
+        </p>
+        <a href="#solutions-deep" class="btn btn-primary btn-lg">Find Your Solution</a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ INDUSTRY SOLUTIONS SECTION -->
+    <section id="solutions-deep" class="section" aria-labelledby="solutions-heading" style="background:#ffffff;">
+      <div class="container">
+
+        <div class="section-header reveal" style="text-align:center;margin-bottom:0;">
+          <span class="section-label">BUILT FOR YOU</span>
+          <h2 class="section-title" id="solutions-heading">Tailored for <span>Every Industry</span></h2>
+          <p class="section-desc" style="max-width:600px;margin-inline:auto;">
+            From local restaurants to global enterprises, HE5 SiteGen has purpose-designed templates, features, and AI prompts for your exact business category.
+          </p>
+        </div>
+
+        <div class="solutions-grid">
+
+          <!-- ① Restaurants & Food -->
+          <article class="industry-card reveal" id="restaurants" aria-labelledby="industry-restaurants">
+            <span class="industry-card-emoji" aria-hidden="true">🍽️</span>
+            <h2 id="industry-restaurants">Restaurants &amp; Food</h2>
+            <p>
+              Turn hungry browsers into loyal diners. HE5 SiteGen builds stunning restaurant websites that showcase your menu, atmosphere, and story in minutes — no developer needed.
+            </p>
+            <p>
+              Whether you run a cozy café, a fine-dining establishment, or a bustling food truck, our AI crafts the perfect digital presence to drive more covers and online orders every day.
+            </p>
+            <ul class="industry-card-features" aria-label="Features for Restaurants & Food">
+              <li>Interactive digital menus with categories &amp; pricing</li>
+              <li>Online ordering &amp; table reservation system</li>
+              <li>Full-screen photo &amp; video gallery for ambiance</li>
+              <li>Google Maps integration &amp; opening hours widget</li>
+            </ul>
+            <a href="builder.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;">Get Started</a>
+          </article>
+
+          <!-- ② Healthcare & Medical -->
+          <article class="industry-card reveal" id="healthcare" aria-labelledby="industry-healthcare">
+            <span class="industry-card-emoji" aria-hidden="true">🏥</span>
+            <h2 id="industry-healthcare">Healthcare &amp; Medical</h2>
+            <p>
+              Build patient trust before they even walk through the door. Our healthcare-focused templates are clean, professional, and designed to communicate credibility and compassion.
+            </p>
+            <p>
+              From solo practices to multi-specialty clinics, HE5 SiteGen helps you present your services, staff, and policies clearly — so patients feel informed and confident from day one.
+            </p>
+            <ul class="industry-card-features" aria-label="Features for Healthcare & Medical">
+              <li>Online appointment booking with calendar sync</li>
+              <li>HIPAA-awareness notices &amp; privacy policy templates</li>
+              <li>Doctor &amp; specialist profile pages with credentials</li>
+              <li>Telemedicine &amp; virtual consultation landing pages</li>
+            </ul>
+            <a href="builder.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;">Get Started</a>
+          </article>
+
+          <!-- ③ Real Estate -->
+          <article class="industry-card reveal" id="realestate" aria-labelledby="industry-realestate">
+            <span class="industry-card-emoji" aria-hidden="true">🏡</span>
+            <h2 id="industry-realestate">Real Estate</h2>
+            <p>
+              Close more deals with a website that works as hard as you do. HE5 SiteGen gives real estate professionals a powerful digital platform to showcase properties and attract serious buyers.
+            </p>
+            <p>
+              List every property with rich media, capture qualified leads automatically, and position yourself as the go-to agent in your market — all from a single, beautifully designed site.
+            </p>
+            <ul class="industry-card-features" aria-label="Features for Real Estate">
+              <li>Dynamic property listings with search &amp; filters</li>
+              <li>Virtual tour embeds &amp; 360° photo galleries</li>
+              <li>Agent &amp; team profile pages with contact forms</li>
+              <li>Mortgage calculator &amp; open house scheduler</li>
+            </ul>
+            <a href="builder.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;">Get Started</a>
+          </article>
+
+          <!-- ④ Education & Training -->
+          <article class="industry-card reveal" id="education" aria-labelledby="industry-education">
+            <span class="industry-card-emoji" aria-hidden="true">🎓</span>
+            <h2 id="industry-education">Education &amp; Training</h2>
+            <p>
+              Inspire learners and streamline enrollment with a website built for educational excellence. HE5 SiteGen helps schools, tutors, and training providers create compelling digital campuses.
+            </p>
+            <p>
+              Showcase your programs, share success stories, and make it effortless for students and parents to find information, register, and stay connected with your institution.
+            </p>
+            <ul class="industry-card-features" aria-label="Features for Education & Training">
+              <li>Course catalog with detailed program descriptions</li>
+              <li>Online enrollment &amp; application forms</li>
+              <li>Faculty &amp; instructor profile pages</li>
+              <li>Events calendar &amp; LMS integration hooks</li>
+            </ul>
+            <a href="builder.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;">Get Started</a>
+          </article>
+
+          <!-- ⑤ Creative Agencies & Startups -->
+          <article class="industry-card reveal" id="agencies" aria-labelledby="industry-creative">
+            <span class="industry-card-emoji" aria-hidden="true">🎯</span>
+            <h2 id="industry-creative">Creative Agencies &amp; Startups</h2>
+            <p>
+              Your work is extraordinary — your website should be too. HE5 SiteGen builds bold, design-forward sites for agencies and startups that need to make a powerful first impression.
+            </p>
+            <p>
+              Showcase your best projects, articulate your unique value proposition, attract top talent, and convert visitors into clients with a site that reflects your creative vision and business ambition.
+            </p>
+            <ul class="industry-card-features" aria-label="Features for Creative Agencies & Startups">
+              <li>Portfolio &amp; project showcase with filtering</li>
+              <li>Detailed case studies with metrics &amp; results</li>
+              <li>Team culture pages &amp; career listings</li>
+              <li>Blog engine &amp; gated client portal access</li>
+            </ul>
+            <a href="builder.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;">Get Started</a>
+          </article>
+
+          <!-- ⑥ Retail & eCommerce -->
+          <article class="industry-card reveal" id="retail" aria-labelledby="industry-retail">
+            <span class="industry-card-emoji" aria-hidden="true">🛍️</span>
+            <h2 id="industry-retail">Retail &amp; eCommerce</h2>
+            <p>
+              Turn window shoppers into loyal customers with a retail website that sells around the clock. HE5 SiteGen creates stunning product experiences that drive conversions and repeat business.
+            </p>
+            <p>
+              Whether you have a boutique brick-and-mortar or a growing online store, our AI builds you a shop that looks great, loads fast, and converts visitors at every stage of the buying journey.
+            </p>
+            <ul class="industry-card-features" aria-label="Features for Retail & eCommerce">
+              <li>Rich product pages with image galleries &amp; specs</li>
+              <li>Promotions, discount banners &amp; flash-sale countdowns</li>
+              <li>Store locator with map &amp; opening hours</li>
+              <li>Loyalty program pages &amp; verified customer reviews</li>
+            </ul>
+            <a href="builder.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;">Get Started</a>
+          </article>
+
+          <!-- ⑦ Fitness & Wellness -->
+          <article class="industry-card reveal" aria-labelledby="industry-fitness">
+            <span class="industry-card-emoji" aria-hidden="true">💪</span>
+            <h2 id="industry-fitness">Fitness &amp; Wellness</h2>
+            <p>
+              Energize your brand and fill your classes with a website that inspires action. HE5 SiteGen crafts dynamic fitness and wellness sites that motivate visitors to take the first step.
+            </p>
+            <p>
+              From personal trainers to yoga studios and wellness retreats, our purpose-built templates make it easy to present your offerings, build community, and grow your membership base.
+            </p>
+            <ul class="industry-card-features" aria-label="Features for Fitness & Wellness">
+              <li>Live class schedule with online booking</li>
+              <li>Membership plans &amp; pricing comparison tables</li>
+              <li>Trainer &amp; instructor profiles with specialties</li>
+              <li>Nutrition guides &amp; wellness blog integration</li>
+            </ul>
+            <a href="builder.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;">Get Started</a>
+          </article>
+
+          <!-- ⑧ Legal Services -->
+          <article class="industry-card reveal" aria-labelledby="industry-legal">
+            <span class="industry-card-emoji" aria-hidden="true">⚖️</span>
+            <h2 id="industry-legal">Legal Services</h2>
+            <p>
+              Establish authority and win client trust with a professional legal website that communicates competence and reliability. HE5 SiteGen helps law firms present their expertise with confidence.
+            </p>
+            <p>
+              From solo practitioners to large firms, our legal-focused templates highlight your practice areas, attorney credentials, and proven results — giving prospective clients every reason to reach out.
+            </p>
+            <ul class="industry-card-features" aria-label="Features for Legal Services">
+              <li>Practice area pages with detailed service descriptions</li>
+              <li>Attorney &amp; partner profiles with bar admissions</li>
+              <li>Case results &amp; notable verdict summaries</li>
+              <li>Consultation request forms &amp; client testimonials</li>
+            </ul>
+            <a href="builder.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;">Get Started</a>
+          </article>
+
+          <!-- ⑨ Hotels & Hospitality -->
+          <article class="industry-card reveal" aria-labelledby="industry-hotels">
+            <span class="industry-card-emoji" aria-hidden="true">🏨</span>
+            <h2 id="industry-hotels">Hotels &amp; Hospitality</h2>
+            <p>
+              Create an irresistible first impression that turns website visitors into confirmed guests. HE5 SiteGen builds visually breathtaking hospitality websites that inspire wanderlust and drive direct bookings.
+            </p>
+            <p>
+              Showcase your property's unique character, highlight your amenities, and reduce OTA commission costs by making it simple and compelling for guests to book directly through your website.
+            </p>
+            <ul class="industry-card-features" aria-label="Features for Hotels & Hospitality">
+              <li>Immersive room &amp; suite showcase with galleries</li>
+              <li>Direct booking engine with real-time availability</li>
+              <li>Amenities, dining &amp; spa highlights pages</li>
+              <li>Local attractions guide &amp; verified guest reviews</li>
+            </ul>
+            <a href="builder.html" class="btn btn-primary btn-sm" style="margin-top:1.25rem;">Get Started</a>
+          </article>
+
+        </div><!-- /.solutions-grid -->
+      </div><!-- /.container -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════ STATS BAR -->
+    <section class="stats-bar" aria-label="HE5 SiteGen by the numbers">
+      <div class="container">
+        <div class="stats-bar-grid reveal">
+
+          <div class="stat-item">
+            <span class="stat-number">9</span>
+            <span class="stat-label">Industries Served</span>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">Industry Templates</span>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-number">10,000+</span>
+            <span class="stat-label">Businesses Launched</span>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-number">4.9★</span>
+            <span class="stat-label">Average Rating</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════ CTA SECTION -->
+    <section class="cta-section" aria-labelledby="solutions-cta-title">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="cta-content reveal">
+          <h2 class="cta-title" id="solutions-cta-title">
+            Ready to Build Your <span>Industry Website?</span>
+          </h2>
+          <p class="cta-desc">
+            Join thousands of businesses in your industry who already trust HE5 SiteGen to build faster, look better, and grow smarter. Your perfect website is just minutes away.
+          </p>
+          <div class="cta-actions">
+            <a href="builder.html" class="btn btn-lg btn-cta-white">Start Building Free</a>
+            <a href="builder.html" class="btn btn-lg btn-cta-outline">Open Builder</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════ FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="footer-logo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <span class="footer-logo-text">HE5 <span>SiteGen</span></span>
+          </a>
+          <p class="footer-tagline">Build Smarter. Launch Faster. AI-powered website creation for every business.</p>
+          <form class="newsletter-form" aria-label="Newsletter signup">
+            <label for="footer-email" class="sr-only">Your email address</label>
+            <input type="email" id="footer-email" class="newsletter-input" placeholder="Enter your email" />
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </form>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Product</h3>
+          <ul class="footer-links">
+            <li><a href="features.html" class="footer-link">Features</a></li>
+            <li><a href="builder.html" class="footer-link">Prompt Library</a></li>
+            <li><a href="solutions.html" class="footer-link">Solutions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html" class="footer-link">About Us</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+            <li><a href="resources.html" class="footer-link">Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Resources</h3>
+          <ul class="footer-links">
+            <li><a href="resources.html" class="footer-link">Guides</a></li>
+            <li><a href="faq.html" class="footer-link">FAQ</a></li>
+            <li><a href="contact.html" class="footer-link">Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 HE5 SiteGen. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="faq.html">FAQ</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  </script>
+</body>
+</html>
