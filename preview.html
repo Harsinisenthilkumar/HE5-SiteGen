@@ -16,6 +16,8 @@
     .btn { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.85rem 1.4rem; border-radius:999px; background:var(--orange); color:#fff; text-decoration:none; }
     .btn.secondary { background:transparent; border:1px solid rgba(255,255,255,0.2); }
   </style>
+  <link rel="stylesheet" href="css/editor.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="js/auth.js"></script>
 </head>
 <body>
@@ -25,9 +27,18 @@
         <h1 style="margin:0;font-size:1.4rem;">Website Preview</h1>
         <p id="preview-status" style="margin:0.35rem 0 0;color:rgba(255,255,255,0.7);">Loading generated site…</p>
       </div>
-      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;">
         <a href="index.html" class="btn secondary">Back Home</a>
-        <a href="builder.html" class="btn">Open Builder</a>
+        <a href="builder.html" class="btn secondary">Open Builder</a>
+        <button id="edit-website-btn" class="btn" style="cursor:pointer;">✏️ Edit Website</button>
+        <div class="export-dropdown">
+          <button class="btn secondary" style="cursor:pointer;">📥 Export ▾</button>
+          <div class="export-dropdown-content">
+            <a href="#" id="export-html-btn">HTML File</a>
+            <a href="#" id="export-css-btn">CSS Stylesheet</a>
+            <a href="#" id="export-zip-btn">Full ZIP Archive</a>
+          </div>
+        </div>
       </div>
     </div>
     <div id="preview-state" class="state-card">

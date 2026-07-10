@@ -3,6 +3,7 @@ import path from 'node:path';
 import { env } from '../config/env.js';
 import { prisma } from '../database/prisma.js';
 import type { AiService } from '../services/ai.service.js';
+import { ImageSanitizer } from '../utils/image-sanitizer.js';
 
 export class WebsiteGeneratorService {
   private memorySites: Record<string, string> = {};
@@ -589,7 +590,61 @@ export class WebsiteGeneratorService {
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Image Styles */
+    .logo-img {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+      text-align: left;
+    }
+    .hero-img-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      height: 400px;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .about-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+    }
+    .service-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      opacity: 0.6;
+    }
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
     @media (max-width: 968px) {
+      .hero-grid { grid-template-columns: 1fr !important; text-align: center !important; }
+      .hero-actions { justify-content: center !important; }
+      .hero-img-container { height: 300px !important; margin-top: 2rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .services-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
@@ -603,7 +658,7 @@ export class WebsiteGeneratorService {
   <!-- Sticky Navbar -->
   <nav class="navbar">
     <div class="container navbar-inner">
-      <a href="#" class="brand">🚀 ${details.businessName}</a>
+      <a href="#" class="brand"><img src="logo.png" alt="${details.businessName} Logo" class="logo-img"><span>${details.businessName}</span></a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -616,15 +671,20 @@ export class WebsiteGeneratorService {
 
   <!-- Hero Section -->
   <header class="hero">
-    <div class="container">
-      <div class="hero-badge">
-        <span>✨ AI Generated Design</span>
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">
+          <span>✨ AI Generated Design</span>
+        </div>
+        <h1 class="hero-title">${details.heroTitle} with <span>${details.businessName}</span></h1>
+        <p class="hero-desc">${details.description}</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Book Consultation</a>
+          <a href="#services" class="btn btn-secondary">Our Services</a>
+        </div>
       </div>
-      <h1 class="hero-title">${details.heroTitle} with <span>${details.businessName}</span></h1>
-      <p class="hero-desc">${details.description}</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Book Consultation</a>
-        <a href="#services" class="btn btn-secondary">Our Services</a>
+      <div class="hero-img-container">
+        <img src="hero.jpg" alt="${details.businessName} Hero" class="hero-img">
       </div>
     </div>
   </header>
@@ -643,24 +703,8 @@ export class WebsiteGeneratorService {
             We focus on maximizing conversion metrics, optimizing responsive layouts, and establishing a professional identity that matches your exact prompt description.
           </p>
         </div>
-        <div class="about-visual">
-          <div class="window-header">
-            <div class="dot dot-red"></div>
-            <div class="dot dot-yellow"></div>
-            <div class="dot dot-green"></div>
-          </div>
-          <div class="window-content">
-            <p><span class="highlight-code">const</span> business = {</p>
-            <p style="padding-left: 1.5rem;">name: <span class="highlight-code">"${details.businessName}"</span>,</p>
-            <p style="padding-left: 1.5rem;">category: <span class="highlight-code">"${details.businessType}"</span>,</p>
-            <p style="padding-left: 1.5rem;">status: <span class="highlight-code">"Launch Ready"</span>,</p>
-            <p style="padding-left: 1.5rem;">mobileResponsive: <span class="highlight-code">true</span></p>
-            <p>};</p>
-            <br>
-            <p><span class="highlight-code">function</span> initSite() {</p>
-            <p style="padding-left: 1.5rem;">console.log(business.name + <span class="highlight-code">" launched!"</span>);</p>
-            <p>}</p>
-          </div>
+        <div class="about-visual" style="padding:0; overflow:hidden; min-height:350px;">
+          <img src="about.jpg" alt="About ${details.businessName}" class="about-img">
         </div>
       </div>
     </div>
@@ -675,22 +719,22 @@ export class WebsiteGeneratorService {
       </div>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <div class="service-img-container" style="height: 150px; overflow: hidden; border-radius: 8px; margin-bottom: 1.5rem;">
+            <img src="service-1.jpg" alt="${details.services[0]}" class="service-img">
           </div>
           <h3 class="service-title">${details.services[0]}</h3>
           <p class="service-desc">Fully customized and optimized service designed specifically to align with your business goals.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <div class="service-img-container" style="height: 150px; overflow: hidden; border-radius: 8px; margin-bottom: 1.5rem;">
+            <img src="service-2.jpg" alt="${details.services[1]}" class="service-img">
           </div>
           <h3 class="service-title">${details.services[1]}</h3>
           <p class="service-desc">Applying cutting-edge technical architecture to ensure maximum performance and responsive scaling.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <div class="service-img-container" style="height: 150px; overflow: hidden; border-radius: 8px; margin-bottom: 1.5rem;">
+            <img src="service-3.jpg" alt="${details.services[2]}" class="service-img">
           </div>
           <h3 class="service-title">${details.services[2]}</h3>
           <p class="service-desc">Continuous monitoring, optimization reviews, and active support for your online platform.</p>
@@ -708,20 +752,20 @@ export class WebsiteGeneratorService {
       </div>
       <div class="gallery-grid">
         <div class="gallery-item">
-          <div class="gallery-item-bg"></div>
-          <div class="gallery-label">📷 ${details.galleryItems[0]}</div>
+          <img src="gallery-1.jpg" alt="${details.galleryItems[0]}" class="gallery-img">
+          <div class="gallery-label">${details.galleryItems[0]}</div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-item-bg"></div>
-          <div class="gallery-label">💡 ${details.galleryItems[1]}</div>
+          <img src="gallery-2.jpg" alt="${details.galleryItems[1]}" class="gallery-img">
+          <div class="gallery-label">${details.galleryItems[1]}</div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-item-bg"></div>
-          <div class="gallery-label">⚡ ${details.galleryItems[2]}</div>
+          <img src="gallery-3.jpg" alt="${details.galleryItems[2]}" class="gallery-img">
+          <div class="gallery-label">${details.galleryItems[2]}</div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-item-bg"></div>
-          <div class="gallery-label">🎨 ${details.galleryItems[3]}</div>
+          <img src="gallery-4.jpg" alt="${details.galleryItems[3]}" class="gallery-img">
+          <div class="gallery-label">${details.galleryItems[3]}</div>
         </div>
       </div>
     </div>
@@ -858,6 +902,13 @@ export class WebsiteGeneratorService {
     }
 
     const pages = aiResponse.pages ?? [];
+
+    // Sanitize and inject real images in all pages
+    for (const page of pages) {
+      if (page.content) {
+        page.content = ImageSanitizer.sanitize(page.content, prompt, project.id);
+      }
+    }
 
     try {
       await Promise.all(pages.map((page: any) => this.writePage(outputDir, page)));
@@ -996,7 +1047,7 @@ export class WebsiteGeneratorService {
 
     // 4. Ultimate fallback: generate dynamic fallback website in memory
     const fallbackResponse = this.createFallbackResponse(prompt || "HE5 SiteGen website");
-    return fallbackResponse.pages[0].content;
+    return ImageSanitizer.sanitize(fallbackResponse.pages[0].content, prompt || "HE5 SiteGen website", projectId);
   }
 
   private async writePage(outputDir: string, page: any) {
