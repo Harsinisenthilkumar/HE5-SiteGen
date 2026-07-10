@@ -408,7 +408,6 @@
   color: var(--white);
 }
 
-.float-content {}
 .float-label {
   font-size: var(--text-xs);
   color: rgba(255,255,255,0.45);
